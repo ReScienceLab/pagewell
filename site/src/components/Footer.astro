@@ -1,0 +1,25 @@
+---
+import { footerLinks } from "../lib/navigation";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer__inner">
+    <div>
+      <a class="brand footer__brand" href="/" aria-label="Pagewell home">
+        <span class="brand__mark" aria-hidden="true">P</span>
+        <span>Pagewell</span>
+      </a>
+      <p class="caption footer__copy">
+        Agent skills for turning page briefs into search-ready website code.
+      </p>
+    </div>
+
+    <div class="footer__links" aria-label="Footer navigation">
+      {footerLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+    </div>
+
+    <p class="caption footer__meta">© {year} Pagewell. Pages as code.</p>
+  </div>
+</footer>

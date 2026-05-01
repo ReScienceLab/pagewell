@@ -1,0 +1,170 @@
+---
+import ArtifactTable from "../components/ArtifactTable.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CodeWindow from "../components/CodeWindow.astro";
+import CTASection from "../components/CTASection.astro";
+import CommandCopy from "../components/CommandCopy.astro";
+import FAQ from "../components/FAQ.astro";
+import HeroWordmark from "../components/HeroWordmark.astro";
+import PageTypeGrid from "../components/PageTypeGrid.astro";
+import Pipeline from "../components/Pipeline.astro";
+import { faqPageSchema, organizationSchema, softwareApplicationSchema, websiteSchema } from "../lib/schema";
+
+const description =
+  "Pagewell helps coding agents turn page briefs into search-ready website code with routes, metadata, schema, QA, and discovery updates.";
+
+const faqItems = [
+  {
+    question: "What is Pagewell?",
+    answer:
+      "Pagewell is a framework-agnostic skill pack for coding agents. It turns a brief, product facts, SITE_PROFILE.md, and DESIGN.md into normal website code plus SEO/GEO QA.",
+  },
+  {
+    question: "Who is Pagewell for?",
+    answer:
+      "Pagewell is for developers, founders, and growth teams that want AI-assisted page creation without moving their site into a no-code builder or breaking brand and stack conventions.",
+  },
+  {
+    question: "How is Pagewell different from an AI landing page builder?",
+    answer:
+      "Builders host the page and own the editing surface. Pagewell runs inside your repo, follows your framework, and outputs routes, components, content, schema, and discovery updates you can review and merge.",
+  },
+  {
+    question: "What can Pagewell generate?",
+    answer:
+      "Pagewell supports landing pages, product and use-case pages, alternatives, docs, FAQ and glossary pages, free tools, and private ABM pages.",
+  },
+  {
+    question: "What files do Pagewell agents need?",
+    answer:
+      "Agents need DESIGN.md for visual rules, SITE_PROFILE.md for stack conventions, product facts for truth, and a page brief for audience, intent, route, and CTA.",
+  },
+  {
+    question: "How does SEO/GEO QA work?",
+    answer:
+      "Pagewell prompts agents to check title and description, schema, factual claims, internal links, crawlability, answer-readiness, and sitemap/discovery updates before a page ships.",
+  },
+];
+
+const stackLines = [
+  "adapters/astro.md",
+  "adapters/nextjs.md",
+  "adapters/cloudflare-worker.md",
+  "adapters/static-html.md",
+  "adapters/unknown-framework.md",
+  "",
+  "output: routes, components, content, metadata",
+  "no runtime, hosted builder, or lock-in",
+];
+
+const designLines = [
+  "DESIGN.md",
+  "  colors: #000000 #ffffff #0099ff #a6a6a6",
+  "  typography: Geist + Inter + Geist Mono",
+  "  components: pill CTAs, dark cards, blue rings",
+  "",
+  "SITE_PROFILE.md",
+  "  routes, layouts, components, content, metadata",
+];
+
+const qaItems = [
+  ["Search intent", "Every page starts with route, primary query or use case, audience, and CTA before code."],
+  ["Schema + metadata", "Titles, descriptions, canonicals, Open Graph, and supported JSON-LD are part of the spec."],
+  ["Claim control", "Agents only use facts from product docs, briefs, or user-provided proof—not invented stats."],
+  ["Discovery", "Internal links, sitemap, robots, and future discovery files stay aligned with generated routes."],
+];
+
+const jsonLd = [websiteSchema(), organizationSchema(), softwareApplicationSchema(), faqPageSchema(faqItems)];
+---
+
+<BaseLayout title="Turn page briefs into production website code" description={description} canonical="/" jsonLd={jsonLd}>
+  <section class="hero section">
+    <div class="container hero__inner">
+      <p class="eyebrow">Agent skills for production SEO/GEO pages</p>
+      <HeroWordmark />
+
+      <div class="hero__copy">
+        <h1 class="display-section">Your content plan is ready. Your website repo should be too.</h1>
+        <p class="body hero__description">
+          Pagewell gives coding agents the brief-to-merge workflow for shipping SEO pages, free tools, docs, landing pages, and private ABM pages as normal code—without a hosted builder.
+        </p>
+        <div class="hero__actions">
+          <CommandCopy command="bunx skills add ReScienceLab/pagewell --skill pagewell" />
+          <a class="pill pill--ghost" href="https://github.com/ReScienceLab/pagewell">View GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Pipeline />
+
+  <section class="section" id="generates">
+    <div class="container generates__grid">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">What ships</p>
+        <h2 class="display-section">Not mockups. Mergeable page work.</h2>
+        <p class="body section-lede">
+          Each Pagewell run turns intent into a route, page structure, copy, metadata, schema, links, QA notes, and discovery updates your team can inspect like any other code change.
+        </p>
+      </div>
+      <ArtifactTable />
+    </div>
+    <div class="container">
+      <PageTypeGrid />
+    </div>
+  </section>
+
+  <section class="section" id="stack">
+    <div class="container split">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">Bring your own site</p>
+        <h2 class="display-section">Astro here. Your framework in your repo.</h2>
+        <p class="body section-lede">
+          Pagewell does not assume a CMS, builder, or frontend stack. Agents read SITE_PROFILE.md, choose the closest adapter, and work inside the conventions that already exist.
+        </p>
+        <div class="link-row">
+          <a href="https://github.com/ReScienceLab/pagewell/blob/main/SITE_PROFILE.md">SITE_PROFILE.md</a>
+          <a href="https://github.com/ReScienceLab/pagewell/blob/main/DESIGN.md">DESIGN.md</a>
+        </div>
+      </div>
+      <CodeWindow title="supported adapters" lines={stackLines} />
+    </div>
+  </section>
+
+  <section class="section design-section" id="design">
+    <div class="container split split--reverse">
+      <CodeWindow title="visual contract" lines={designLines} />
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">Brand guardrails</p>
+        <h2 class="display-section">Put the brand rules where agents can follow them.</h2>
+        <p class="body section-lede">
+          DESIGN.md gives agents the visual contract for typography, colors, components, spacing, and interaction states, so generated pages feel like the same site—not a one-off AI export.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section qa-section" id="qa">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Built-in review loop</p>
+        <h2 class="display-section">Fast pages still need gates.</h2>
+        <p class="body section-lede">
+          Pagewell makes the boring launch checks explicit before a generated route becomes part of your SEO/GEO system.
+        </p>
+      </div>
+      <div class="qa-grid">
+        {qaItems.map(([title, text]) => (
+          <article class="card qa-card">
+            <p class="kicker">QA gate</p>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} />
+  <CTASection />
+</BaseLayout>

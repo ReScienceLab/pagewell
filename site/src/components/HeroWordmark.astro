@@ -1,0 +1,12 @@
+---
+interface Props {
+  word?: string;
+}
+
+const { word = "PAGEWELL" } = Astro.props;
+const letters = word.split("");
+---
+
+<div class="hero-wordmark" role="img" aria-label={word}>
+  {letters.map((letter) => <span aria-hidden="true">{letter}</span>)}
+</div>

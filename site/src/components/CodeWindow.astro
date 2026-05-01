@@ -1,0 +1,20 @@
+---
+interface Props {
+  title?: string;
+  lines?: string[];
+}
+
+const { title = "artifact", lines = [] } = Astro.props;
+---
+
+<div class="code-window blue-ring">
+  <div class="code-window__bar">
+    <span class="code-window__dots" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    <span>{title}</span>
+  </div>
+  <pre><code>{lines.join("\n")}</code></pre>
+</div>
