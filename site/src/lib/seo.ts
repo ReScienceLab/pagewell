@@ -4,7 +4,7 @@ export const siteProfile = {
   defaultTitle: "Pagewell — Turn page briefs into production website code",
   description:
     "Pagewell helps coding agents turn page briefs into search-ready website code with routes, metadata, schema, QA, and discovery updates.",
-  ogImage: "/og.svg",
+  ogImage: "/og.png",
 };
 
 export type SEOInput = {
