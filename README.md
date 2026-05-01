@@ -32,7 +32,7 @@ The output is normal website code or content in your repo. No runtime, no hosted
 | File | Purpose |
 |---|---|
 | `SITE_PROFILE.md` | Describes how the current website is built and where pages/routes/metadata live. |
-| `DESIGN.md` | Describes visual identity and design tokens. |
+| `DESIGN.md` | Describes visual identity and design tokens. Must strictly conform to the Google Labs Code `DESIGN.md` spec: https://github.com/google-labs-code/design.md. |
 | Product/company facts | Canonical truth source for product names, descriptions, commands, URLs, claims, pricing/status. |
 | Page brief | The specific page to generate: route, intent, keyword, audience, CTA, facts, constraints. |
 
@@ -52,12 +52,13 @@ examples/    Example briefs, product facts, and site profiles.
 
 1. Copy or reference this skill pack from your website repo.
 2. Run/follow `skills/discover-site.md` to create `SITE_PROFILE.md`.
-3. Run/follow `skills/extract-design.md` to create `DESIGN.md`.
-4. Run/follow `skills/define-product-facts.md` to create or normalize product facts.
-5. Write a page brief.
-6. Run the relevant page generation skill.
-7. Run `skills/qa-page.md`.
-8. Run `skills/update-discovery-files.md`.
+3. Run/follow `skills/extract-design.md` to create `DESIGN.md` using the Google Labs Code `DESIGN.md` spec.
+4. Run/follow `skills/validate-design.md` to ensure `DESIGN.md` has zero linter errors.
+5. Run/follow `skills/define-product-facts.md` to create or normalize product facts.
+6. Write a page brief.
+7. Run the relevant page generation skill.
+8. Run `skills/qa-page.md`.
+9. Run `skills/update-discovery-files.md`.
 
 Example prompt:
 
@@ -67,6 +68,20 @@ Read SITE_PROFILE.md, DESIGN.md, and products.yaml.
 Using briefs/use-cases/find-feature-requests-from-reddit.yaml,
 run the generate-use-case-page skill, then run qa-page and update-discovery-files.
 ```
+
+## DESIGN.md requirement
+
+Sitewright does not define its own design format. It uses Google's `DESIGN.md` format as the normative spec.
+
+Useful commands:
+
+```bash
+npx @google/design.md spec --rules
+npx @google/design.md lint DESIGN.md
+npx @google/design.md export --format tailwind DESIGN.md > tailwind.theme.json
+```
+
+`DESIGN.md` must have zero linter errors before page-generation skills rely on it.
 
 ## Supported site types
 

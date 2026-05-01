@@ -48,7 +48,8 @@ Review a generated or modified page for SEO, GEO, design consistency, routing, s
 
 ### Design
 
-- Page follows `DESIGN.md`.
+- `DESIGN.md` conforms to the Google Labs Code `DESIGN.md` spec with zero linter errors when validation is possible.
+- Page follows `DESIGN.md` tokens and prose.
 - Existing components/layouts are reused where possible.
 - No new visual system, random colors, or inconsistent spacing.
 - Mobile behavior follows existing site conventions.
