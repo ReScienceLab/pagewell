@@ -67,4 +67,4 @@ Do not include:
 - `/robots.txt` works.
 - `/sitemap.xml` works and excludes noindex pages.
 - `/llms.txt` works and is factual.
-- Discovery files pass `qa-page.md` checks.
+- Discovery files pass `qa.md` checks.

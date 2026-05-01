@@ -1,4 +1,4 @@
-# Skill: Generate Free Tool Page
+# Playbook: Free Tool Page
 
 ## Purpose
 
@@ -126,4 +126,4 @@ Do not add a new analytics provider without approval.
 - First useful result is available without signup.
 - Page has correct metadata, canonical, and WebApplication schema when indexable.
 - Page includes how-to-use, FAQ, related/internal links, and product CTA.
-- Page passes `qa-page.md`.
+- Page passes `qa.md`.

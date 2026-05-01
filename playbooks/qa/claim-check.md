@@ -1,4 +1,4 @@
-# Skill: Claim Check
+# Playbook: Claim Check
 
 ## Purpose
 

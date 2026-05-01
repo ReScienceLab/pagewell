@@ -1,10 +1,12 @@
-# Skill: Generate Topic Cluster
+# Skill: Plan Topic Cluster
 
 ## Purpose
 
 Plan a topical authority cluster for a product, ICP, or seed keyword.
 
-This is an orchestration/planning skill. It does **not** directly generate pages. It outputs page briefs and an internal-link map, then tells the agent which page-generation skills to run.
+This is an orchestration/planning skill. It does **not** directly generate pages. It outputs page briefs and an internal-link map, then tells the agent which Sitewright skills to run next.
+
+Detailed strategy: `playbooks/seo/maintenance.md`, `docs/topical-authority-strategy.md`, and `docs/faq-glossary-strategy.md`.
 
 ## Required inputs
 
@@ -16,33 +18,24 @@ This is an orchestration/planning skill. It does **not** directly generate pages
 - optional keyword/search data
 - optional existing URL inventory
 
-## Philosophy
+## Candidate page types
 
-A topic cluster is a connected set of pages that covers a real domain from multiple search intents:
+Plan across these types when they fit the topic:
 
 - product/entity pages
-- use-case pages
-- FAQ pages
-- glossary pages
-- free tools
+- use-case/workflow pages
+- FAQ/question pages
+- glossary/definition pages
+- free tools/utilities
 - docs/tutorials
-- alternatives/comparisons
-
-The goal is topical authority and internal PageRank flow, not random volume.
+- alternative/comparison pages
 
 ## Process
 
 1. Identify the core product/topic.
 2. Define ICP and jobs-to-be-done.
 3. Inventory existing pages if possible.
-4. Generate candidate pages by intent type:
-   - product/entity
-   - use case/workflow
-   - FAQ/question
-   - glossary/definition
-   - free tool/utility
-   - docs/tutorial
-   - alternative/comparison
+4. Generate candidate pages by intent type.
 5. Score each candidate:
    - search intent
    - conversion fit
@@ -70,7 +63,7 @@ Return a markdown plan with this shape:
 
 ## Recommended cluster
 
-| Priority | Page Type | Route | Primary Intent | Generator Skill |
+| Priority | Page Type | Route | Primary Intent | Next Skill |
 |---:|---|---|---|---|
 
 ## Page briefs
@@ -110,7 +103,7 @@ A balanced first cluster usually includes:
 - Do not recommend pages without a real search, conversion, support, or outbound intent.
 - Avoid near-duplicate FAQ or glossary pages.
 - Prefer fewer high-signal pages over mass low-value generation.
-- For alternatives/comparisons, require `claim-check.md`.
+- For alternatives/comparisons, require `skills/qa.md` claim checks.
 
 ## Acceptance criteria
 

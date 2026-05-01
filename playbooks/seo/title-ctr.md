@@ -1,10 +1,10 @@
-# Skill: Optimize Page Title
+# Playbook: Optimize Page Title
 
 ## Purpose
 
 Audit and rewrite page titles for search intent and click-through rate.
 
-This skill is specialized. `qa-page.md` checks whether titles exist and are unique; this skill improves titles that are technically valid but weak.
+This skill is specialized. `qa.md` checks whether titles exist and are unique; this skill improves titles that are technically valid but weak.
 
 ## Required inputs
 

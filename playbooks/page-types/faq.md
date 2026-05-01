@@ -1,4 +1,4 @@
-# Skill: Generate FAQ Page
+# Playbook: FAQ Page
 
 ## Purpose
 
@@ -57,7 +57,7 @@ schema:
 
 ## Title rules
 
-Use the `optimize-page-title.md` skill if title quality is uncertain.
+Use the `seo-ops.md title-CTR subroutine` skill if title quality is uncertain.
 
 Recommended pattern:
 
@@ -96,4 +96,4 @@ Do not append the brand name to non-homepage titles unless the brand is part of 
 - It answers one question directly.
 - It has unique title/description.
 - It links to related questions/pages where available.
-- It passes `qa-page.md`.
+- It passes `qa.md`.

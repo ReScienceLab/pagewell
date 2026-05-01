@@ -32,5 +32,4 @@ Avoid:
 
 ## Always run
 
-- `skills/claim-check.md`
-- `skills/qa-page.md`
+- `skills/qa.md`, including the claim-check subroutine

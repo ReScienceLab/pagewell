@@ -1,4 +1,4 @@
-# Skill: Internal Link Audit
+# Playbook: Internal Link Audit
 
 ## Purpose
 

@@ -1,4 +1,4 @@
-# Skill: Generate LP / Campaign Page
+# Playbook: LP / Campaign Page
 
 ## Purpose
 
@@ -72,4 +72,4 @@ schema:
 - Route exists.
 - One clear CTA.
 - Index/noindex behavior matches the brief.
-- Page passes `qa-page.md`.
+- Page passes `qa.md`.

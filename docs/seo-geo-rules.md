@@ -49,7 +49,7 @@ Common schema:
 
 ## Title CTR
 
-Non-homepage titles should usually avoid brand suffixes unless the brand is part of the query. Use `skills/optimize-page-title.md` for title audits and rewrites.
+Non-homepage titles should usually avoid brand suffixes unless the brand is part of the query. Use `skills/seo-ops.md` for title audits and rewrites.
 
 ## Topic clusters
 
@@ -63,7 +63,7 @@ Build connected clusters around real product domains:
 - docs/tutorials
 - alternatives/comparisons
 
-Use `skills/generate-topic-cluster.md` to plan clusters and `skills/internal-link-audit.md` to keep pages connected.
+Use `skills/plan-topic-cluster.md` to plan clusters and `skills/seo-ops.md` to keep pages connected.
 
 Do not add:
 

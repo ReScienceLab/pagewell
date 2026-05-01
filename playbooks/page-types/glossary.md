@@ -1,4 +1,4 @@
-# Skill: Generate Glossary Page
+# Playbook: Glossary Page
 
 ## Purpose
 
@@ -87,4 +87,4 @@ Do not append the brand name to non-homepage titles unless the brand is part of 
 - It defines the term directly and accurately.
 - It includes an example or concrete application when useful.
 - It links to related terms/pages.
-- It passes `qa-page.md`.
+- It passes `qa.md`.

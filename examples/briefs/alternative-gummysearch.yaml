@@ -20,7 +20,7 @@ facts:
 constraints:
   - Do not invent GummySearch features, pricing, or weaknesses.
   - Use when-to-choose framing.
-  - Run claim-check before finalizing.
+  - Run qa claim-check subroutine before finalizing.
 related:
   - /products/requesthunt
   - /use-cases/find-feature-requests-from-reddit

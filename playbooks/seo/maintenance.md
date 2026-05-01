@@ -1,10 +1,10 @@
-# Skill: SEO Maintenance
+# Playbook: SEO Maintenance
 
 ## Purpose
 
 Run a recurring SEO maintenance workflow using Search Console, analytics, page inventory, and Sitewright page conventions.
 
-This skill operates the SEO system over time. It does not replace `qa-page.md`; it finds opportunities and maintenance tasks across the site.
+This skill operates the SEO system over time. It does not replace `qa.md`; it finds opportunities and maintenance tasks across the site.
 
 ## Required inputs
 
@@ -38,7 +38,7 @@ Look for:
 
 ### Internal links
 
-- run or recommend `internal-link-audit.md`
+- run or recommend `seo-ops.md internal-link subroutine`
 - add links from ranking pages to priority pages when relevant
 
 ## Monthly checks
@@ -46,7 +46,7 @@ Look for:
 - add new FAQ page briefs from real questions
 - add new glossary page briefs from recurring terms
 - add new use-case page briefs from long-tail workflow queries
-- improve low CTR titles with `optimize-page-title.md`
+- improve low CTR titles with `seo-ops.md title-CTR subroutine`
 - identify candidates for free tools
 - update stale dates/year modifiers if used
 - review competitor/alternative gaps

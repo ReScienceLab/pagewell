@@ -1,4 +1,4 @@
-# Skill: Generate Private / ABM Page
+# Playbook: Private / ABM Page
 
 ## Purpose
 
@@ -59,4 +59,4 @@ schema: []
 - It is noindex,nofollow.
 - It is absent from sitemap and public nav.
 - It contains no invented account facts.
-- It passes `qa-page.md`.
+- It passes `qa.md`.

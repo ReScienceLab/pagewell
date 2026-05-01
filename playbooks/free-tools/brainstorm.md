@@ -1,4 +1,4 @@
-# Skill: Brainstorm Free Tools
+# Playbook: Brainstorm Free Tools
 
 ## Purpose
 

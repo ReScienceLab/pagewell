@@ -1,4 +1,4 @@
-# Skill: Generate Use-Case Page
+# Playbook: Use-Case Page
 
 ## Purpose
 
@@ -87,4 +87,4 @@ schema:
 - Page exists at requested route.
 - It answers the intent within the first 150 words.
 - It links to the product page and at least one related page where available.
-- It passes `qa-page.md`.
+- It passes `qa.md`.

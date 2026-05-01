@@ -1,4 +1,4 @@
-# Skill: Generate Product Page
+# Playbook: Product Page
 
 ## Purpose
 
@@ -81,4 +81,4 @@ schema:
 - Copy uses canonical product facts.
 - Primary CTA is visible above the fold.
 - Install command/copy UI exists if product has a command.
-- Page passes `qa-page.md`.
+- Page passes `qa.md`.

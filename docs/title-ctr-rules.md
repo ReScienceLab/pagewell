@@ -50,4 +50,4 @@ Aim for roughly 30-60 characters. Do not sacrifice clarity just to hit a number.
 
 ## Skill
 
-Use `skills/optimize-page-title.md` for audits and rewrites.
+Use `skills/seo-ops.md` for audits and rewrites.

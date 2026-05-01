@@ -1,4 +1,4 @@
-# Skill: Generate Alternative or Comparison Page
+# Playbook: Alternative or Comparison Page
 
 ## Purpose
 
@@ -55,7 +55,7 @@ schema:
 
 ## Claim rules
 
-Run/follow `claim-check.md` before finalizing.
+Run `skills/qa.md` with the claim-check subroutine before finalizing.
 
 - Do not invent competitor features, pricing, customers, metrics, or weaknesses.
 - Do not say "best" unless the brief provides a defensible source.
@@ -81,4 +81,4 @@ Run/follow `claim-check.md` before finalizing.
 
 - Page is factual and non-defamatory.
 - Comparison table only includes verified or clearly scoped claims.
-- Page passes `claim-check.md` and `qa-page.md`.
+- Page passes `skills/qa.md`, including the claim-check subroutine.

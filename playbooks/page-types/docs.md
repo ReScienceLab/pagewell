@@ -1,4 +1,4 @@
-# Skill: Generate Docs / Tutorial Page
+# Playbook: Docs / Tutorial Page
 
 ## Purpose
 
@@ -64,4 +64,4 @@ schema:
 
 - Page teaches a real task.
 - Commands are visible and copyable where supported.
-- Page passes `qa-page.md`.
+- Page passes `qa.md`.

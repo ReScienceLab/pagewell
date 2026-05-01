@@ -1,4 +1,4 @@
-# Skill: Generate Tools Hub
+# Playbook: Tools Hub
 
 ## Purpose
 

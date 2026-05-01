@@ -49,10 +49,10 @@ Each supporting page should link back to the hub/product page. The hub should li
 1. Pick a product or seed topic.
 2. Define ICP and jobs-to-be-done.
 3. Inventory existing coverage.
-4. Run `generate-topic-cluster.md`.
-5. Generate only the highest-signal pages first.
-6. Run `internal-link-audit.md`.
-7. Monitor with `seo-maintenance.md`.
+4. Run `skills/plan-topic-cluster.md`.
+5. Generate only the highest-signal pages first with `skills/generate-page.md` or `skills/generate-free-tool.md`.
+6. Run `skills/seo-ops.md` internal-link mode.
+7. Monitor with `skills/seo-ops.md` maintenance mode.
 8. Expand based on real Search Console queries.
 
 ## Guardrails

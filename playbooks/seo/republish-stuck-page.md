@@ -1,4 +1,4 @@
-# Skill: Republish Stuck Page
+# Playbook: Republish Stuck Page
 
 ## Purpose
 
@@ -26,8 +26,8 @@ Use only when one or more is true:
 
 ## Do before republishing
 
-1. Run `qa-page.md`.
-2. Run or apply `optimize-page-title.md`.
+1. Run `qa.md`.
+2. Run or apply `seo-ops.md title-CTR subroutine`.
 3. Add contextual internal links from relevant pages.
 4. Check for duplicate/canonical issues.
 5. Wait long enough for recrawl unless urgency is justified.
@@ -84,4 +84,4 @@ Status: PLANNED | IMPLEMENTED | NEEDS APPROVAL
 - New URL has clearer search intent than the old URL.
 - Old URL handling is explicit.
 - Sitemap and internal links are updated.
-- Page passes `qa-page.md`.
+- Page passes `qa.md`.

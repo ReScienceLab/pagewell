@@ -1,4 +1,4 @@
-# Skill: Launch Free Tool
+# Playbook: Launch Free Tool
 
 ## Purpose
 
