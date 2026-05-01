@@ -1,0 +1,50 @@
+---
+import { siteProfile, withSiteTitle } from "../lib/seo";
+
+type JsonLd = Record<string, unknown>;
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  jsonLd?: JsonLd | JsonLd[];
+}
+
+const {
+  title,
+  description = siteProfile.description,
+  canonical,
+  ogImage = siteProfile.ogImage,
+  noindex = false,
+  jsonLd = [],
+} = Astro.props;
+
+const pageTitle = withSiteTitle(title);
+const siteUrl = Astro.site ?? new URL(siteProfile.url);
+const canonicalUrl = new URL(canonical ?? Astro.url.pathname, siteUrl).toString();
+const imageUrl = new URL(ogImage, siteUrl).toString();
+const schemas = (Array.isArray(jsonLd) ? jsonLd : [jsonLd]).filter(Boolean);
+const serializeJsonLd = (schema: JsonLd) =>
+  JSON.stringify(schema).replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026");
+---
+
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+{noindex && <meta name="robots" content="noindex,nofollow" />}
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={siteProfile.name} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={imageUrl} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+
+{schemas.map((schema) => <script is:inline type="application/ld+json" set:html={serializeJsonLd(schema)} />)}

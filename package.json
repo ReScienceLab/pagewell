@@ -1,0 +1,14 @@
+{
+  "name": "pagewell",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "bun@1.3.13",
+  "scripts": {
+    "build:skill": "bun scripts/sync-skill-package.mjs",
+    "check:skill": "bun scripts/sync-skill-package.mjs && DISABLE_TELEMETRY=1 bunx skills add . --list",
+    "lint:design": "bunx @google/design.md lint DESIGN.md",
+    "build:site": "cd site && bun run build",
+    "check:site": "cd site && bun run check"
+  }
+}

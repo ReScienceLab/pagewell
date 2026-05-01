@@ -1,0 +1,42 @@
+---
+interface Props {
+  command?: string;
+  label?: string;
+  note?: string;
+}
+
+const { command = "bunx skills add ReScienceLab/pagewell --skill pagewell", label = "Copy", note } = Astro.props;
+---
+
+<div class="command-copy command" data-command-copy>
+  <code><span aria-hidden="true">$</span> {command}</code>
+  <button type="button" data-copy-command={command}>{label}</button>
+</div>
+{note && <p class="caption command-copy__note">{note}</p>}
+
+<script>
+  document.querySelectorAll("[data-command-copy]").forEach((root) => {
+    const button = root.querySelector("[data-copy-command]");
+    if (!(button instanceof HTMLButtonElement)) return;
+
+    const originalLabel = button.textContent || "Copy";
+
+    button.addEventListener("click", async () => {
+      const command = button.getAttribute("data-copy-command") || "";
+
+      try {
+        await navigator.clipboard.writeText(command);
+        button.textContent = "Copied";
+        root.classList.add("is-copied");
+      } catch {
+        button.textContent = "Select";
+        root.classList.add("is-failed");
+      }
+
+      window.setTimeout(() => {
+        button.textContent = originalLabel;
+        root.classList.remove("is-copied", "is-failed");
+      }, 1800);
+    });
+  });
+</script>
