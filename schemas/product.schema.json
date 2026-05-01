@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://resciencelab.github.io/sitewright/schemas/product.schema.json",
-  "title": "Sitewright Product Facts",
+  "$id": "https://resciencelab.github.io/pagewell/schemas/product.schema.json",
+  "title": "Pagewell Product Facts",
   "type": "object",
   "additionalProperties": {
     "type": "object",

@@ -1,17 +1,17 @@
 # DESIGN.md Usage
 
-Sitewright strictly uses the Google Labs Code `DESIGN.md` specification.
+Pagewell strictly uses the Google Labs Code `DESIGN.md` specification.
 
 - Canonical spec repo: https://github.com/google-labs-code/design.md
 - CLI/package: `@google/design.md`
 - Spec command: `npx @google/design.md spec --rules`
 - Lint command: `npx @google/design.md lint DESIGN.md`
 
-Do not invent or use a Sitewright-specific design file format.
+Do not invent or use a Pagewell-specific design file format.
 
 ## Required behavior
 
-Every Sitewright page-generation skill must:
+Every Pagewell page-generation skill must:
 
 1. Read `DESIGN.md` before generating UI.
 2. Treat YAML front matter tokens as normative values.

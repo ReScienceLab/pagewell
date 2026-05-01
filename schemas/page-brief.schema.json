@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://resciencelab.github.io/sitewright/schemas/page-brief.schema.json",
-  "title": "Sitewright Page Brief",
+  "$id": "https://resciencelab.github.io/pagewell/schemas/page-brief.schema.json",
+  "title": "Pagewell Page Brief",
   "type": "object",
   "required": ["route", "pageType", "title", "description", "h1"],
   "properties": {

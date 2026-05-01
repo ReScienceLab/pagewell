@@ -1,6 +1,6 @@
 # Page Types
 
-Sitewright supports a small set of durable page archetypes.
+Pagewell supports a small set of durable page archetypes.
 
 ## Product page
 

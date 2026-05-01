@@ -1,8 +1,8 @@
-# Skill: Sitewright Router
+# Skill: Pagewell Router
 
 ## Purpose
 
-Be the single front door for Sitewright.
+Be the single front door for Pagewell.
 
 Use this when the user asks for anything related to SEO/GEO pages, landing pages, free tools, topic clusters, design extraction, QA, discovery files, or SEO operations but does not remember the exact skill, page type, tool type, or mode.
 
@@ -10,7 +10,7 @@ This router improves UX without lowering output quality. It must route to the ap
 
 ## Quality invariant
 
-The router must never generate final output by itself when a specialized Sitewright skill should be used.
+The router must never generate final output by itself when a specialized Pagewell skill should be used.
 
 It should:
 
@@ -203,7 +203,7 @@ For free tools, ensure the tool gives first value without signup.
 When routing, report the selected path clearly:
 
 ```md
-# Sitewright Routing
+# Pagewell Routing
 
 Intent: <inferred intent>
 Selected skill: <skill>

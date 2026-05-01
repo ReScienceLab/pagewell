@@ -4,7 +4,7 @@
 
 Identify small, useful, no-signup tools that a product's ICP already searches for.
 
-Free tools are a Sitewright page type and acquisition strategy: give immediate utility first, earn trust, then route qualified users toward the main product.
+Free tools are a Pagewell page type and acquisition strategy: give immediate utility first, earn trust, then route qualified users toward the main product.
 
 ## Philosophy
 
