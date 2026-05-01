@@ -1,0 +1,38 @@
+---
+const pageTypes = [
+  {
+    title: "Landing pages",
+    text: "Campaign pages that match the visitor’s intent and ship with one clear CTA.",
+  },
+  {
+    title: "Comparison pages",
+    text: "Alternatives and vs pages that position honestly and keep claims tied to sources.",
+  },
+  {
+    title: "Docs and tutorials",
+    text: "Task-focused routes with setup steps, examples, and stack-specific guidance.",
+  },
+  {
+    title: "FAQ and glossary",
+    text: "Short, crawlable answers and definitions built for search engines and AI answer surfaces.",
+  },
+  {
+    title: "Free tools",
+    text: "No-signup utilities where the tool does real work before the product CTA appears.",
+  },
+  {
+    title: "Private ABM",
+    text: "Personalized sales pages that stay out of search while following the same design and QA standards.",
+  },
+];
+---
+
+<div class="page-type-grid">
+  {pageTypes.map((type) => (
+    <article class="card page-type-card">
+      <p class="kicker">Generated page</p>
+      <h3>{type.title}</h3>
+      <p>{type.text}</p>
+    </article>
+  ))}
+</div>

@@ -1,0 +1,45 @@
+---
+type FAQItem = {
+  question: string;
+  answer: string;
+};
+
+interface Props {
+  items: FAQItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="section faq-section" id="faq">
+  <div class="container faq__inner">
+    <div class="section-heading section-heading--left">
+      <p class="eyebrow">FAQ</p>
+      <h2 class="display-section">Short answers for builders.</h2>
+    </div>
+
+    <div class="faq-list" data-faq>
+      {items.map((item, index) => (
+        <details class="faq-item" open={index === 0}>
+          <summary>{item.question}</summary>
+          <p>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll("[data-faq]").forEach((group) => {
+    const items = group.querySelectorAll("details");
+
+    items.forEach((item) => {
+      item.addEventListener("toggle", () => {
+        if (!item.open) return;
+        items.forEach((other) => {
+          if (other !== item) other.removeAttribute("open");
+        });
+      });
+    });
+  });
+</script>

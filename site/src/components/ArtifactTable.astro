@@ -1,0 +1,28 @@
+---
+const rows = [
+  ["landing page", "route, copy, metadata, schema, CTA"],
+  ["comparison page", "fair positioning, proof, claim QA"],
+  ["free tool", "working utility UI, SEO shell, WebApplication schema"],
+  ["docs/FAQ/glossary", "answer-first content, schema, internal links"],
+  ["private ABM", "noindex page, account brief, shareable route"],
+];
+---
+
+<div class="artifact-table blue-ring">
+  <table>
+    <thead>
+      <tr>
+        <th>Page type</th>
+        <th>Output</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map(([type, output]) => (
+        <tr>
+          <td>{type}</td>
+          <td>{output}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

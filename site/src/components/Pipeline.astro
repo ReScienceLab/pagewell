@@ -1,0 +1,49 @@
+---
+const stages = [
+  {
+    kicker: "01 context",
+    title: "Site + product context",
+    body: "SITE_PROFILE.md, DESIGN.md, product facts, and the page brief tell the agent what to build, where it belongs, and what claims are allowed.",
+  },
+  {
+    kicker: "02 plan",
+    title: "Spec before code",
+    body: "Pagewell asks for route, sections, metadata, schema, links, CTA, and QA requirements before implementation starts.",
+  },
+  {
+    kicker: "03 build",
+    title: "Normal website code",
+    body: "The agent edits your Astro, Next.js, Worker, or static site instead of creating a hosted page you have to recreate later.",
+  },
+  {
+    kicker: "04 review",
+    title: "SEO/GEO QA",
+    body: "Titles, schema, claims, citations, crawlability, internal links, and discovery files are checked before merge.",
+  },
+];
+---
+
+<section class="section pipeline-section" id="pipeline">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">How Pagewell works</p>
+      <h2 class="display-section">A repeatable path from brief to merge.</h2>
+      <p class="body section-lede">
+        Use the same agent workflow for one landing page, a free tool, a comparison page, or an entire SEO/GEO cluster.
+      </p>
+    </div>
+
+    <div class="pipeline blue-ring" aria-label="Pagewell generation pipeline">
+      {stages.map((stage, index) => (
+        <Fragment>
+          <article class="pipeline__stage">
+            <p class="kicker">{stage.kicker}</p>
+            <h3>{stage.title}</h3>
+            <p>{stage.body}</p>
+          </article>
+          {index < stages.length - 1 && <div class="pipeline__arrow" aria-hidden="true">→</div>}
+        </Fragment>
+      ))}
+    </div>
+  </div>
+</section>

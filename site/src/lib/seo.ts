@@ -1,0 +1,26 @@
+export const siteProfile = {
+  name: "Pagewell",
+  url: "https://pagewell.dev",
+  defaultTitle: "Pagewell — Turn page briefs into production website code",
+  description:
+    "Pagewell helps coding agents turn page briefs into search-ready website code with routes, metadata, schema, QA, and discovery updates.",
+  ogImage: "/og.svg",
+};
+
+export type SEOInput = {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
+};
+
+export function withSiteTitle(title?: string) {
+  if (!title) return siteProfile.defaultTitle;
+  return title.includes(siteProfile.name) ? title : `${title} — ${siteProfile.name}`;
+}
+
+export function absoluteUrl(path = "/") {
+  return new URL(path, siteProfile.url).toString();
+}
