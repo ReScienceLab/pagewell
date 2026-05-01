@@ -834,13 +834,22 @@ svg {
     opacity: 0;
     pointer-events: none;
     transform: translateY(-6px);
-    transition: opacity 160ms ease, transform 160ms ease;
+    visibility: hidden;
+    transition:
+      opacity 160ms ease,
+      transform 160ms ease,
+      visibility 0s linear 160ms;
   }
 
   .nav.is-open .nav-links {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
+    visibility: visible;
+    transition:
+      opacity 160ms ease,
+      transform 160ms ease,
+      visibility 0s;
   }
 
   .nav-links a,
