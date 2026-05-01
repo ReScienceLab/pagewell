@@ -2,7 +2,13 @@
 
 Playbooks preserve detailed instructions behind the compact top-level skills.
 
-Top-level skills are intentionally few:
+Most users enter through:
+
+```txt
+skills/sitewright.md
+```
+
+The router selects among the core skills:
 
 ```txt
 skills/discover-site.md
@@ -16,7 +22,7 @@ skills/update-discovery-files.md
 skills/seo-ops.md
 ```
 
-Use playbooks as references inside those skills.
+Use playbooks as references inside those core skills.
 
 ## Page type playbooks
 

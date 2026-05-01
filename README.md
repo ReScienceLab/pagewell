@@ -28,9 +28,17 @@ The output is normal website code or content in your repo. No runtime, no hosted
 - Not an auto-publisher.
 - Not tied to Astro, Next.js, Workers, or any specific framework.
 
-## Top-level skills
+## Skill surface
 
-Sitewright intentionally exposes only 9 top-level skills:
+Most users only need one entrypoint:
+
+```txt
+skills/sitewright.md
+```
+
+It routes natural-language requests to the right core skill and playbook.
+
+Under the router, Sitewright has 9 core skills:
 
 ```txt
 skills/
@@ -61,7 +69,7 @@ If `SITE_PROFILE.md`, `DESIGN.md`, or product facts do not exist, run the releva
 ## Repository layout
 
 ```txt
-skills/      9 top-level agent skills.
+skills/      One router skill plus 9 core agent skills.
 playbooks/   Detailed page-type, SEO, free-tool, and claim-check rules.
 adapters/    Framework-specific implementation guidance.
 schemas/     JSON schemas for site profiles, product facts, briefs, page specs, and clusters.
@@ -72,32 +80,42 @@ examples/    Example briefs, product facts, design files, and site profiles.
 ## Quick start for a website repo
 
 1. Copy or reference this skill pack from your website repo.
-2. Run/follow `skills/discover-site.md` to create `SITE_PROFILE.md`.
-3. Run/follow `skills/design-system.md` to create and validate Google-spec `DESIGN.md`.
-4. Run/follow `skills/define-product-facts.md` to create or normalize product facts.
-5. Write a page brief.
-6. Run `skills/generate-page.md` for standard pages or `skills/generate-free-tool.md` for free tools.
-7. Run `skills/qa.md`.
-8. Run `skills/update-discovery-files.md`.
-9. Use `skills/seo-ops.md` for ongoing title, internal-link, indexing, and maintenance work.
+2. Run/follow `skills/sitewright.md` and describe what you want in natural language.
+3. The router will ask for missing setup or route to the right core skill.
+4. For generation requests, it will default to generator → QA → discovery file updates.
 
-Example prompt:
+Advanced users can call core skills directly:
+
+- `skills/discover-site.md`
+- `skills/design-system.md`
+- `skills/define-product-facts.md`
+- `skills/plan-topic-cluster.md`
+- `skills/generate-page.md`
+- `skills/generate-free-tool.md`
+- `skills/qa.md`
+- `skills/update-discovery-files.md`
+- `skills/seo-ops.md`
+
+Example prompts:
 
 ```txt
-Use Sitewright.
-Read SITE_PROFILE.md, DESIGN.md, and products.yaml.
-Using briefs/use-cases/find-feature-requests-from-reddit.yaml,
-run generate-page, then qa and update-discovery-files.
+Use Sitewright to make a page for people searching "find feature requests from Reddit".
+Product is RequestHunt.
 ```
 
-Free tool example:
+```txt
+Use Sitewright to build a free markdown preview tool for Markshare.
+```
 
 ```txt
-Use Sitewright.
-Read SITE_PROFILE.md, DESIGN.md, and products.yaml.
-Using briefs/tools/markdown-preview.yaml,
-run generate-free-tool, qa, update-discovery-files,
-then generate a launch plan with generate-free-tool launch mode.
+Use Sitewright to review Search Console data and suggest the next SEO actions.
+```
+
+If you already have a brief, you can still be explicit:
+
+```txt
+Use Sitewright with briefs/use-cases/find-feature-requests-from-reddit.yaml.
+Run generate-page, then qa and update-discovery-files.
 ```
 
 ## DESIGN.md requirement
