@@ -4,7 +4,7 @@
 
 Plan a topical authority cluster for a product, ICP, or seed keyword.
 
-This is an orchestration/planning skill. It does **not** directly generate pages. It outputs page briefs and an internal-link map, then tells the agent which Sitewright skills to run next.
+This is an orchestration/planning skill. It does **not** directly generate pages. It outputs page briefs and an internal-link map, then tells the agent which Pagewell skills to run next.
 
 Detailed strategy: `playbooks/seo/maintenance.md`, `docs/topical-authority-strategy.md`, and `docs/faq-glossary-strategy.md`.
 

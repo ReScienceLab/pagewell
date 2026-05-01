@@ -1,6 +1,6 @@
 # Topical Authority Strategy
 
-Sitewright builds topical authority through connected clusters of useful pages, not isolated one-off landing pages.
+Pagewell builds topical authority through connected clusters of useful pages, not isolated one-off landing pages.
 
 ## Principle
 

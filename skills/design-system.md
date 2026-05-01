@@ -4,7 +4,7 @@
 
 Create, update, or validate `DESIGN.md`, the website's durable visual identity contract for agents.
 
-Sitewright strictly uses the Google Labs Code `DESIGN.md` specification. Do not invent a Sitewright-specific design format.
+Pagewell strictly uses the Google Labs Code `DESIGN.md` specification. Do not invent a Pagewell-specific design format.
 
 - Canonical spec repo: https://github.com/google-labs-code/design.md
 - CLI/package: `@google/design.md`

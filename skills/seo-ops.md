@@ -124,4 +124,4 @@ Status: PASS | PASS WITH NOTES | FAIL | PLANNED
 - The selected mode is clear.
 - Findings are prioritized.
 - Changes preserve SEO safety and site conventions.
-- Follow-up actions name the next Sitewright skill when applicable.
+- Follow-up actions name the next Pagewell skill when applicable.

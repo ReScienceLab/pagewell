@@ -1,11 +1,11 @@
-# Sitewright Playbooks
+# Pagewell Playbooks
 
 Playbooks preserve detailed instructions behind the compact top-level skills.
 
 Most users enter through:
 
 ```txt
-skills/sitewright.md
+skills/pagewell.md
 ```
 
 The router selects among the core skills:

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://resciencelab.github.io/sitewright/schemas/topic-cluster.schema.json",
-  "title": "Sitewright Topic Cluster Plan",
+  "$id": "https://resciencelab.github.io/pagewell/schemas/topic-cluster.schema.json",
+  "title": "Pagewell Topic Cluster Plan",
   "type": "object",
   "required": ["topic", "pages", "internalLinkMap"],
   "properties": {

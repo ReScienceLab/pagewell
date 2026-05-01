@@ -4,7 +4,7 @@
 
 Create or update `SITE_PROFILE.md`, a concise description of how the current website repo is built.
 
-All other Sitewright skills must read `SITE_PROFILE.md` before making changes. If it does not exist, run this skill first.
+All other Pagewell skills must read `SITE_PROFILE.md` before making changes. If it does not exist, run this skill first.
 
 ## Inputs
 
@@ -76,7 +76,7 @@ Deployment: <Cloudflare Pages, Workers, Vercel, etc. if known>
 
 ## Recommended adapter
 
-Use `adapters/<adapter>.md` from Sitewright.
+Use `adapters/<adapter>.md` from Pagewell.
 
 ## Known gaps
 

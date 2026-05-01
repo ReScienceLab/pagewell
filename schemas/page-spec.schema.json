@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://resciencelab.github.io/sitewright/schemas/page-spec.schema.json",
-  "title": "Sitewright Framework Neutral Page Spec",
+  "$id": "https://resciencelab.github.io/pagewell/schemas/page-spec.schema.json",
+  "title": "Pagewell Framework Neutral Page Spec",
   "type": "object",
   "required": ["route", "pageType", "title", "description", "h1", "sections"],
   "properties": {
