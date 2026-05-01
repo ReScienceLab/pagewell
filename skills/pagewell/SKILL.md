@@ -1,26 +1,49 @@
-# Skill: Pagewell Router
+---
+name: pagewell
+description: Generate, plan, QA, and maintain SEO/GEO pages as code. Use for landing pages, free tools, docs, comparison pages, FAQs, glossary pages, topic clusters, private ABM pages, DESIGN.md, SITE_PROFILE.md, product facts, page briefs, metadata, schema, claim checks, and discovery files.
+license: MIT
+metadata:
+  author: ReScienceLab
+  version: "0.1.0"
+  homepage: https://pagewell.dev
+---
 
-## Purpose
+# Pagewell
 
-Be the single front door for Pagewell.
+Pagewell is the front door for generating search-ready website pages as normal code in the user's repo.
 
-Use this when the user asks for anything related to SEO/GEO pages, landing pages, free tools, topic clusters, design extraction, QA, discovery files, or SEO operations but does not remember the exact skill, page type, tool type, or mode.
+Use this skill when the user asks for anything related to SEO/GEO pages, landing pages, free tools, topic clusters, design extraction, site discovery, product facts, QA, discovery files, or SEO operations.
 
-This router improves UX without lowering output quality. It must route to the appropriate core skill and playbook instead of bypassing them.
+## Progressive disclosure
+
+Do not load every Pagewell reference up front. Use this router first, then read only the referenced module, playbook, adapter, schema, or strategy doc needed for the task.
+
+Packaged references live under `references/`:
+
+| Source concept | Packaged path |
+|---|---|
+| Core modules | `references/skills/*.md` |
+| Page/free-tool/QA/SEO playbooks | `references/playbooks/**` |
+| Framework adapters | `references/adapters/*.md` |
+| Strategy docs | `references/docs/*.md` |
+| JSON schemas | `references/schemas/*.json` |
+| Reference index | `references/MANIFEST.md` |
+
+If a reference file mentions an old source path like `skills/qa.md`, `playbooks/page-types/faq.md`, or `adapters/astro.md`, resolve it to the packaged path under `references/`.
 
 ## Quality invariant
 
-The router must never generate final output by itself when a specialized Pagewell skill should be used.
+The router must never generate final output by itself when a specialized Pagewell module should be used.
 
 It should:
 
 1. infer intent
 2. create or normalize a brief/spec
-3. select the right core skill
-4. ensure the selected skill reads the correct playbook
+3. select the right core module
+4. ensure the selected module reads the correct playbook or adapter
 5. run QA and discovery updates when relevant
 
-Quality is preserved because page-type, free-tool, SEO, and claim-check rules still live in the underlying skills and playbooks.
+Quality is preserved because page-type, free-tool, SEO, and claim-check rules live in the packaged references and must not be bypassed.
 
 ## Required context
 
@@ -33,44 +56,44 @@ Before routing, check for:
 
 If missing:
 
-- no `SITE_PROFILE.md` → route first to `skills/discover-site.md`
-- no `DESIGN.md` or invalid design → route first to `skills/design-system.md`
-- no product facts → route first to `skills/define-product-facts.md`
+- no `SITE_PROFILE.md` → route first to `references/skills/discover-site.md`
+- no `DESIGN.md` or invalid design → route first to `references/skills/design-system.md`
+- no product facts → route first to `references/skills/define-product-facts.md`
 
 ## Intent routing
 
 ### Setup and source of truth
 
-| User asks for | Route to |
+| User asks for | Read and follow |
 |---|---|
-| inspect/detect/current stack/framework | `skills/discover-site.md` |
-| extract design / create DESIGN.md / validate design | `skills/design-system.md` |
-| define products / product facts / canonical claims | `skills/define-product-facts.md` |
+| inspect/detect/current stack/framework | `references/skills/discover-site.md` |
+| extract design / create DESIGN.md / validate design | `references/skills/design-system.md` |
+| define products / product facts / canonical claims | `references/skills/define-product-facts.md` |
 
 ### Topic planning
 
-| User asks for | Route to |
+| User asks for | Read and follow |
 |---|---|
-| SEO plan / content map / topic cluster / what pages should we create | `skills/plan-topic-cluster.md` |
+| SEO plan / content map / topic cluster / what pages should we create | `references/skills/plan-topic-cluster.md` |
 
 ### Standard page generation
 
-Route to `skills/generate-page.md` and infer `pageType`.
+Route to `references/skills/generate-page.md` and infer `pageType`.
 
 | Cue | pageType | Playbook |
 |---|---|---|
-| `/products/...`, product landing, canonical product page | `product` | `playbooks/page-types/product.md` |
-| `/use-cases/...`, workflow, job-to-be-done, "for X use case" | `use-case` | `playbooks/page-types/use-case.md` |
-| `/faq/...`, "how do I", "can I", one question | `faq` | `playbooks/page-types/faq.md` |
-| `/glossary/...`, "what is", definition, meaning, term | `glossary` | `playbooks/page-types/glossary.md` |
-| `/alternatives/...`, `/compare/...`, "vs", "alternative" | `alternative` | `playbooks/page-types/alternative.md` |
-| `/docs/...`, technical how-to, install, setup, troubleshooting | `docs` | `playbooks/page-types/docs.md` |
-| `/lp/...`, ads, campaign, launch, conversion page | `lp` | `playbooks/page-types/lp.md` |
-| `/private/...`, `/accounts/...`, ABM, personalized outbound, sales follow-up | `private` | `playbooks/page-types/private.md` |
+| `/products/...`, product landing, canonical product page | `product` | `references/playbooks/page-types/product.md` |
+| `/use-cases/...`, workflow, job-to-be-done, "for X use case" | `use-case` | `references/playbooks/page-types/use-case.md` |
+| `/faq/...`, "how do I", "can I", one question | `faq` | `references/playbooks/page-types/faq.md` |
+| `/glossary/...`, "what is", definition, meaning, term | `glossary` | `references/playbooks/page-types/glossary.md` |
+| `/alternatives/...`, `/compare/...`, "vs", "alternative" | `alternative` | `references/playbooks/page-types/alternative.md` |
+| `/docs/...`, technical how-to, install, setup, troubleshooting | `docs` | `references/playbooks/page-types/docs.md` |
+| `/lp/...`, ads, campaign, launch, conversion page | `lp` | `references/playbooks/page-types/lp.md` |
+| `/private/...`, `/accounts/...`, ABM, personalized outbound, sales follow-up | `private` | `references/playbooks/page-types/private.md` |
 
 ### Free tools
 
-Route to `skills/generate-free-tool.md`.
+Route to `references/skills/generate-free-tool.md`.
 
 | Cue | Mode/category |
 |---|---|
@@ -87,11 +110,11 @@ Route to `skills/generate-free-tool.md`.
 
 ### QA and operations
 
-| User asks for | Route to |
+| User asks for | Read and follow |
 |---|---|
-| check, review, validate page quality | `skills/qa.md` |
-| sitemap / robots / llms.txt / discovery files | `skills/update-discovery-files.md` |
-| title CTR, internal links, SEO maintenance, stuck pages, GSC review | `skills/seo-ops.md` |
+| check, review, validate page quality | `references/skills/qa.md` |
+| sitemap / robots / llms.txt / discovery files | `references/skills/update-discovery-files.md` |
+| title CTR, internal links, SEO maintenance, stuck pages, GSC review | `references/skills/seo-ops.md` |
 
 ## Route inference
 
@@ -180,19 +203,19 @@ tool:
   privacy: <privacy behavior>
 ```
 
-Show the brief only when useful or when asking for approval. Otherwise proceed with the selected skill.
+Show the brief only when useful or when asking for approval. Otherwise proceed with the selected module.
 
 ## Default follow-up chain
 
 For page/tool generation requests, default to:
 
 ```txt
-1. selected generator skill
-2. skills/qa.md
-3. skills/update-discovery-files.md when indexability/routes changed
+1. selected generator module
+2. references/skills/qa.md
+3. references/skills/update-discovery-files.md when indexability/routes changed
 ```
 
-For alternatives/comparisons, ensure `skills/qa.md` runs the claim-check subroutine.
+For alternatives/comparisons, ensure `references/skills/qa.md` runs the claim-check subroutine.
 
 For private pages, ensure `noindex,nofollow` and sitemap exclusion.
 
@@ -206,7 +229,7 @@ When routing, report the selected path clearly:
 # Pagewell Routing
 
 Intent: <inferred intent>
-Selected skill: <skill>
+Selected module: <module>
 Selected playbook/mode: <playbook or mode>
 Reason: <one sentence>
 
@@ -218,7 +241,7 @@ Then execute or propose the next step depending on user approval/context.
 ## Rules
 
 - Do not make the user remember page types, tool categories, or modes.
-- Do not bypass the underlying skills/playbooks.
+- Do not bypass the underlying modules/playbooks.
 - Do not reduce QA requirements for convenience.
 - Do not generate pages without a real search, conversion, support, or outbound intent.
 - Ask one clarification question when ambiguity materially affects output quality.

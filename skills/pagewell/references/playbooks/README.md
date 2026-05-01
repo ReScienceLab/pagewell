@@ -11,15 +11,15 @@ skills/pagewell/SKILL.md
 The router selects among the core source modules:
 
 ```txt
-skills/discover-site.md
-skills/design-system.md
-skills/define-product-facts.md
-skills/plan-topic-cluster.md
-skills/generate-page.md
-skills/generate-free-tool.md
-skills/qa.md
-skills/update-discovery-files.md
-skills/seo-ops.md
+references/skills/discover-site.md
+references/skills/design-system.md
+references/skills/define-product-facts.md
+references/skills/plan-topic-cluster.md
+references/skills/generate-page.md
+references/skills/generate-free-tool.md
+references/skills/qa.md
+references/skills/update-discovery-files.md
+references/skills/seo-ops.md
 ```
 
 Use playbooks as references inside those core modules. For installed skills.sh users, these files are packaged under `skills/pagewell/references/playbooks/`.
@@ -37,7 +37,7 @@ page-types/lp.md
 page-types/private.md
 ```
 
-Used by `skills/generate-page.md`.
+Used by `references/skills/generate-page.md`.
 
 ## Free tool playbooks
 
@@ -48,7 +48,7 @@ free-tools/hub.md
 free-tools/launch.md
 ```
 
-Used by `skills/generate-free-tool.md`.
+Used by `references/skills/generate-free-tool.md`.
 
 ## SEO ops playbooks
 
@@ -59,7 +59,7 @@ seo/maintenance.md
 seo/republish-stuck-page.md
 ```
 
-Used by `skills/seo-ops.md`.
+Used by `references/skills/seo-ops.md`.
 
 ## QA playbooks
 
@@ -67,4 +67,4 @@ Used by `skills/seo-ops.md`.
 qa/claim-check.md
 ```
 
-Used by `skills/qa.md`.
+Used by `references/skills/qa.md`.
