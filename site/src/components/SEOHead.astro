@@ -26,6 +26,8 @@ const siteUrl = Astro.site ?? new URL(siteProfile.url);
 const canonicalUrl = new URL(canonical ?? Astro.url.pathname, siteUrl).toString();
 const imageUrl = new URL(ogImage, siteUrl).toString();
 const schemas = (Array.isArray(jsonLd) ? jsonLd : [jsonLd]).filter(Boolean);
+const serializeJsonLd = (schema: JsonLd) =>
+  JSON.stringify(schema).replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026");
 ---
 
 <title>{pageTitle}</title>
@@ -45,4 +47,4 @@ const schemas = (Array.isArray(jsonLd) ? jsonLd : [jsonLd]).filter(Boolean);
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={imageUrl} />
 
-{schemas.map((schema) => <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />)}
+{schemas.map((schema) => <script is:inline type="application/ld+json" set:html={serializeJsonLd(schema)} />)}

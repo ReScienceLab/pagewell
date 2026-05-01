@@ -3,6 +3,7 @@ dist/
 .astro/
 .next/
 .vercel/
+.hal/
 .DS_Store
 .env
 .env.*

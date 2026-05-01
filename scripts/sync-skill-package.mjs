@@ -29,6 +29,7 @@ async function copyDirectory(src, dest) {
 
 function rewritePackagedReferences(markdown) {
   return markdown
+    .replaceAll("skills/pagewell/SKILL.md", "SKILL.md")
     .replaceAll("skills/pagewell.md", "SKILL.md")
     .replace(/(?<!references\/)skills\/([a-z0-9-]+)\.md/g, "references/skills/$1.md")
     .replace(/(?<!references\/)playbooks\//g, "references/playbooks/")

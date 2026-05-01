@@ -5,7 +5,7 @@ Playbooks preserve detailed instructions behind the compact Pagewell router skil
 Most users enter through the installable skill:
 
 ```txt
-skills/pagewell/SKILL.md
+SKILL.md
 ```
 
 The router selects among the core source modules:
