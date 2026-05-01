@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Run a recurring SEO maintenance workflow using Search Console, analytics, page inventory, and Sitewright page conventions.
+Run a recurring SEO maintenance workflow using Search Console, analytics, page inventory, and Pagewell page conventions.
 
 This skill operates the SEO system over time. It does not replace `qa.md`; it finds opportunities and maintenance tasks across the site.
 
@@ -103,5 +103,5 @@ Date: YYYY-MM-DD
 ## Acceptance criteria
 
 - Report prioritizes actions.
-- Recommendations name the next Sitewright skill to run.
+- Recommendations name the next Pagewell skill to run.
 - New page ideas include enough information to become briefs.

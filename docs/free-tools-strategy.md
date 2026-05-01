@@ -1,6 +1,6 @@
 # Free Tools Strategy
 
-Free tools are a Sitewright acquisition pattern: small utilities that rank for practical queries, create trust through immediate value, and route qualified users toward a product.
+Free tools are a Pagewell acquisition pattern: small utilities that rank for practical queries, create trust through immediate value, and route qualified users toward a product.
 
 ## Philosophy
 

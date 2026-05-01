@@ -1,8 +1,8 @@
-# Sitewright
+# Pagewell
 
 Framework-agnostic agent skills for generating SEO, GEO, free tools, landing, docs, and private ABM pages as code.
 
-Sitewright captures the useful parts of AI landing-page systems without a no-code builder:
+Pagewell captures the useful parts of AI landing-page systems without a no-code builder:
 
 ```txt
 DESIGN.md + SITE_PROFILE.md + product facts + page brief
@@ -14,14 +14,14 @@ DESIGN.md + SITE_PROFILE.md + product facts + page brief
 
 The output is normal website code or content in your repo. No runtime, no hosted builder, no lock-in.
 
-## What Sitewright is
+## What Pagewell is
 
 - A reusable skill pack for coding agents.
 - A page-generation workflow that works across frameworks.
 - A compact set of top-level skills with detailed playbooks behind them.
 - A set of quality gates for search, AI-answer visibility, free-tool usefulness, and factual claims.
 
-## What Sitewright is not
+## What Pagewell is not
 
 - Not a no-code editor.
 - Not a visual builder.
@@ -33,12 +33,12 @@ The output is normal website code or content in your repo. No runtime, no hosted
 Most users only need one entrypoint:
 
 ```txt
-skills/sitewright.md
+skills/pagewell.md
 ```
 
 It routes natural-language requests to the right core skill and playbook.
 
-Under the router, Sitewright has 9 core skills:
+Under the router, Pagewell has 9 core skills:
 
 ```txt
 skills/
@@ -80,7 +80,7 @@ examples/    Example briefs, product facts, design files, and site profiles.
 ## Quick start for a website repo
 
 1. Copy or reference this skill pack from your website repo.
-2. Run/follow `skills/sitewright.md` and describe what you want in natural language.
+2. Run/follow `skills/pagewell.md` and describe what you want in natural language.
 3. The router will ask for missing setup or route to the right core skill.
 4. For generation requests, it will default to generator → QA → discovery file updates.
 
@@ -99,28 +99,28 @@ Advanced users can call core skills directly:
 Example prompts:
 
 ```txt
-Use Sitewright to make a page for people searching "find feature requests from Reddit".
+Use Pagewell to make a page for people searching "find feature requests from Reddit".
 Product is RequestHunt.
 ```
 
 ```txt
-Use Sitewright to build a free markdown preview tool for Markshare.
+Use Pagewell to build a free markdown preview tool for Markshare.
 ```
 
 ```txt
-Use Sitewright to review Search Console data and suggest the next SEO actions.
+Use Pagewell to review Search Console data and suggest the next SEO actions.
 ```
 
 If you already have a brief, you can still be explicit:
 
 ```txt
-Use Sitewright with briefs/use-cases/find-feature-requests-from-reddit.yaml.
+Use Pagewell with briefs/use-cases/find-feature-requests-from-reddit.yaml.
 Run generate-page, then qa and update-discovery-files.
 ```
 
 ## DESIGN.md requirement
 
-Sitewright does not define its own design format. It uses Google's `DESIGN.md` format as the normative spec.
+Pagewell does not define its own design format. It uses Google's `DESIGN.md` format as the normative spec.
 
 Useful commands:
 
@@ -134,7 +134,7 @@ npx @google/design.md export --format tailwind DESIGN.md > tailwind.theme.json
 
 ## Supported site types
 
-Sitewright is intentionally framework-agnostic. Current adapters cover:
+Pagewell is intentionally framework-agnostic. Current adapters cover:
 
 - Astro
 - Next.js
@@ -146,7 +146,7 @@ Adapters are instructions, not generators. Agents should inspect the target repo
 
 ## Topical authority workflow
 
-Sitewright supports topic clusters across:
+Pagewell supports topic clusters across:
 
 - product pages
 - use-case pages
