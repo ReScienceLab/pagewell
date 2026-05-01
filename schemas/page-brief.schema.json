@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://resciencelab.github.io/sitewright/schemas/page-brief.schema.json",
+  "title": "Sitewright Page Brief",
+  "type": "object",
+  "required": ["route", "pageType", "title", "description", "h1"],
+  "properties": {
+    "route": { "type": "string", "pattern": "^/" },
+    "pageType": {
+      "type": "string",
+      "enum": ["home", "product", "use-case", "alternative", "lp", "private", "docs", "custom"]
+    },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "h1": { "type": "string" },
+    "primaryKeyword": { "type": "string" },
+    "product": { "type": "string" },
+    "audience": { "type": ["string", "array"], "items": { "type": "string" } },
+    "intent": { "type": "string" },
+    "noindex": { "type": "boolean", "default": false },
+    "cta": {
+      "type": "object",
+      "properties": {
+        "label": { "type": "string" },
+        "href": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "facts": { "type": "array", "items": { "type": "string" } },
+    "faqs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["question", "answer"],
+        "properties": {
+          "question": { "type": "string" },
+          "answer": { "type": "string" }
+        }
+      }
+    },
+    "related": { "type": "array", "items": { "type": "string" } },
+    "constraints": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

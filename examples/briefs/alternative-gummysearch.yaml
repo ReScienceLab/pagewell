@@ -1,0 +1,26 @@
+route: /alternatives/gummysearch-alternative
+pageType: alternative
+title: GummySearch Alternative for Feature Request Discovery | RequestHunt
+h1: GummySearch alternative for feature request discovery
+description: Compare RequestHunt and GummySearch for finding product ideas, feature requests, and market signals.
+primaryKeyword: gummysearch alternative
+product: requesthunt
+comparisonTarget: GummySearch
+audience:
+  - solo founders
+  - product builders
+intent: Compare tools for discovering product opportunities and feature requests.
+noindex: false
+cta:
+  label: Try RequestHunt
+  href: https://requesthunt.com
+facts:
+  - RequestHunt discovers feature requests from Reddit, X, and GitHub.
+  - RequestHunt provides an MCP server install command.
+constraints:
+  - Do not invent GummySearch features, pricing, or weaknesses.
+  - Use when-to-choose framing.
+  - Run claim-check before finalizing.
+related:
+  - /products/requesthunt
+  - /use-cases/find-feature-requests-from-reddit

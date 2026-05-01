@@ -1,0 +1,29 @@
+route: /use-cases/find-feature-requests-from-reddit
+pageType: use-case
+title: Find Feature Requests from Reddit | RequestHunt
+h1: Find feature requests from Reddit
+description: Use RequestHunt to discover real feature requests and product pain points from Reddit communities.
+primaryKeyword: find feature requests from Reddit
+product: requesthunt
+audience:
+  - solo founders
+  - product builders
+intent: Learn how to find feature request signals in Reddit discussions.
+noindex: false
+cta:
+  label: Try RequestHunt
+  href: https://requesthunt.com
+facts:
+  - RequestHunt discovers feature requests from Reddit, X, and GitHub.
+  - RequestHunt provides an MCP server install command.
+faqs:
+  - question: How do I find feature requests on Reddit?
+    answer: Monitor relevant subreddits for repeated complaints, product requests, and workflow pain. RequestHunt helps surface those signals faster.
+  - question: Should I use Reddit feature requests for product validation?
+    answer: They are useful directional signals, especially when repeated across threads and communities. They should be combined with customer interviews and market research.
+related:
+  - /products/requesthunt
+  - /use-cases/validate-saas-ideas
+constraints:
+  - Do not claim RequestHunt guarantees product-market fit.
+  - Keep the page factual and practical.

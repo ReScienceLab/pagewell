@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://resciencelab.github.io/sitewright/schemas/page-spec.schema.json",
+  "title": "Sitewright Framework Neutral Page Spec",
+  "type": "object",
+  "required": ["route", "pageType", "title", "description", "h1", "sections"],
+  "properties": {
+    "route": { "type": "string", "pattern": "^/" },
+    "pageType": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "h1": { "type": "string" },
+    "canonical": { "type": "string" },
+    "noindex": { "type": "boolean", "default": false },
+    "nofollow": { "type": "boolean", "default": false },
+    "product": { "type": "string" },
+    "primaryKeyword": { "type": "string" },
+    "sections": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "type": "string" },
+          {
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+              "type": { "type": "string" },
+              "heading": { "type": "string" },
+              "body": { "type": "string" },
+              "items": { "type": "array" }
+            },
+            "additionalProperties": true
+          }
+        ]
+      }
+    },
+    "schema": { "type": "array", "items": { "type": "string" } },
+    "faqs": { "type": "array" },
+    "related": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}
