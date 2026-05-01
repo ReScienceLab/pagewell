@@ -169,7 +169,7 @@ components:
     height: 40px
   button-frosted:
     backgroundColor: "rgba(255, 255, 255, 0.1)"
-    textColor: "{colors.primary}"
+    textColor: "{colors.on-primary}"
     typography: "{typography.nav-ui}"
     rounded: "{rounded.pill}"
     padding: "10px 15px"
