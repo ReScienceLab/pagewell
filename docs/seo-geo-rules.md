@@ -43,8 +43,27 @@ Common schema:
 - `SoftwareApplication`
 - `WebApplication` for free tools
 - `CollectionPage` for tool hubs/directories
+- `DefinedTerm` and `DefinedTermSet` for glossary pages
 - `BreadcrumbList`
-- `FAQPage`
+- `FAQPage` for visible FAQ/Q&A content
+
+## Title CTR
+
+Non-homepage titles should usually avoid brand suffixes unless the brand is part of the query. Use `skills/optimize-page-title.md` for title audits and rewrites.
+
+## Topic clusters
+
+Build connected clusters around real product domains:
+
+- product/hub pages
+- use-case pages
+- FAQ pages
+- glossary pages
+- free tools
+- docs/tutorials
+- alternatives/comparisons
+
+Use `skills/generate-topic-cluster.md` to plan clusters and `skills/internal-link-audit.md` to keep pages connected.
 
 Do not add:
 

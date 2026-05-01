@@ -106,6 +106,20 @@ Sitewright is intentionally framework-agnostic. Current adapters cover:
 
 Adapters are instructions, not generators. Agents should inspect the target repo and use the closest existing convention.
 
+## Topical authority workflow
+
+Sitewright supports topic clusters across:
+
+- product pages
+- use-case pages
+- FAQ pages
+- glossary pages
+- free tools
+- docs/tutorials
+- alternative/comparison pages
+
+Use `skills/generate-topic-cluster.md` to plan a cluster, then run the specific page generator skills. Use `skills/internal-link-audit.md`, `skills/optimize-page-title.md`, and `skills/seo-maintenance.md` to operate the cluster over time.
+
 ## Core rule
 
 Every generated page must map to a real search, conversion, support, or outbound intent. Do not generate pages merely because a system can.

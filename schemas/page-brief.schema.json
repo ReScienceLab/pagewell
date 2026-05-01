@@ -8,12 +8,15 @@
     "route": { "type": "string", "pattern": "^/" },
     "pageType": {
       "type": "string",
-      "enum": ["home", "product", "use-case", "alternative", "free-tool", "tools-hub", "lp", "private", "docs", "custom"]
+      "enum": ["home", "product", "use-case", "faq", "glossary", "alternative", "free-tool", "tools-hub", "lp", "private", "docs", "custom"]
     },
     "title": { "type": "string" },
     "description": { "type": "string" },
     "h1": { "type": "string" },
     "primaryKeyword": { "type": "string" },
+    "question": { "type": "string", "description": "Exact searched question when pageType is faq." },
+    "term": { "type": "string", "description": "Glossary term when pageType is glossary." },
+    "definition": { "type": "string", "description": "One-line definition when pageType is glossary." },
     "product": { "type": "string" },
     "audience": { "type": ["string", "array"], "items": { "type": "string" } },
     "intent": { "type": "string" },

@@ -1,0 +1,23 @@
+route: /glossary/mermaid-diagrams
+pageType: glossary
+title: Mermaid Diagrams - Definition, Examples & How to Use
+h1: What are Mermaid diagrams?
+description: Mermaid diagrams are text-based diagrams written in markdown-like syntax. Learn how they work and where to preview or publish them.
+term: Mermaid diagrams
+definition: Mermaid diagrams are diagrams created from text-based syntax, often embedded in markdown documentation.
+primaryKeyword: mermaid diagrams definition
+product: markshare
+intent: Define Mermaid diagrams for developers and technical writers.
+noindex: false
+cta:
+  label: Publish Markdown with Markshare
+  href: https://markshare.to
+facts:
+  - Markshare publishes markdown as webpages from the terminal.
+related:
+  - /products/markshare
+  - /tools/markdown-preview
+  - /use-cases/publish-markdown-from-terminal
+constraints:
+  - Keep definition factual.
+  - Include an example if the target site supports code blocks.

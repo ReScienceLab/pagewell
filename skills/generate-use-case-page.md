@@ -18,7 +18,7 @@ Use-case pages should give a clear answer, explain the problem, map the product 
 ```yaml
 route: /use-cases/<slug>
 pageType: use-case
-title: <Primary keyword> | <Product or Site>
+title: <Use Case or Primary Keyword> - <Key Benefit>
 description: <direct benefit in under ~160 chars>
 h1: <Primary keyword>
 primaryKeyword: <keyword>
@@ -28,8 +28,10 @@ sections:
   - hero
   - direct-answer
   - problem
+  - pain-points
   - solution
-  - how-it-works
+  - step-by-step-workflow
+  - benefits
   - examples-or-use-cases
   - faq
   - related-links
@@ -42,22 +44,26 @@ schema:
 
 ## Required structure
 
-1. H1 with the primary keyword.
-2. Short direct answer paragraph in the first screen.
+1. H1 with the specific workflow or primary keyword.
+2. Short direct answer/problem statement in the first screen.
 3. Problem section.
-4. How the product solves the problem.
-5. How it works / steps.
-6. Practical use cases or examples.
-7. FAQ section.
-8. Internal links.
-9. CTA.
+4. Specific pain points.
+5. How the product solves the problem.
+6. Step-by-step workflow, including commands/examples when relevant.
+7. Benefits.
+8. Practical use cases or examples.
+9. FAQ section.
+10. Internal links.
+11. CTA.
 
 ## Content rules
 
 - The page must satisfy the query directly, not just sell.
+- Target a specific workflow/scenario, not a vague category.
+- Use problem → solution → step-by-step → benefits structure.
 - Use the product as the solution only where it naturally fits.
-- Include commands, examples, or concrete workflows when available.
-- Avoid thin pages; if there is not enough substance, ask for more input instead of generating.
+- Include commands, examples, screenshots, or concrete workflows when available.
+- Avoid thin or duplicative pages; if there is not enough substance, ask for more input instead of generating.
 
 ## Implementation rules
 
@@ -69,6 +75,8 @@ schema:
 ## SEO/GEO rules
 
 - Use the primary keyword in title, H1, intro, and at least one subheading where natural.
+- Recommended title pattern: `<Use Case> - <Key Benefit>`.
+- Do not append the brand to non-homepage titles unless the brand is part of the query.
 - Include canonical URL.
 - Include visible FAQ and matching FAQ schema when relevant.
 - Add related internal links to product, adjacent use-case, and alternative pages.

@@ -27,6 +27,8 @@ Review a generated or modified page for SEO, GEO, design consistency, routing, s
 - Unique title.
 - Unique meta description.
 - One H1.
+- Non-homepage SEO titles avoid unnecessary brand suffixes unless brand is part of the query.
+- Title aligns with page type and primary intent.
 - Canonical URL for indexable pages.
 - `noindex,nofollow` for private pages.
 - Open Graph/Twitter tags where site supports them.
@@ -37,6 +39,8 @@ Review a generated or modified page for SEO, GEO, design consistency, routing, s
 - `FAQPage` schema only appears when visible FAQ exists.
 - FAQ schema questions/answers match visible copy.
 - `SoftwareApplication` facts are supported by product facts.
+- `WebApplication` schema is present for indexable free tools.
+- `DefinedTerm` facts are supported by glossary content.
 - `BreadcrumbList` URLs are correct.
 
 ### Discovery
@@ -60,6 +64,8 @@ Review a generated or modified page for SEO, GEO, design consistency, routing, s
 - No invented metrics, customers, testimonials, ratings, prices, or integrations.
 - Competitor/alternative pages pass `claim-check.md`.
 - Page answers its stated intent directly.
+- FAQ pages answer one exact question and avoid near-duplicate intent.
+- Glossary pages define one term clearly and include an example/application when useful.
 
 ### Conversion
 

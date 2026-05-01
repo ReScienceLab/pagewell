@@ -15,6 +15,9 @@
     "nofollow": { "type": "boolean", "default": false },
     "product": { "type": "string" },
     "primaryKeyword": { "type": "string" },
+    "question": { "type": "string" },
+    "term": { "type": "string" },
+    "definition": { "type": "string" },
     "sections": {
       "type": "array",
       "items": {

@@ -18,6 +18,38 @@ Purpose: answer a real job-to-be-done query and map it to a product.
 
 Best for: SEO/GEO, long-tail search, product education.
 
+## FAQ page
+
+Route pattern: `/faq/<question>`
+
+Purpose: answer one specific question people search for.
+
+Best for: exact question intent, featured answers, and internal links into product/use-case/tool pages.
+
+Required traits:
+
+- H1 is the exact question
+- first sentence answers directly
+- one question per URL
+- related questions/internal links
+- FAQPage schema when visible answer matches JSON-LD
+
+## Glossary page
+
+Route pattern: `/glossary/<term>`
+
+Purpose: define one domain term and connect it to examples, related concepts, and product workflows.
+
+Best for: topical authority and definition queries.
+
+Required traits:
+
+- clear one-line definition
+- expanded explanation
+- concrete example where useful
+- related terms/internal links
+- DefinedTerm schema when supported
+
 ## Alternative/comparison page
 
 Route pattern: `/alternatives/<target>` or `/compare/<a-vs-b>`
