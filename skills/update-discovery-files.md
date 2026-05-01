@@ -44,6 +44,7 @@ Include:
 - Site name and one-sentence description.
 - Canonical product facts.
 - Important indexable pages.
+- Durable public free tools that are important to the site.
 - Contact/support URL or email if public.
 
 Do not include:
@@ -51,6 +52,7 @@ Do not include:
 - Hype.
 - Unverified claims.
 - Private/ABM pages.
+- Temporary campaign tools.
 - Long marketing copy.
 
 ## Implementation rules

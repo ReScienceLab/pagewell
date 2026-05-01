@@ -1,6 +1,6 @@
 # Sitewright
 
-Framework-agnostic agent skills for generating SEO, GEO, landing, docs, and private ABM pages as code.
+Framework-agnostic agent skills for generating SEO, GEO, free tools, landing, docs, and private ABM pages as code.
 
 Sitewright captures the useful parts of AI landing-page systems without a no-code builder:
 
@@ -18,7 +18,7 @@ The output is normal website code or content in your repo. No runtime, no hosted
 
 - A reusable skill pack for coding agents.
 - A page-generation workflow that works across frameworks.
-- A set of quality gates for search, AI-answer visibility, and factual claims.
+- A set of quality gates for search, AI-answer visibility, free-tool usefulness, and factual claims.
 
 ## What Sitewright is not
 
@@ -57,8 +57,9 @@ examples/    Example briefs, product facts, and site profiles.
 5. Run/follow `skills/define-product-facts.md` to create or normalize product facts.
 6. Write a page brief.
 7. Run the relevant page generation skill.
-8. Run `skills/qa-page.md`.
-9. Run `skills/update-discovery-files.md`.
+8. For free tools, optionally run `skills/launch-free-tool.md` after QA.
+9. Run `skills/qa-page.md`.
+10. Run `skills/update-discovery-files.md`.
 
 Example prompt:
 
@@ -67,6 +68,16 @@ Use Sitewright.
 Read SITE_PROFILE.md, DESIGN.md, and products.yaml.
 Using briefs/use-cases/find-feature-requests-from-reddit.yaml,
 run the generate-use-case-page skill, then run qa-page and update-discovery-files.
+```
+
+Free tool example:
+
+```txt
+Use Sitewright.
+Read SITE_PROFILE.md, DESIGN.md, and products.yaml.
+Using briefs/tools/markdown-preview.yaml,
+run generate-free-tool-page, qa-page, update-discovery-files,
+then launch-free-tool.
 ```
 
 ## DESIGN.md requirement

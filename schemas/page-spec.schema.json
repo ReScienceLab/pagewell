@@ -36,7 +36,19 @@
     },
     "schema": { "type": "array", "items": { "type": "string" } },
     "faqs": { "type": "array" },
-    "related": { "type": "array", "items": { "type": "string" } }
+    "related": { "type": "array", "items": { "type": "string" } },
+    "tool": {
+      "type": "object",
+      "description": "Free tool implementation spec when pageType is free-tool.",
+      "properties": {
+        "category": { "type": "string" },
+        "input": { "type": "array" },
+        "output": { "type": "array" },
+        "logic": { "type": "string" },
+        "privacy": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
   },
   "additionalProperties": true
 }

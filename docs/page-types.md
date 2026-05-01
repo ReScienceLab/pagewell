@@ -26,6 +26,30 @@ Purpose: help high-intent users decide between options.
 
 Best for: factual product positioning. Requires claim checking.
 
+## Free tool page
+
+Route pattern: `/tools/<tool>`
+
+Purpose: working, no-signup utility that targets a practical search query and creates trust before conversion.
+
+Best for: SEO/GEO acquisition, backlinks, product-led lead capture, and community launches.
+
+Required traits:
+
+- immediate value without signup
+- working input/output interface
+- narrow search intent
+- product-adjacent CTA
+- WebApplication schema when indexable
+
+## Tools hub
+
+Route pattern: `/tools`
+
+Purpose: index and internally link public free tools.
+
+Best for: tool discovery, internal linking, and category-level SEO.
+
 ## LP/campaign page
 
 Route pattern: `/lp/<campaign>`

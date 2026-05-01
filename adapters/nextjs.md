@@ -30,6 +30,10 @@ pages/use-cases/find-feature-requests-from-reddit.tsx
 
 Use existing head/meta component or `next/head`.
 
+## Interactive free tools
+
+For `/tools/*` pages, keep SEO shell/server metadata in the route page and put interactive input/output logic in a client component only when needed. Prefer deterministic client-side processing for v1 free tools.
+
 ## Discovery files
 
 Depending on existing convention:

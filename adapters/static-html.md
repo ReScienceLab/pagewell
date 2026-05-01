@@ -19,6 +19,10 @@ If the site uses includes, partials, or a static generator script, follow that c
 - Preserve existing CSS classes and global stylesheet.
 - Avoid introducing a new build step unless approved.
 
+## Interactive free tools
+
+For `/tools/*` pages, use plain JavaScript in a colocated script file or inline script following the site's existing pattern. Keep all important explanatory content in the HTML so the page remains useful without executing the tool script.
+
 ## Discovery files
 
 Create or update:

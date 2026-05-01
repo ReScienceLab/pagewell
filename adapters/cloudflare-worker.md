@@ -41,6 +41,10 @@ If a page registry already exists, add to it.
 - Serve `/robots.txt`, `/sitemap.xml`, and `/llms.txt` explicitly.
 - Return a proper 404 page for unknown routes.
 
+## Interactive free tools
+
+For `/tools/*` pages, serve static HTML plus small inline or bundled JavaScript for the tool interaction. Keep the first render crawlable: hero, description, how-to-use, FAQ, and CTA should exist in HTML even if the tool itself uses client-side JavaScript.
+
 ## Metadata and schema
 
 Worker-rendered pages must manually include:

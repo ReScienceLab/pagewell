@@ -1,0 +1,40 @@
+route: /tools/markdown-preview
+pageType: free-tool
+title: Markdown Preview - Free Markdown Renderer | Markshare
+h1: Free markdown preview tool
+description: Preview markdown instantly in your browser. Free markdown renderer with no signup required, powered by Markshare.
+primaryKeyword: markdown preview
+product: markshare
+audience:
+  - developers
+  - technical writers
+intent: Preview markdown before publishing or sharing it.
+noindex: false
+tool:
+  category: previewer
+  input:
+    - name: markdown
+      type: textarea
+      required: true
+  output:
+    - name: preview
+      format: html
+  logic: Render markdown input into an HTML preview on the page.
+  privacy: Prefer client-side rendering. Do not store user input.
+cta:
+  label: Publish Markdown with Markshare
+  href: https://markshare.to
+facts:
+  - Markshare publishes markdown as webpages from the terminal.
+  - Markshare provides a shell install command.
+faqs:
+  - question: Is this markdown preview tool free?
+    answer: Yes. It is free to use and does not require signup.
+  - question: Does this publish my markdown?
+    answer: No. The preview tool is for checking markdown. Use Markshare when you want to publish markdown as a shareable webpage.
+related:
+  - /products/markshare
+  - /use-cases/publish-markdown-from-terminal
+constraints:
+  - Do not require signup before previewing markdown.
+  - Prefer client-side processing.

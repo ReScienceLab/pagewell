@@ -8,7 +8,7 @@
     "route": { "type": "string", "pattern": "^/" },
     "pageType": {
       "type": "string",
-      "enum": ["home", "product", "use-case", "alternative", "lp", "private", "docs", "custom"]
+      "enum": ["home", "product", "use-case", "alternative", "free-tool", "tools-hub", "lp", "private", "docs", "custom"]
     },
     "title": { "type": "string" },
     "description": { "type": "string" },
@@ -39,7 +39,22 @@
       }
     },
     "related": { "type": "array", "items": { "type": "string" } },
-    "constraints": { "type": "array", "items": { "type": "string" } }
+    "constraints": { "type": "array", "items": { "type": "string" } },
+    "tool": {
+      "type": "object",
+      "description": "Free tool specification when pageType is free-tool.",
+      "properties": {
+        "category": {
+          "type": "string",
+          "enum": ["generator", "converter", "analyzer", "calculator", "previewer", "validator", "other"]
+        },
+        "input": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+        "output": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+        "logic": { "type": "string" },
+        "privacy": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
   },
   "additionalProperties": true
 }

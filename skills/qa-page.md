@@ -68,6 +68,19 @@ Review a generated or modified page for SEO, GEO, design consistency, routing, s
 - Outbound links are correct.
 - Contact/email links are correct.
 
+### Free tool pages
+
+For `pageType: free-tool`:
+
+- Tool provides a useful result without authentication.
+- Tool interface is visible above the fold or immediately after the hero.
+- Inputs have labels, validation, and helpful errors.
+- Output has copy/download/share action where relevant.
+- Lead capture, if present, does not block first value.
+- `WebApplication` schema is present for indexable tool pages.
+- `offers.price` is `0` when claiming the tool is free.
+- Tool usage/product CTA events follow existing analytics conventions if analytics exists.
+
 ## Output
 
 Return a concise QA report:

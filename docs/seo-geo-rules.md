@@ -41,6 +41,8 @@ Common schema:
 - `WebSite`
 - `WebPage`
 - `SoftwareApplication`
+- `WebApplication` for free tools
+- `CollectionPage` for tool hubs/directories
 - `BreadcrumbList`
 - `FAQPage`
 

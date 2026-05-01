@@ -24,6 +24,10 @@ Examples:
 - `/products/requesthunt` → `src/pages/products/requesthunt.astro` or `src/content/products/requesthunt.md`
 - `/use-cases/foo` → `src/pages/use-cases/foo.astro` or `src/content/use-cases/foo.md`
 
+## Interactive free tools
+
+For `/tools/*` pages, use Astro components plus the smallest appropriate client script/island for interactivity. Prefer framework-free inline scripts or existing client framework conventions. Do not add React/Vue/Svelte just for one tool unless the repo already uses it or the user approves.
+
 ## Metadata
 
 Use the existing layout/head component. If absent, create the smallest reusable SEO head component consistent with the repo.
