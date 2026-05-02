@@ -1,0 +1,304 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CodeWindow from "../../components/CodeWindow.astro";
+import CommandCopy from "../../components/CommandCopy.astro";
+import FAQ from "../../components/FAQ.astro";
+import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+
+const faqs = [
+  {
+    question: "What does the PAGEWELL.md validator check?",
+    answer:
+      "It checks whether a PAGEWELL.md draft has the core sections Pagewell agents need: product facts, supported claims, prohibited or unknown claims, site implementation, route taxonomy, page patterns, generation rules, anti-generic QA rules, and QA rules.",
+  },
+  {
+    question: "Does this upload my PAGEWELL.md content?",
+    answer:
+      "No. This validator runs in your browser with a small client-side script and does not submit the text to a server.",
+  },
+  {
+    question: "Can this replace Pagewell discovery?",
+    answer:
+      "No. It is a quick quality check. The Pagewell discover-site workflow should still inspect the repo and write or update PAGEWELL.md with repo-specific facts.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "PAGEWELL.md Validator",
+    description:
+      "Check a PAGEWELL.md draft for required context sections, claim rules, site implementation details, route taxonomy, page patterns, and QA rules.",
+    url: "https://pagewell.dev/tools/pagewell-context-validator",
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Any",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+  },
+  breadcrumbListSchema([
+    { name: "Home", item: "/" },
+    { name: "Tools", item: "/tools/pagewell-context-validator" },
+  ]),
+  faqPageSchema(faqs),
+];
+
+const sample = `# PAGEWELL.md
+
+Generated: 2026-05-02
+Last reviewed: 2026-05-02
+
+PAGEWELL.md is the Pagewell source of truth for this repo. Use it with DESIGN.md before planning, generating, QAing, or maintaining pages.
+
+## Product facts
+- Name: Example Product
+- Primary CTA: Try Example
+
+## Supported claims
+| Claim | Source | Confidence |
+|---|---|---|
+| Example Product publishes normal website code. | README.md | High |
+
+## Prohibited or unknown claims
+- Do not claim guaranteed rankings, revenue, customer counts, or unsupported integrations.
+
+## Site implementation
+- Framework: Astro
+- Routes: src/pages
+- Metadata: layout props
+- Design source: DESIGN.md
+- Recommended adapter: references/adapters/astro.md
+
+## Route taxonomy
+| Intent | Route pattern | Notes |
+|---|---|---|
+| Docs | /docs/<slug> | Task pages |
+
+## Page and component patterns
+- Reuse the existing layout, CTA, FAQ, and card components.
+
+## Generation rules
+- Always read DESIGN.md and PAGEWELL.md before generating pages.
+
+## Anti-generic QA rules
+- Fail copy that could describe any product after swapping the name.
+
+## QA rules
+- Check title, description, canonical, schema, internal links, and discovery files.`;
+---
+
+<BaseLayout
+  title="PAGEWELL.md Validator - Free Pagewell Context Check"
+  description="Validate a PAGEWELL.md draft for required product facts, claim rules, site conventions, route taxonomy, page patterns, and QA sections."
+  canonical="/tools/pagewell-context-validator"
+  jsonLd={jsonLd}
+>
+  <section class="section generated-hero">
+    <div class="container generated-hero__inner">
+      <p class="eyebrow">Free tool</p>
+      <h1 class="display-section">PAGEWELL.md validator for agent context.</h1>
+      <p class="body generated-hero__lede">
+        Paste a PAGEWELL.md draft and get an instant browser-only check for the sections agents need before generating search-ready pages as code.
+      </p>
+    </div>
+  </section>
+
+  <section class="generated-band">
+    <div class="container tool-panel" data-context-tool>
+      <div class="tool-card">
+        <label for="context-input">PAGEWELL.md draft</label>
+        <textarea id="context-input" spellcheck="false">{sample}</textarea>
+        <div class="tool-actions">
+          <button class="pill" type="button" data-validate-context>Validate PAGEWELL.md</button>
+          <button class="pill pill--ghost" type="button" data-reset-context>Reset sample</button>
+        </div>
+        <p class="tool-message" data-context-message>Runs locally in your browser.</p>
+      </div>
+      <div class="tool-card">
+        <label for="context-output">Context QA result</label>
+        <output id="context-output" class="tool-output" data-context-output>Click “Validate PAGEWELL.md” to score the draft.</output>
+        <div class="tool-actions">
+          <button class="pill pill--ghost" type="button" data-copy-context>Copy result</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container generated-section__inner">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">How to use</p>
+        <h2 class="display-section">Check the context file before asking an agent to generate more routes.</h2>
+        <p class="body section-lede">
+          The validator catches missing context sections, weak claim controls, missing route taxonomy, and absent QA rules. It is a first pass, not a substitute for repo discovery.
+        </p>
+      </div>
+      <div class="generated-card-grid">
+        <article class="card generated-card">
+          <p class="kicker">01</p>
+          <h3>Paste context</h3>
+          <p>Use your repo's PAGEWELL.md draft or the sample structure generated by the discover-site workflow.</p>
+        </article>
+        <article class="card generated-card">
+          <p class="kicker">02</p>
+          <h3>Review required fixes</h3>
+          <p>Missing required sections and claim-control gaps should be fixed before page generation starts.</p>
+        </article>
+        <article class="card generated-card">
+          <p class="kicker">03</p>
+          <h3>Run Pagewell discovery</h3>
+          <p>If the validator finds thin site conventions or unknown claims, ask Pagewell to rediscover the repo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container split">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">What it checks</p>
+        <h2 class="display-section">A usable context file needs facts, routes, patterns, and QA gates.</h2>
+        <p class="body section-lede">
+          Pagewell generation becomes generic when product facts, allowed claims, route patterns, or component rules are missing. This tool scores those areas explicitly.
+        </p>
+      </div>
+      <CodeWindow
+        title="required sections"
+        lines={[
+          "Product facts",
+          "Supported claims",
+          "Prohibited or unknown claims",
+          "Site implementation",
+          "Route taxonomy",
+          "Page and component patterns",
+          "Generation rules",
+          "Anti-generic QA rules",
+          "QA rules",
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container generated-section__inner">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">Product CTA</p>
+        <h2 class="display-section">Need the context generated from the repo instead?</h2>
+        <p class="body section-lede">
+          Install Pagewell and ask the discover-site module to inspect the framework, routes, components, content files, product facts, claims, and discovery files.
+        </p>
+      </div>
+      <CommandCopy command="bunx skills add ReScienceLab/pagewell --skill pagewell" note="After installing, ask: Use Pagewell to discover this repo and create PAGEWELL.md." />
+    </div>
+  </section>
+
+  <FAQ items={faqs} />
+</BaseLayout>
+
+<script is:inline define:vars={{ sample }}>
+  const input = document.querySelector("#context-input");
+  const output = document.querySelector("[data-context-output]");
+  const message = document.querySelector("[data-context-message]");
+  const validate = document.querySelector("[data-validate-context]");
+  const reset = document.querySelector("[data-reset-context]");
+  const copy = document.querySelector("[data-copy-context]");
+
+  const requiredSections = [
+    ["Product facts", /##\s+Product facts/i],
+    ["Supported claims", /##\s+Supported claims/i],
+    ["Prohibited or unknown claims", /##\s+Prohibited or unknown claims/i],
+    ["Site implementation", /##\s+Site implementation/i],
+    ["Route taxonomy", /##\s+Route taxonomy/i],
+    ["Page and component patterns", /##\s+Page and component patterns/i],
+    ["Generation rules", /##\s+Generation rules/i],
+    ["Anti-generic QA rules", /##\s+Anti-generic QA rules/i],
+    ["QA rules", /##\s+QA rules/i],
+  ];
+
+  function hasAny(text, patterns) {
+    return patterns.some((pattern) => pattern.test(text));
+  }
+
+  function analyzeContext(text) {
+    const passes = [];
+    const warnings = [];
+    const fails = [];
+    const missing = [];
+    const lower = text.toLowerCase();
+
+    if (/^#\s+PAGEWELL\.md/im.test(text)) passes.push("Starts with a PAGEWELL.md heading.");
+    else warnings.push("Use # PAGEWELL.md as the top-level heading so the file is easy to identify.");
+
+    for (const [label, pattern] of requiredSections) {
+      if (pattern.test(text)) passes.push(`Includes ${label}.`);
+      else missing.push(label);
+    }
+
+    if (missing.length) fails.push(`Missing required sections: ${missing.join(", ")}.`);
+
+    if (/DESIGN\.md/i.test(text)) passes.push("References DESIGN.md as the visual source of truth.");
+    else warnings.push("Reference DESIGN.md instead of duplicating full design tokens in PAGEWELL.md.");
+
+    if (hasAny(text, [/Framework:/i, /Routes:/i, /Metadata:/i, /Recommended adapter:/i])) {
+      passes.push("Includes concrete site implementation clues.");
+    } else {
+      warnings.push("Add framework, routes, metadata, and recommended adapter details under Site implementation.");
+    }
+
+    if (/Do not claim|unsupported|unknown|prohibited/i.test(text)) {
+      passes.push("Includes claim-control language for unsupported or unknown facts.");
+    } else {
+      fails.push("Add prohibited/unknown claim rules so agents do not invent metrics, customers, prices, or guarantees.");
+    }
+
+    if (/\/products\/|\/use-cases\/|\/faq\/|\/glossary\/|\/docs\/|\/tools\//.test(text)) {
+      passes.push("Mentions route patterns used by generated pages.");
+    } else {
+      warnings.push("Add concrete route patterns for product, use-case, FAQ, glossary, docs, and tool pages.");
+    }
+
+    if (/any product|generic|anti-generic|swapping the name/i.test(text)) {
+      passes.push("Includes anti-generic QA language.");
+    } else {
+      warnings.push("Add anti-generic QA rules that fail copy that could describe any product.");
+    }
+
+    if (/guaranteed|#1|best|fastest|revenue|customer count|testimonial/i.test(lower)) {
+      warnings.push("Review possible high-risk claim language and keep it under prohibited/unknown unless sourced.");
+    }
+
+    const score = Math.max(0, 100 - fails.length * 18 - warnings.length * 7 - missing.length * 4);
+    return [
+      `Score: ${score}/100`,
+      "",
+      ...passes.map((item) => `[pass] ${item}`),
+      ...warnings.map((item) => `[warn] ${item}`),
+      ...fails.map((item) => `[fail] ${item}`),
+      "",
+      missing.length
+        ? "Required next step: fill the missing sections before generating pages."
+        : "Suggested next step: run Pagewell QA against generated routes using this context.",
+    ].join("\n");
+  }
+
+  validate?.addEventListener("click", () => {
+    const result = analyzeContext(input?.value || "");
+    if (output) output.textContent = result;
+    if (message) message.textContent = "Validation complete. No text was sent to a server.";
+  });
+
+  reset?.addEventListener("click", () => {
+    if (input) input.value = sample;
+    if (output) output.textContent = "Click “Validate PAGEWELL.md” to score the draft.";
+    if (message) message.textContent = "Sample restored.";
+  });
+
+  copy?.addEventListener("click", async () => {
+    const text = output?.textContent || "";
+    await navigator.clipboard.writeText(text);
+    if (message) message.textContent = "Result copied.";
+  });
+</script>

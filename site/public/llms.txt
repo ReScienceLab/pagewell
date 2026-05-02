@@ -6,13 +6,18 @@ Pagewell is a framework-agnostic skill pack for coding agents that helps generat
 - https://pagewell.dev/
 - https://pagewell.dev/products/pagewell
 - https://pagewell.dev/use-cases/generate-seo-pages-as-code
+- https://pagewell.dev/use-cases/generate-free-tools-as-code
 - https://pagewell.dev/docs/setup-pagewell
+- https://pagewell.dev/docs/install-pagewell
 - https://pagewell.dev/alternatives/flint
 - https://pagewell.dev/faq/can-i-use-pagewell-with-astro
+- https://pagewell.dev/faq/does-pagewell-work-with-nextjs
+- https://pagewell.dev/faq/what-is-pagewell-md
 - https://pagewell.dev/glossary/generative-engine-optimization
 
 ## Public tools
 - https://pagewell.dev/tools/llms-txt-validator
+- https://pagewell.dev/tools/pagewell-context-validator
 
 ## Source
 - https://github.com/ReScienceLab/pagewell
