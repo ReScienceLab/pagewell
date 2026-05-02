@@ -84,11 +84,11 @@ Do not claim these unless a user provides evidence and PAGEWELL.md is updated.
 - Fonts: self-hosted Fontsource packages for Geist Variable, Inter Variable, and Geist Mono Variable
 - Components: reusable `.astro` components in `/site/src/components`
 - Layouts: `/site/src/layouts`
-- Content collections: `/site/src/content` configured by `/site/src/content.config.ts`
+- Content collections: placeholder folders under `/site/src/content` configured by `/site/src/content.config.ts`; current public/dry-run pages are file-based routes under `/site/src/pages`
 - Metadata: layout props rendered through `/site/src/components/SEOHead.astro`
 - Design source: `/DESIGN.md`
 - Discovery files: static files in `/site/public` plus Astro sitemap output
-- Deployment: Cloudflare Pages or Vercel
+- Deployment: Static Astro output; deployment target is not encoded in the repo
 - Recommended adapter: `adapters/astro.md`
 
 ### Commands
@@ -171,6 +171,7 @@ Use these existing site patterns before inventing new UI.
 ## Generation rules
 
 - Always read `DESIGN.md` and `PAGEWELL.md` before generating or QAing pages.
+- Do not recreate legacy context files; update `PAGEWELL.md` when Pagewell context changes.
 - Treat playbook section names as required coverage, not literal headings or fixed layout order.
 - Create a page architecture/evidence map before implementation when the page is substantive.
 - Every public page must target a real search, conversion, support, or outbound intent.

@@ -1,0 +1,93 @@
+---
+import GeneratedPage from "../../components/GeneratedPage.astro";
+import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+
+const faqs = [
+  {
+    question: "What is PAGEWELL.md?",
+    answer:
+      "PAGEWELL.md is the unified Pagewell context file for a repo. It records product facts, claim rules, site conventions, route taxonomy, reusable page patterns, generation rules, and QA rules so agents can generate pages without rediscovering the site each time.",
+  },
+];
+
+const jsonLd = [
+  breadcrumbListSchema([
+    { name: "Home", item: "/" },
+    { name: "FAQ", item: "/faq/what-is-pagewell-md" },
+  ]),
+  faqPageSchema(faqs),
+];
+---
+
+<GeneratedPage
+  title="What Is PAGEWELL.md? - Unified Agent Context"
+  description="PAGEWELL.md is the unified Pagewell context file for product facts, claim rules, route patterns, site conventions, and QA rules."
+  canonical="/faq/what-is-pagewell-md"
+  eyebrow="FAQ"
+  h1="What is PAGEWELL.md?"
+  lede="PAGEWELL.md is the unified Pagewell context file for a repo: product facts, claim rules, site implementation details, route taxonomy, page patterns, generation rules, and QA expectations in one durable place."
+  primaryCta={{ label: "Install Pagewell", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
+  secondaryCta={{ label: "Set up context", href: "/docs/setup-pagewell" }}
+  highlights={[
+    {
+      kicker: "Source of truth",
+      title: "One file for page generation context",
+      text: "Instead of scattering product facts, route rules, and site conventions across separate notes, Pagewell points agents to PAGEWELL.md before planning or QA.",
+    },
+    {
+      kicker: "Claim control",
+      title: "Supported and prohibited claims stay explicit",
+      text: "The file tells agents what the site can say, what remains unknown, and which claims require proof before copy or schema can use them.",
+    },
+    {
+      kicker: "Repo-native",
+      title: "It adapts to the current website",
+      text: "PAGEWELL.md records the actual framework, routes, components, metadata conventions, discovery files, and commands in the repo.",
+    },
+  ]}
+  sections={[
+    {
+      eyebrow: "What it contains",
+      heading: "PAGEWELL.md captures the facts agents need before writing a page.",
+      bullets: [
+        "Product/company facts, audiences, CTAs, supported claims, and prohibited or unknown claims.",
+        "Site implementation details such as framework, rendering mode, route folders, components, layouts, metadata, and discovery files.",
+        "Route taxonomy for product, use-case, FAQ, glossary, docs, alternatives, landing pages, private pages, and free tools.",
+        "Reusable page/component patterns plus generation, anti-generic QA, and final QA rules.",
+      ],
+    },
+    {
+      eyebrow: "How agents use it",
+      heading: "Generation starts with context, not a blank prompt.",
+      body:
+        "A Pagewell run reads PAGEWELL.md with DESIGN.md, normalizes the brief, selects the right playbook, then implements the route using the site conventions already documented in the repo.",
+      codeTitle: "pagewell context loop",
+      codeLines: [
+        "PAGEWELL.md + DESIGN.md + page brief",
+        "→ page architecture and evidence map",
+        "→ implementation in the current stack",
+        "→ metadata, schema, internal links, QA",
+        "→ sitemap / robots / llms.txt updates when needed",
+      ],
+    },
+    {
+      eyebrow: "Migration",
+      heading: "PAGEWELL.md replaces separate context and product fact files.",
+      body:
+        "Older Pagewell setups may have kept framework notes, product facts, and page patterns in separate files. The current default is to consolidate that useful context into PAGEWELL.md, while DESIGN.md remains separate because it follows the external design contract spec.",
+      rows: [
+        ["File", "Role", "Status"],
+        ["PAGEWELL.md", "Product, site, route, claim, pattern, generation, and QA truth", "Default Pagewell context"],
+        ["DESIGN.md", "Visual tokens, typography, layout, components, and design constraints", "Separate design source"],
+        ["Page brief", "The specific route, intent, audience, CTA, and constraints", "Per request"],
+      ],
+    },
+  ]}
+  related={[
+    { label: "Set up Pagewell context", href: "/docs/setup-pagewell", text: "Create PAGEWELL.md and DESIGN.md before generating pages." },
+    { label: "Install Pagewell", href: "/docs/install-pagewell", text: "Add the Pagewell skill to your coding agent." },
+    { label: "Validate PAGEWELL.md", href: "/tools/pagewell-context-validator", text: "Check whether a context draft has the sections agents need." },
+  ]}
+  faqs={faqs}
+  jsonLd={jsonLd}
+/>
