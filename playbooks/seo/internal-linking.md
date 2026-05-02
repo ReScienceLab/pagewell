@@ -8,7 +8,7 @@ Internal links help users navigate related content and help authority flow from 
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - current route/page inventory
 - sitemap if present
 - product/company facts

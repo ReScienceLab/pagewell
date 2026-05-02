@@ -8,9 +8,8 @@ Private pages are for direct sharing, not SEO.
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - `DESIGN.md`
-- canonical product facts
 - page brief with target account/persona/context, route, CTA, and allowed personalization facts
 
 ## Framework-neutral page spec
@@ -39,7 +38,10 @@ schema: []
 - Do not add private pages to public navigation.
 - Avoid sensitive/private data unless explicitly provided in the brief.
 
-## Required structure
+
+Section labels in this spec are coverage labels, not mandatory headings or fixed layout order. Adapt the final architecture to `PAGEWELL.md` page/component patterns and the route intent.
+
+## Required coverage
 
 1. Personalized hero.
 2. Context based only on supplied facts.
@@ -49,7 +51,7 @@ schema: []
 
 ## Implementation rules
 
-- Read the recommended adapter from `SITE_PROFILE.md`.
+- Read the site implementation and recommended adapter from `PAGEWELL.md`.
 - Follow routing conventions.
 - Reuse existing layout/components unless a simplified private layout exists.
 

@@ -1,6 +1,6 @@
 # Adapter: Cloudflare Worker
 
-Use this adapter when `SITE_PROFILE.md` identifies a Cloudflare Worker rendering HTML or routing requests manually.
+Use this adapter when `PAGEWELL.md` identifies a Cloudflare Worker rendering HTML or routing requests manually.
 
 ## Detection
 

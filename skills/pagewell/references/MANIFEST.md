@@ -30,9 +30,9 @@ When a reference mentions a Pagewell source path, resolve it inside this package
 
 | Intent | Read |
 |---|---|
-| Detect or document a site stack | `references/skills/discover-site.md` |
+| Initialize unified Pagewell context or detect/document a site stack in PAGEWELL.md | `references/skills/discover-site.md` |
 | Create, validate, or update design rules | `references/skills/design-system.md` |
-| Define product facts and claim sources | `references/skills/define-product-facts.md` |
+| Define product facts and claim sources in PAGEWELL.md | `references/skills/define-product-facts.md` |
 | Plan a topic cluster | `references/skills/plan-topic-cluster.md` |
 | Generate a standard page | `references/skills/generate-page.md` and the matching `references/playbooks/page-types/*.md` |
 | Generate or plan a free tool | `references/skills/generate-free-tool.md` and `references/playbooks/free-tools/*.md` |

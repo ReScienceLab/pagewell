@@ -8,7 +8,7 @@ This skill is specialized. `qa.md` checks whether titles exist and are unique; t
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - page route(s) or page files
 - current titles/descriptions
 - primary keyword or inferred search intent

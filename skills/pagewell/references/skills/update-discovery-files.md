@@ -12,9 +12,8 @@ Discovery files include:
 
 ## Inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - site/page registry or route files
-- product/company facts
 - generated page specs/frontmatter
 - existing discovery files
 
@@ -42,7 +41,7 @@ Create or update `/llms.txt` as a factual, compact site summary.
 Include:
 
 - Site name and one-sentence description.
-- Canonical product facts.
+- Canonical `PAGEWELL.md` product facts.
 - Important indexable pages.
 - Durable public free tools that are important to the site.
 - Contact/support URL or email if public.
@@ -57,7 +56,7 @@ Do not include:
 
 ## Implementation rules
 
-- Read the recommended adapter from `SITE_PROFILE.md`.
+- Read the site implementation and recommended adapter from `PAGEWELL.md`.
 - For frameworks with route files, implement `robots.txt`, `sitemap.xml`, and `llms.txt` using existing route conventions.
 - For static sites, create files in `public/` or output root based on convention.
 - For Workers, serve them as explicit routes.

@@ -8,9 +8,8 @@ Glossary pages build topical authority, explain vocabulary, and link readers int
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - `DESIGN.md`
-- canonical product/company facts
 - page brief with term, definition, examples, related terms, CTA, and route
 
 ## Framework-neutral page spec
@@ -37,7 +36,10 @@ schema:
   - BreadcrumbList
 ```
 
-## Required structure
+
+Section labels in this spec are coverage labels, not mandatory headings or fixed layout order. Adapt the final architecture to `PAGEWELL.md` page/component patterns and the route intent.
+
+## Required coverage
 
 1. Label or eyebrow: `Definition`.
 2. H1: `What is <Term>?` or `<Term>: Definition and Examples`.
@@ -68,7 +70,7 @@ Do not append the brand name to non-homepage titles unless the brand is part of 
 
 ## Implementation rules
 
-- Read the recommended adapter from `SITE_PROFILE.md`.
+- Read the site implementation and recommended adapter from `PAGEWELL.md`.
 - Follow existing route/content conventions.
 - Reuse article, code, CTA, and related-link components.
 - If a glossary index exists, add this term to it; otherwise note that `generate-glossary-index` or a generic index may be useful.

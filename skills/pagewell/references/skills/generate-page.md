@@ -8,9 +8,8 @@ This single skill handles standard page types through page-type playbooks. Free 
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - validated `DESIGN.md`
-- canonical product/company facts
 - page brief with `pageType`, route, title, description, H1, intent, CTA, and constraints
 
 ## Supported page types
@@ -31,11 +30,11 @@ For `free-tool` and `tools-hub`, use `references/skills/generate-free-tool.md`.
 
 ## Framework-neutral process
 
-1. Read `SITE_PROFILE.md` and its recommended adapter.
+1. Read `PAGEWELL.md`, including product facts, claim rules, site implementation, route taxonomy, page/component patterns, generation rules, and anti-generic QA rules.
 2. Read `DESIGN.md` and follow its tokens/prose.
-3. Read product/company facts.
-4. Read the page brief.
-5. Select the matching page-type playbook.
+3. Read the page brief.
+4. Select the matching page-type playbook.
+5. Create a page architecture/evidence map that adapts playbook coverage to the site's patterns. Section labels are coverage requirements, not literal headings or fixed order.
 6. Create a framework-neutral page spec:
    - route
    - pageType
@@ -68,12 +67,14 @@ Every indexable generated page should have:
 - relevant internal links
 - schema only when supported by visible content/facts
 - design consistent with `DESIGN.md`
+- page/component patterns consistent with `PAGEWELL.md`
+- specific, non-generic copy that uses verified product mechanics and evidence
 
 ## Page-type guardrails
 
 ### Product
 
-- Use canonical product facts.
+- Use canonical `PAGEWELL.md` product facts.
 - Explain what the product is, who it is for, and how it works.
 - Include product command/demo when available.
 
@@ -118,10 +119,20 @@ Every indexable generated page should have:
 - Exclude from sitemap and public navigation.
 - Do not invent account facts.
 
+## Anti-generic requirements
+
+Before implementation and again during QA, check:
+
+- Could this page describe any SaaS product after swapping the product name?
+- Are headings adapted to the specific intent instead of generic labels like `Problem`, `Solution`, or `Benefits`?
+- Does the page use product-specific mechanics from `PAGEWELL.md`?
+- Does it include a concrete workflow, example, command, comparison dimension, or decision aid where relevant?
+- Does the CTA match the page's audience and intent?
+
 ## Acceptance criteria
 
 - Page exists at requested route.
 - It follows the correct page-type playbook.
 - It follows current framework conventions.
-- It uses product facts and avoids unsupported claims.
+- It uses `PAGEWELL.md` product facts and avoids unsupported claims.
 - It passes `references/skills/qa.md`.
