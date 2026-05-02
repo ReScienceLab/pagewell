@@ -8,9 +8,8 @@ Product pages are indexable, canonical product/entity pages. They should explain
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - `DESIGN.md`
-- canonical product facts
 - page brief or user request naming the product
 
 ## Framework-neutral page spec
@@ -44,7 +43,10 @@ schema:
   - FAQPage
 ```
 
-## Required structure
+
+Section labels in this spec are coverage labels, not mandatory headings or fixed layout order. Adapt the final architecture to `PAGEWELL.md` page/component patterns and the route intent.
+
+## Required coverage
 
 1. Hero with product name, one-sentence value proposition, and primary CTA.
 2. Direct answer: "What is <Product>?"
@@ -59,11 +61,11 @@ schema:
 
 ## Implementation rules
 
-- Read the recommended adapter from `SITE_PROFILE.md`.
+- Read the site implementation and recommended adapter from `PAGEWELL.md`.
 - Follow existing routing, layout, component, and metadata conventions.
 - If the site uses components, reuse them.
 - If the site uses content files, create content; if it uses route files, create route files; if it uses a page registry, register the page.
-- Use product facts exactly; do not invent capabilities.
+- Use `PAGEWELL.md` product facts exactly; do not invent capabilities.
 
 ## SEO/GEO rules
 
@@ -78,7 +80,7 @@ schema:
 ## Acceptance criteria
 
 - Product page is reachable at the requested route.
-- Copy uses canonical product facts.
+- Copy uses canonical `PAGEWELL.md` product facts.
 - Primary CTA is visible above the fold.
 - Install command/copy UI exists if product has a command.
 - Page passes `qa.md`.

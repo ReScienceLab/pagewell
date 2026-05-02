@@ -8,10 +8,9 @@ The tools hub improves internal linking, helps users discover related utilities,
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - `DESIGN.md`
 - list of existing or planned free tool pages
-- product/company facts
 
 ## Framework-neutral page spec
 
@@ -34,7 +33,10 @@ schema:
   - FAQPage
 ```
 
-## Required structure
+
+Section labels in this spec are coverage labels, not mandatory headings or fixed layout order. Adapt the final architecture to `PAGEWELL.md` page/component patterns and the route intent.
+
+## Required coverage
 
 1. Hero explaining who the tools are for.
 2. Tool cards with name, description, category, and link.
@@ -44,7 +46,7 @@ schema:
 
 ## Implementation rules
 
-- Read the recommended adapter from `SITE_PROFILE.md`.
+- Read the site implementation and recommended adapter from `PAGEWELL.md`.
 - Follow existing route/content conventions.
 - Reuse card/grid components.
 - Include only indexable, public free tools.

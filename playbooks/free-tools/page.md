@@ -8,9 +8,8 @@ Free tool pages are indexable by default when durable and useful. They should be
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - `DESIGN.md`
-- canonical product/company facts
 - page brief with route, target keyword, product, tool spec, CTA, and indexing decision
 
 ## Framework-neutral page spec
@@ -49,7 +48,10 @@ schema:
   - BreadcrumbList
 ```
 
-## Required structure
+
+Section labels in this spec are coverage labels, not mandatory headings or fixed layout order. Adapt the final architecture to `PAGEWELL.md` page/component patterns and the route intent.
+
+## Required coverage
 
 1. Hero with target keyword and no-signup value proposition.
 2. Working tool interface above the fold or immediately after hero.
@@ -91,7 +93,7 @@ Not allowed:
 
 ## Implementation rules
 
-- Read the recommended adapter from `SITE_PROFILE.md`.
+- Read the site implementation and recommended adapter from `PAGEWELL.md`.
 - Follow existing route, component, styling, and metadata conventions.
 - Reuse existing form, button, card, code, and layout components when present.
 - Do not assume React/Next.js. If the site is Astro, Worker, static HTML, or custom, implement using that stack's conventions.

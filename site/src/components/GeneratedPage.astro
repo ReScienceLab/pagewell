@@ -1,0 +1,177 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CodeWindow from "./CodeWindow.astro";
+import CommandCopy from "./CommandCopy.astro";
+import FAQ from "./FAQ.astro";
+
+type CTA = {
+  label: string;
+  href?: string;
+  command?: string;
+};
+
+type Card = {
+  kicker?: string;
+  title: string;
+  text: string;
+};
+
+type Section = {
+  eyebrow?: string;
+  heading: string;
+  body?: string;
+  bullets?: string[];
+  cards?: Card[];
+  codeTitle?: string;
+  codeLines?: string[];
+  rows?: Array<[string, string, string?]>;
+};
+
+type FAQItem = {
+  question: string;
+  answer: string;
+};
+
+type RelatedLink = {
+  label: string;
+  href: string;
+  text?: string;
+};
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  noindex?: boolean;
+  eyebrow: string;
+  h1: string;
+  lede: string;
+  primaryCta?: CTA;
+  secondaryCta?: CTA;
+  highlights?: Card[];
+  sections: Section[];
+  faqs?: FAQItem[];
+  related?: RelatedLink[];
+  jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  noindex,
+  eyebrow,
+  h1,
+  lede,
+  primaryCta,
+  secondaryCta,
+  highlights = [],
+  sections,
+  faqs = [],
+  related = [],
+  jsonLd,
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} noindex={noindex} jsonLd={jsonLd}>
+  <section class="section generated-hero">
+    <div class="container generated-hero__inner">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1 class="display-section">{h1}</h1>
+      <p class="body generated-hero__lede">{lede}</p>
+      {(primaryCta || secondaryCta) && (
+        <div class="generated-actions">
+          {primaryCta?.command ? (
+            <CommandCopy command={primaryCta.command} note={primaryCta.label} />
+          ) : primaryCta?.href ? (
+            <a class="pill" href={primaryCta.href}>{primaryCta.label}</a>
+          ) : null}
+          {secondaryCta?.href && <a class="pill pill--ghost" href={secondaryCta.href}>{secondaryCta.label}</a>}
+        </div>
+      )}
+    </div>
+  </section>
+
+  {highlights.length > 0 && (
+    <section class="generated-band">
+      <div class="container generated-card-grid generated-card-grid--highlights">
+        {highlights.map((card) => (
+          <article class="card generated-card">
+            {card.kicker && <p class="kicker">{card.kicker}</p>}
+            <h2>{card.title}</h2>
+            <p>{card.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {sections.map((section) => (
+    <section class="section generated-section">
+      <div class="container generated-section__inner">
+        <div class="section-heading section-heading--left">
+          {section.eyebrow && <p class="eyebrow">{section.eyebrow}</p>}
+          <h2 class="display-section">{section.heading}</h2>
+          {section.body && <p class="body section-lede">{section.body}</p>}
+        </div>
+
+        {section.bullets && (
+          <ul class="generated-list">
+            {section.bullets.map((bullet) => <li>{bullet}</li>)}
+          </ul>
+        )}
+
+        {section.cards && (
+          <div class="generated-card-grid">
+            {section.cards.map((card) => (
+              <article class="card generated-card">
+                {card.kicker && <p class="kicker">{card.kicker}</p>}
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+              </article>
+            ))}
+          </div>
+        )}
+
+        {section.codeLines && <CodeWindow title={section.codeTitle ?? "example"} lines={section.codeLines} />}
+
+        {section.rows && (
+          <div class="artifact-table blue-ring generated-table">
+            <table>
+              <tbody>
+                {section.rows.map((row) => (
+                  <tr>
+                    <td>{row[0]}</td>
+                    <td>{row[1]}</td>
+                    {row[2] && <td>{row[2]}</td>}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    </section>
+  ))}
+
+  {related.length > 0 && (
+    <section class="section generated-related">
+      <div class="container">
+        <div class="section-heading section-heading--left">
+          <p class="eyebrow">Related routes</p>
+          <h2 class="display-section">Keep the cluster connected.</h2>
+        </div>
+        <div class="generated-card-grid generated-card-grid--related">
+          {related.map((link) => (
+            <a class="card generated-card generated-link-card" href={link.href}>
+              <h3>{link.label}</h3>
+              {link.text && <p>{link.text}</p>}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {faqs.length > 0 && <FAQ items={faqs} />}
+</BaseLayout>

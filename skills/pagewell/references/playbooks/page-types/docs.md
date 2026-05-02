@@ -8,9 +8,8 @@ Docs pages should be concrete, command-forward, and easy for humans and AI syste
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - `DESIGN.md`
-- product facts
 - page brief with task, route, audience, prerequisites, commands, expected output, and troubleshooting notes
 
 ## Framework-neutral page spec
@@ -37,7 +36,10 @@ schema:
   - FAQPage
 ```
 
-## Required structure
+
+Section labels in this spec are coverage labels, not mandatory headings or fixed layout order. Adapt the final architecture to `PAGEWELL.md` page/component patterns and the route intent.
+
+## Required coverage
 
 1. Overview: what this doc helps with.
 2. Prerequisites.
@@ -56,7 +58,7 @@ schema:
 
 ## Implementation rules
 
-- Read the recommended adapter from `SITE_PROFILE.md`.
+- Read the site implementation and recommended adapter from `PAGEWELL.md`.
 - Follow existing docs/content conventions if present.
 - Reuse code block and command components if available.
 

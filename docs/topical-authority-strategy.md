@@ -46,18 +46,20 @@ Each supporting page should link back to the hub/product page. The hub should li
 
 ## Workflow
 
-1. Pick a product or seed topic.
-2. Define ICP and jobs-to-be-done.
-3. Inventory existing coverage.
-4. Run `skills/plan-topic-cluster.md`.
-5. Generate only the highest-signal pages first with `skills/generate-page.md` or `skills/generate-free-tool.md`.
-6. Run `skills/seo-ops.md` internal-link mode.
-7. Monitor with `skills/seo-ops.md` maintenance mode.
-8. Expand based on real Search Console queries.
+1. Read `PAGEWELL.md` and `DESIGN.md`.
+2. Pick a product or seed topic.
+3. Define ICP and jobs-to-be-done.
+4. Inventory existing coverage.
+5. Run `skills/plan-topic-cluster.md`.
+6. Generate only the highest-signal pages first with `skills/generate-page.md` or `skills/generate-free-tool.md`.
+7. Run `skills/seo-ops.md` internal-link mode.
+8. Monitor with `skills/seo-ops.md` maintenance mode.
+9. Expand based on real Search Console queries.
 
 ## Guardrails
 
 - Do not generate pages just for volume.
+- Treat playbook section lists as coverage, not literal page templates.
 - Avoid near-duplicate pages.
 - Avoid unsupported comparison claims.
 - Make every page useful on its own.

@@ -8,9 +8,8 @@ Free tools are special because they must provide working utility, not just conte
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - validated `DESIGN.md`
-- canonical product/company facts
 - tool brief or request
 - optional ICP/keyword/community data
 
@@ -79,7 +78,9 @@ Output:
 
 ## Framework-neutral implementation rules
 
-- Read the recommended adapter from `SITE_PROFILE.md`.
+- Read `PAGEWELL.md`, including product facts, claim rules, site implementation, route taxonomy, page/component patterns, generation rules, and anti-generic QA rules.
+- Read `DESIGN.md` and follow its tokens/prose.
+- Treat required page sections as coverage requirements, not literal headings or fixed order.
 - Do not assume React/Next.js.
 - Prefer deterministic client-side logic for v1.
 - If backend/API processing is required, explain why and follow existing backend conventions.
@@ -106,7 +107,7 @@ Not allowed:
 ## Acceptance criteria
 
 - Tool provides useful output without authentication.
-- Tool page follows `DESIGN.md` and current framework conventions.
+- Tool page follows `DESIGN.md`, `PAGEWELL.md`, and current framework conventions.
 - Metadata and schema are correct.
 - Discovery files are updated when indexable.
 - Launch plan exists when requested.

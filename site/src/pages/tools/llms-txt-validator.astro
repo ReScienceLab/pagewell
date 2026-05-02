@@ -1,0 +1,239 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CodeWindow from "../../components/CodeWindow.astro";
+import CommandCopy from "../../components/CommandCopy.astro";
+import FAQ from "../../components/FAQ.astro";
+import { breadcrumbListSchema } from "../../lib/schema";
+
+const faqs = [
+  {
+    question: "What does this llms.txt validator check?",
+    answer:
+      "It checks for practical issues Pagewell cares about: a clear site heading, useful sections, absolute URLs, excessive length, hype language, and private/noindex content references.",
+  },
+  {
+    question: "Does the tool send my llms.txt content anywhere?",
+    answer:
+      "No. This dry-run tool runs in your browser with a small client-side script. It does not submit the text to a server.",
+  },
+  {
+    question: "Can Pagewell generate free tools like this?",
+    answer:
+      "Yes. Pagewell's free-tool playbook requires a working input/output utility, first value without signup, a crawlable SEO shell, FAQ content, and WebApplication schema when indexable.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "llms.txt Validator",
+    description: "Validate an llms.txt draft for clarity, crawlability, private content risks, and AI-discovery usefulness.",
+    url: "https://pagewell.dev/tools/llms-txt-validator",
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "Any",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+  },
+  breadcrumbListSchema([
+    { name: "Home", item: "/" },
+    { name: "Tools", item: "/tools/llms-txt-validator" },
+  ]),
+];
+
+const sample = `# Pagewell
+
+Pagewell is a framework-agnostic skill pack for coding agents that generates SEO/GEO pages, free tools, docs, and discovery updates as normal code.
+
+## Important pages
+- https://pagewell.dev/
+- https://pagewell.dev/products/pagewell
+- https://pagewell.dev/docs/setup-pagewell
+
+## Public tools
+- https://pagewell.dev/tools/llms-txt-validator
+
+## Contact
+- https://github.com/ReScienceLab/pagewell`;
+---
+
+<BaseLayout
+  title="llms.txt Validator - Free AI Discovery Check"
+  description="Validate an llms.txt draft for clarity, absolute URLs, private content risk, hype, and AI discovery usefulness. No signup required."
+  canonical="/tools/llms-txt-validator"
+  jsonLd={jsonLd}
+>
+  <section class="section generated-hero">
+    <div class="container generated-hero__inner">
+      <p class="eyebrow">Free tool dry run</p>
+      <h1 class="display-section">llms.txt validator for AI discovery files.</h1>
+      <p class="body generated-hero__lede">
+        Paste an llms.txt draft and get an instant, browser-only check for structure, URL hygiene, private content risks, and Pagewell-style factuality. No signup, no server upload.
+      </p>
+    </div>
+  </section>
+
+  <section class="generated-band">
+    <div class="container tool-panel" data-llms-tool>
+      <div class="tool-card">
+        <label for="llms-input">llms.txt draft</label>
+        <textarea id="llms-input" spellcheck="false">{sample}</textarea>
+        <div class="tool-actions">
+          <button class="pill" type="button" data-validate>Validate llms.txt</button>
+          <button class="pill pill--ghost" type="button" data-sample>Reset sample</button>
+        </div>
+        <p class="tool-message" data-message>Runs locally in your browser.</p>
+      </div>
+      <div class="tool-card">
+        <label for="llms-output">Result</label>
+        <output id="llms-output" class="tool-output" data-output>Click “Validate llms.txt” to score the draft.</output>
+        <div class="tool-actions">
+          <button class="pill pill--ghost" type="button" data-copy>Copy result</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container generated-section__inner">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">How to use</p>
+        <h2 class="display-section">Check the file before crawlers or AI systems see it.</h2>
+        <p class="body section-lede">
+          Pagewell discovery updates should keep llms.txt factual, compact, public, and useful. This tool turns that QA checklist into a quick first pass.
+        </p>
+      </div>
+      <div class="generated-card-grid">
+        <article class="card generated-card">
+          <p class="kicker">01</p>
+          <h3>Paste a draft</h3>
+          <p>Use your current llms.txt or write a short site summary with important public pages and tools.</p>
+        </article>
+        <article class="card generated-card">
+          <p class="kicker">02</p>
+          <h3>Validate locally</h3>
+          <p>The tool checks heading structure, sections, absolute URLs, hype terms, length, and private/noindex risks.</p>
+        </article>
+        <article class="card generated-card">
+          <p class="kicker">03</p>
+          <h3>Apply fixes</h3>
+          <p>Keep the file factual and compact. Do not include temporary campaigns, private ABM pages, or unsupported claims.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container split">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">Example output</p>
+        <h2 class="display-section">A useful result should be specific, not just pass/fail.</h2>
+        <p class="body section-lede">
+          The validator returns a score, passes, warnings, and suggested fixes so the user has useful output before any product CTA.
+        </p>
+      </div>
+      <CodeWindow
+        title="validator result"
+        lines={[
+          "Score: 86/100",
+          "[pass] Starts with a top-level site heading.",
+          "[pass] Includes absolute URLs.",
+          "[warn] Add a Public tools section if tools matter to the site.",
+          "[warn] Remove hype terms such as best or #1 unless sourced.",
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container generated-section__inner">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">Product CTA</p>
+        <h2 class="display-section">Want the agent to update discovery files in your repo?</h2>
+        <p class="body section-lede">
+          Pagewell can help generate or update robots.txt, sitemap behavior, and llms.txt as part of a repo-native page workflow.
+        </p>
+      </div>
+      <CommandCopy command="bunx skills add ReScienceLab/pagewell --skill pagewell" note="Install Pagewell and ask it to update discovery files after generating indexable pages." />
+    </div>
+  </section>
+
+  <FAQ items={faqs} />
+</BaseLayout>
+
+<script is:inline define:vars={{ sample }}>
+  const root = document.querySelector("[data-llms-tool]");
+  const input = root?.querySelector("[data-llms-tool] textarea") ?? document.querySelector("#llms-input");
+  const output = document.querySelector("[data-output]");
+  const message = document.querySelector("[data-message]");
+  const validate = document.querySelector("[data-validate]");
+  const reset = document.querySelector("[data-sample]");
+  const copy = document.querySelector("[data-copy]");
+
+  function analyze(text) {
+    const passes = [];
+    const warnings = [];
+    const fails = [];
+    const lower = text.toLowerCase();
+    const urls = text.match(/https?:\/\/[^\s)]+/g) || [];
+
+    if (/^#\s+\S+/m.test(text)) passes.push("Starts with a top-level site heading.");
+    else fails.push("Add a top-level # Site Name heading as the first clear identifier.");
+
+    if (/^##\s+/m.test(text)) passes.push("Uses second-level sections for scanability.");
+    else warnings.push("Add ## sections such as Important pages, Public tools, or Contact.");
+
+    if (urls.length > 0) passes.push(`Includes ${urls.length} absolute URL${urls.length === 1 ? "" : "s"}.`);
+    else fails.push("Add absolute URLs for important public pages.");
+
+    if (text.length <= 5000) passes.push("File is compact enough for a first-pass llms.txt summary.");
+    else warnings.push("Consider trimming the file under ~5,000 characters.");
+
+    if (/private|abm|noindex|internal only|confidential/.test(lower)) {
+      warnings.push("Review private/noindex/internal references and remove anything not meant for public discovery.");
+    } else {
+      passes.push("No obvious private/noindex language detected.");
+    }
+
+    if (/best|#1|guaranteed|world[- ]class|unmatched|revolutionary/.test(lower)) {
+      warnings.push("Remove hype or superlative terms unless they are sourced in PAGEWELL.md.");
+    } else {
+      passes.push("No obvious hype/superlative terms detected.");
+    }
+
+    if (/contact|support|github|email|mailto:/.test(lower)) passes.push("Includes a contact or support path.");
+    else warnings.push("Add a public contact, support, or repository URL if available.");
+
+    const score = Math.max(0, 100 - fails.length * 28 - warnings.length * 8);
+    return [
+      `Score: ${score}/100`,
+      "",
+      ...passes.map((item) => `[pass] ${item}`),
+      ...warnings.map((item) => `[warn] ${item}`),
+      ...fails.map((item) => `[fail] ${item}`),
+      "",
+      "Suggested next step: keep llms.txt factual, compact, and limited to durable public pages/tools.",
+    ].join("\n");
+  }
+
+  validate?.addEventListener("click", () => {
+    const result = analyze(input?.value || "");
+    output.textContent = result;
+    message.textContent = "Validation complete. No text was sent to a server.";
+  });
+
+  reset?.addEventListener("click", () => {
+    if (input) input.value = sample;
+    output.textContent = "Click “Validate llms.txt” to score the draft.";
+    message.textContent = "Sample restored.";
+  });
+
+  copy?.addEventListener("click", async () => {
+    const text = output?.textContent || "";
+    await navigator.clipboard.writeText(text);
+    message.textContent = "Result copied.";
+  });
+</script>

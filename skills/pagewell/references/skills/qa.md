@@ -10,9 +10,8 @@ Detailed claim playbook: `references/playbooks/qa/claim-check.md`.
 
 ## Inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - validated `DESIGN.md`
-- product/company facts
 - page brief/spec if available
 - generated/modified page files
 - discovery files if changed
@@ -42,7 +41,7 @@ Detailed claim playbook: `references/playbooks/qa/claim-check.md`.
 - JSON-LD is valid JSON.
 - `FAQPage` schema only appears when visible FAQ exists.
 - FAQ schema questions/answers match visible copy.
-- `SoftwareApplication` facts are supported by product facts.
+- `SoftwareApplication` facts are supported by `PAGEWELL.md` product facts.
 - `WebApplication` schema is present for indexable free tools.
 - `DefinedTerm` facts are supported by glossary content.
 - `BreadcrumbList` URLs are correct.
@@ -64,11 +63,22 @@ Detailed claim playbook: `references/playbooks/qa/claim-check.md`.
 
 ### Content and claims
 
-- Product claims come from canonical facts or the brief.
+- Product claims come from `PAGEWELL.md` supported claims, product facts, or the brief.
 - No invented metrics, customers, testimonials, ratings, prices, or integrations.
 - Page answers its stated intent directly.
 - FAQ pages answer one exact question and avoid near-duplicate intent.
 - Glossary pages define one term clearly and include an example/application when useful.
+
+### Genericness
+
+Fail or warn when:
+
+- The page could describe any SaaS product after swapping the product name.
+- Headings are generic labels such as `Problem`, `Solution`, or `Benefits` without intent-specific context.
+- The page lacks product-specific mechanics from `PAGEWELL.md`.
+- The page lacks a concrete workflow, example, command, comparison dimension, or tool output where relevant.
+- The section order mechanically mirrors the playbook instead of adapting to the route intent and site page patterns.
+- The CTA is generic or mismatched to audience/intent.
 
 ### Claim-check subroutine
 
@@ -83,7 +93,7 @@ Run this for:
 
 Classify claims as:
 
-- supported by product facts
+- supported by `PAGEWELL.md` product facts
 - provided by brief
 - generic/low-risk
 - unsupported

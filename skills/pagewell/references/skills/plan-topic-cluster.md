@@ -10,9 +10,8 @@ Detailed strategy: `references/playbooks/seo/maintenance.md`, `references/docs/t
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - `DESIGN.md`
-- canonical product/company facts
 - seed topic or product
 - ICP
 - optional keyword/search data

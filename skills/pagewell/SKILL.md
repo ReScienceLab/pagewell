@@ -1,6 +1,6 @@
 ---
 name: pagewell
-description: Generate, plan, QA, and maintain SEO/GEO pages as code. Use for landing pages, free tools, docs, comparison pages, FAQs, glossary pages, topic clusters, private ABM pages, DESIGN.md, SITE_PROFILE.md, product facts, page briefs, metadata, schema, claim checks, and discovery files.
+description: Generate, plan, QA, and maintain SEO/GEO pages as code. Use for landing pages, free tools, docs, comparison pages, FAQs, glossary pages, topic clusters, private ABM pages, DESIGN.md, PAGEWELL.md, page briefs, metadata, schema, claim checks, and discovery files.
 license: MIT
 metadata:
   author: ReScienceLab
@@ -12,7 +12,7 @@ metadata:
 
 Pagewell is the front door for generating search-ready website pages as normal code in the user's repo.
 
-Use this skill when the user asks for anything related to SEO/GEO pages, landing pages, free tools, topic clusters, design extraction, site discovery, product facts, QA, discovery files, or SEO operations.
+Use this skill when the user asks for anything related to SEO/GEO pages, landing pages, free tools, topic clusters, design extraction, Pagewell context, product facts, QA, discovery files, or SEO operations.
 
 ## Progressive disclosure
 
@@ -49,16 +49,18 @@ Quality is preserved because page-type, free-tool, SEO, and claim-check rules li
 
 Before routing, check for:
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - `DESIGN.md`
-- canonical product/company facts, e.g. `products.yaml`, `src/data/products.*`, or equivalent
 - existing briefs if mentioned
+
+`PAGEWELL.md` is the unified Pagewell source of truth for product facts, supported/prohibited claims, site implementation, route taxonomy, page/component patterns, generation rules, and anti-generic QA rules.
 
 If missing:
 
-- no `SITE_PROFILE.md` → route first to `references/skills/discover-site.md`
-- no `DESIGN.md` or invalid design → route first to `references/skills/design-system.md`
-- no product facts → route first to `references/skills/define-product-facts.md`
+- no `PAGEWELL.md` → route first to `references/skills/discover-site.md`
+- no `DESIGN.md` or invalid design → route to `references/skills/design-system.md`
+
+Legacy files such as `SITE_PROFILE.md`, `products.yaml`, `src/data/products.*`, or page-pattern notes should be imported into `PAGEWELL.md` by `discover-site.md` instead of treated as separate required context for future runs.
 
 ## Intent routing
 
@@ -66,9 +68,9 @@ If missing:
 
 | User asks for | Read and follow |
 |---|---|
-| inspect/detect/current stack/framework | `references/skills/discover-site.md` |
+| first run / initialize Pagewell / create PAGEWELL.md / inspect/detect/current stack/framework / unify site and product facts | `references/skills/discover-site.md` |
 | extract design / create DESIGN.md / validate design | `references/skills/design-system.md` |
-| define products / product facts / canonical claims | `references/skills/define-product-facts.md` |
+| define products / product facts / canonical claims in PAGEWELL.md | `references/skills/define-product-facts.md` |
 
 ### Topic planning
 

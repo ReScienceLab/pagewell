@@ -1,0 +1,22 @@
+# Pagewell
+
+Pagewell is a framework-agnostic skill pack for coding agents that helps generate, QA, and maintain SEO/GEO pages, free tools, docs, comparisons, landing pages, and private ABM pages as normal code in an existing website repo.
+
+## Important pages
+- https://pagewell.dev/
+- https://pagewell.dev/products/pagewell
+- https://pagewell.dev/use-cases/generate-seo-pages-as-code
+- https://pagewell.dev/docs/setup-pagewell
+- https://pagewell.dev/alternatives/flint
+- https://pagewell.dev/faq/can-i-use-pagewell-with-astro
+- https://pagewell.dev/glossary/generative-engine-optimization
+
+## Public tools
+- https://pagewell.dev/tools/llms-txt-validator
+
+## Source
+- https://github.com/ReScienceLab/pagewell
+
+## Notes
+- Pagewell does not host pages or auto-publish production deployments.
+- Private or noindex pages are intentionally excluded from this file.

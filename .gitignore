@@ -4,6 +4,7 @@ dist/
 .next/
 .vercel/
 .hal/
+.wrangler/
 .DS_Store
 .env
 .env.*

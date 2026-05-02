@@ -38,9 +38,9 @@ The ideal free tool:
 7. Launch immediately through social/community channels.
 8. Track usage and iterate.
 
-## Required page elements
+## Required coverage
 
-Every durable free tool page should include:
+Every durable free tool page should cover these jobs, adapted to `PAGEWELL.md` page patterns:
 
 - keyword-focused H1
 - working tool interface

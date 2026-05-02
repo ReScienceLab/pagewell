@@ -8,7 +8,7 @@ This skill is for ongoing improvement. It does not replace `references/skills/qa
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - current page inventory or sitemap
 - optional Google Search Console export
 - optional analytics export

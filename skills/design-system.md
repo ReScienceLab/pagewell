@@ -20,7 +20,7 @@ Pagewell strictly uses the Google Labs Code `DESIGN.md` specification. Do not in
 
 ## Inputs
 
-- `SITE_PROFILE.md` if present.
+- `PAGEWELL.md` or legacy `SITE_PROFILE.md` if present.
 - Existing homepage, layouts, components, global CSS, Tailwind config, or inline styles.
 - Existing logo/icon SVGs and product cards.
 - Optional screenshots or visual references supplied by the user.
@@ -32,7 +32,7 @@ Pagewell strictly uses the Google Labs Code `DESIGN.md` specification. Do not in
 
 Create `DESIGN.md` from the current site.
 
-1. Read `SITE_PROFILE.md` if available.
+1. Read `PAGEWELL.md` if available, or legacy `SITE_PROFILE.md` if present.
 2. If possible, inspect the current spec:
 
    ```bash

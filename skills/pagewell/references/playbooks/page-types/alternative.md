@@ -8,9 +8,8 @@ These pages should help users decide between options without inventing competito
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - `DESIGN.md`
-- canonical product facts
 - competitor/alternative facts supplied by user or verified from source
 - page brief with route, primary keyword, audience, CTA, and comparison scope
 
@@ -41,7 +40,10 @@ schema:
   - FAQPage
 ```
 
-## Required structure
+
+Section labels in this spec are coverage labels, not mandatory headings or fixed layout order. Adapt the final architecture to `PAGEWELL.md` page/component patterns and the route intent.
+
+## Required coverage
 
 1. Hero with target keyword.
 2. Short decision summary.
@@ -65,7 +67,7 @@ Run `references/skills/qa.md` with the claim-check subroutine before finalizing.
 
 ## Implementation rules
 
-- Read the recommended adapter from `SITE_PROFILE.md`.
+- Read the site implementation and recommended adapter from `PAGEWELL.md`.
 - Follow existing routing/content conventions.
 - Reuse existing comparison table or card components where present.
 - Preserve design from `DESIGN.md`.

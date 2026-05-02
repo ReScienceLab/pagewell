@@ -20,20 +20,22 @@ AI systems prefer pages that are:
 - directly answer the question
 - structured with clear headings
 - include FAQs where useful
-- cite stable product facts
+- cite stable `PAGEWELL.md` product facts
 - avoid hype and vague claims
 
-Recommended sections:
+Recommended coverage, adapted to the site's `PAGEWELL.md` page patterns:
 
-- "What is this?"
-- "Who is it for?"
-- "How it works"
-- "FAQ"
+- direct answer / what this is
+- who it is for
+- how it works
+- FAQ when useful
 - commands/examples when applicable
+
+These are coverage requirements, not literal headings or fixed section order.
 
 ## Schema
 
-Use schema only when supported by visible content and product facts.
+Use schema only when supported by visible content and `PAGEWELL.md` product facts.
 
 Common schema:
 

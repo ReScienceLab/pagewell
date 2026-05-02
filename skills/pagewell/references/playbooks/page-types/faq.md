@@ -8,9 +8,8 @@ FAQ pages are topical-authority pages. Each page should answer one question dire
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - `DESIGN.md`
-- canonical product/company facts
 - page brief with route, exact question, short answer, product/context, CTA, and related questions/pages
 
 ## Framework-neutral page spec
@@ -37,7 +36,10 @@ schema:
   - BreadcrumbList
 ```
 
-## Required structure
+
+Section labels in this spec are coverage labels, not mandatory headings or fixed layout order. Adapt the final architecture to `PAGEWELL.md` page/component patterns and the route intent.
+
+## Required coverage
 
 1. H1 written as the exact searched question.
 2. First sentence gives the direct answer.
@@ -76,7 +78,7 @@ Do not append the brand name to non-homepage titles unless the brand is part of 
 
 ## Implementation rules
 
-- Read the recommended adapter from `SITE_PROFILE.md`.
+- Read the site implementation and recommended adapter from `PAGEWELL.md`.
 - Follow existing route/content conventions.
 - Reuse existing article, FAQ, CTA, and related-link components.
 - If the site already has a FAQ section, do not replace it; create an individual URL for the specific question.
