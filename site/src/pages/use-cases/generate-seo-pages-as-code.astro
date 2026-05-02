@@ -1,0 +1,130 @@
+---
+import GeneratedPage from "../../components/GeneratedPage.astro";
+import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+
+const faqs = [
+  {
+    question: "Why generate SEO pages as code instead of in a hosted builder?",
+    answer:
+      "Code-native generation keeps routes, metadata, components, schema, and discovery files in the same repo your team already reviews and deploys.",
+  },
+  {
+    question: "How does Pagewell prevent generic SEO pages?",
+    answer:
+      "Pagewell uses PAGEWELL.md for product facts and page patterns, treats playbook sections as coverage rather than templates, and adds an anti-generic QA pass.",
+  },
+  {
+    question: "Can Pagewell work with an Astro site?",
+    answer:
+      "Yes. The Astro adapter tells the agent to follow file-based routes, layouts, components, metadata conventions, and static output patterns already present in the repo.",
+  },
+];
+
+const jsonLd = [
+  breadcrumbListSchema([
+    { name: "Home", item: "/" },
+    { name: "Use cases", item: "/use-cases/generate-seo-pages-as-code" },
+  ]),
+  faqPageSchema(faqs),
+];
+---
+
+<GeneratedPage
+  title="Generate SEO Pages as Code - Agent Workflow"
+  description="Use Pagewell to generate SEO/GEO pages as normal website code with context, page patterns, metadata, schema, QA, and discovery updates."
+  canonical="/use-cases/generate-seo-pages-as-code"
+  eyebrow="Use-case dry run"
+  h1="Generate SEO pages as code without losing control of the repo."
+  lede="Pagewell is for teams that want agent-assisted SEO/GEO output but still need framework conventions, factual claims, design rules, and code review to stay intact."
+  primaryCta={{ label: "Install command", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
+  secondaryCta={{ label: "View product page", href: "/products/pagewell" }}
+  highlights={[
+    {
+      kicker: "Audience",
+      title: "Developers and growth teams",
+      text: "Use Pagewell when marketing pages need to ship faster but still belong in the existing codebase.",
+    },
+    {
+      kicker: "Workflow",
+      title: "Brief → spec → route",
+      text: "The agent turns intent into a framework-neutral spec, then implements the page using the site adapter and existing components.",
+    },
+    {
+      kicker: "Safety",
+      title: "QA before discovery",
+      text: "The generated page is checked for metadata, claims, schema, design consistency, genericness, and sitemap behavior.",
+    },
+  ]}
+  sections={[
+    {
+      eyebrow: "The bottleneck",
+      heading: "SEO plans usually become a pile of tickets.",
+      body:
+        "A content map may be clear, but implementation still has to cross framework details, component reuse, metadata, schema, canonical URLs, internal links, and discovery files. Pagewell turns that repeated handoff into an agent workflow with explicit gates.",
+      bullets: [
+        "The product truth is not recreated in each prompt; it lives in PAGEWELL.md.",
+        "The visual rules are not inferred from memory; they live in DESIGN.md.",
+        "The page type is not improvised; it follows a playbook and then adapts to existing page patterns.",
+      ],
+    },
+    {
+      eyebrow: "The workflow",
+      heading: "A page brief becomes a reviewable implementation path.",
+      cards: [
+        {
+          kicker: "01 brief",
+          title: "State route and intent",
+          text: "The brief names the route, page type, keyword or audience, CTA, noindex decision, and constraints.",
+        },
+        {
+          kicker: "02 context",
+          title: "Read PAGEWELL.md and DESIGN.md",
+          text: "The agent gets product claims, prohibited claims, site conventions, route patterns, component patterns, and visual rules.",
+        },
+        {
+          kicker: "03 coverage",
+          title: "Map playbook to page architecture",
+          text: "Direct answer, proof, examples, FAQs, and CTAs are coverage jobs, not canned section headings.",
+        },
+        {
+          kicker: "04 implementation",
+          title: "Edit the repo",
+          text: "The agent follows Astro, Next.js, Worker, static HTML, or custom conventions already documented in the context.",
+        },
+        {
+          kicker: "05 QA",
+          title: "Check the page like a system",
+          text: "Metadata, schema, claim support, internal links, crawlability, private page behavior, and genericness are checked before completion.",
+        },
+        {
+          kicker: "06 discovery",
+          title: "Update crawlers when relevant",
+          text: "Indexable routes can be added to sitemap/robots/llms workflows while noindex/private routes stay excluded.",
+        },
+      ],
+    },
+    {
+      eyebrow: "Concrete request",
+      heading: "What the agent can safely do from one prompt.",
+      codeTitle: "example prompt",
+      codeLines: [
+        "Use Pagewell to create a use-case page for:",
+        "route: /use-cases/generate-seo-pages-as-code",
+        "audience: developers and SEO teams",
+        "intent: explain how to generate SEO/GEO pages in a repo",
+        "CTA: install Pagewell",
+        "constraints:",
+        "  - use PAGEWELL.md claims only",
+        "  - reuse existing Astro components",
+        "  - run QA and update discovery if indexable",
+      ],
+    },
+  ]}
+  related={[
+    { label: "Pagewell product page", href: "/products/pagewell", text: "The product/entity page for the generated cluster." },
+    { label: "Can I use Pagewell with Astro?", href: "/faq/can-i-use-pagewell-with-astro", text: "A focused FAQ page for the same implementation question." },
+    { label: "GEO definition", href: "/glossary/generative-engine-optimization", text: "A glossary page connected to SEO/GEO planning." },
+  ]}
+  faqs={faqs}
+  jsonLd={jsonLd}
+/>
