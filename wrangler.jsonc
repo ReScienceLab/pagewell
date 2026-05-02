@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pagewell",
+  "account_id": "f878a91e0834cba6ac5e0baa5997004a",
+  "compatibility_date": "2026-05-02",
+  "assets": {
+    "directory": "./site/dist"
+  }
+}
