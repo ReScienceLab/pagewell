@@ -3,5 +3,5 @@
   <rect x="72" y="72" width="1056" height="486" rx="24" fill="#090909" stroke="#0099ff" stroke-opacity="0.35"/>
   <text x="96" y="300" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="108" font-weight="700" letter-spacing="-7">PAGEWELL</text>
   <text x="102" y="374" fill="#a6a6a6" font-family="Inter, Arial, sans-serif" font-size="32" letter-spacing="-0.5">Generate SEO/GEO pages as code.</text>
-  <text x="102" y="438" fill="#0099ff" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24">DESIGN.md + SITE_PROFILE.md → routes + metadata + schema + QA</text>
+  <text x="102" y="438" fill="#0099ff" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24">DESIGN.md + PAGEWELL.md → routes + metadata + schema + QA</text>
 </svg>
