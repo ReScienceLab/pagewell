@@ -4,9 +4,9 @@ import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
 
 const faqs = [
   {
-    question: "Do I still need SITE_PROFILE.md?",
+    question: "What does PAGEWELL.md contain?",
     answer:
-      "Not for the default Pagewell workflow. PAGEWELL.md now contains the site implementation details that SITE_PROFILE.md used to carry. Legacy files can still be imported or maintained when needed.",
+      "PAGEWELL.md is the default Pagewell context file. It contains product truth, site implementation details, route patterns, supported claims, generation rules, and QA expectations for future runs.",
   },
   {
     question: "Why keep DESIGN.md separate?",
@@ -75,7 +75,7 @@ const jsonLd = [
       body:
         "The discover-site skill should consolidate product facts, supported and prohibited claims, site implementation details, route taxonomy, page/component patterns, generation rules, anti-generic QA rules, and QA rules.",
       bullets: [
-        "Import legacy SITE_PROFILE.md content into the site implementation section.",
+        "Capture framework, routing, metadata, component, and deployment conventions in the site implementation section.",
         "Import products.yaml or other product data into product facts and supported claims.",
         "Inventory reusable page patterns from existing routes and components.",
         "Mark uncertain facts as unknown instead of letting future generation invent them.",
