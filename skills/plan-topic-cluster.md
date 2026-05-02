@@ -10,9 +10,8 @@ Detailed strategy: `playbooks/seo/maintenance.md`, `docs/topical-authority-strat
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - `DESIGN.md`
-- canonical product/company facts
 - seed topic or product
 - ICP
 - optional keyword/search data

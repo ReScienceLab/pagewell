@@ -7,7 +7,7 @@ Prevent generated pages from publishing unsupported claims, especially on altern
 ## Inputs
 
 - Page brief/spec.
-- Product facts.
+- `PAGEWELL.md` product facts and supported/prohibited claims.
 - Competitor/alternative facts supplied by user or verified sources.
 - Generated page copy.
 
@@ -15,7 +15,7 @@ Prevent generated pages from publishing unsupported claims, especially on altern
 
 ### Safe claims
 
-- Claims present in product facts.
+- Claims present in `PAGEWELL.md` product facts or supported claims.
 - Claims directly provided by the user in the brief.
 - Claims visible in current site/product copy.
 - Generic, non-comparative statements that do not imply unverifiable facts.
@@ -28,7 +28,7 @@ Prevent generated pages from publishing unsupported claims, especially on altern
 - Customer counts.
 - Revenue, conversion, traffic, or performance metrics.
 - Security/compliance claims.
-- Integration support not present in product facts.
+- Integration support not present in `PAGEWELL.md` product facts or supported claims.
 
 ### Disallowed claims unless sourced
 

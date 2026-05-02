@@ -1,6 +1,6 @@
 # Adapter: Next.js
 
-Use this adapter when `SITE_PROFILE.md` identifies Next.js.
+Use this adapter when `PAGEWELL.md` identifies Next.js.
 
 ## Detection
 

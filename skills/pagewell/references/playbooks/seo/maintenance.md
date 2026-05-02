@@ -8,7 +8,7 @@ This skill operates the SEO system over time. It does not replace `qa.md`; it fi
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - current page inventory or sitemap
 - optional Google Search Console export
 - optional analytics export

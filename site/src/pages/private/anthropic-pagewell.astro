@@ -1,0 +1,67 @@
+---
+import GeneratedPage from "../../components/GeneratedPage.astro";
+---
+
+<GeneratedPage
+  title="Private Pagewell Workflow for Anthropic"
+  description="A private dry-run ABM page showing how Pagewell handles supplied account context without indexing or sitemap inclusion."
+  canonical="/private/anthropic-pagewell"
+  noindex={true}
+  eyebrow="Private ABM dry run"
+  h1="A repo-native page workflow for AI-assisted marketing teams."
+  lede="This private dry run uses only generic, supplied context: an AI company may need a safer way for agents to create marketing pages without bypassing product facts, design rules, code review, or crawl controls."
+  primaryCta={{ label: "Install Pagewell", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
+  secondaryCta={{ label: "Review setup", href: "/docs/setup-pagewell" }}
+  highlights={[
+    {
+      kicker: "Privacy",
+      title: "Noindex by default",
+      text: "Private Pagewell pages must include noindex,nofollow and stay out of sitemap, navigation, and public discovery files.",
+    },
+    {
+      kicker: "Claims",
+      title: "No invented account facts",
+      text: "This page does not claim internal Anthropic workflows, metrics, tools, or priorities beyond the hypothetical context supplied in the brief.",
+    },
+    {
+      kicker: "Workflow",
+      title: "Direct-share review surface",
+      text: "Private pages can explain a relevant workflow while keeping sensitive or speculative personalization out of public SEO routes.",
+    },
+  ]}
+  sections={[
+    {
+      eyebrow: "Context",
+      heading: "Use agents for page work without letting context scatter.",
+      body:
+        "When multiple agents or teammates help with page generation, the highest-risk failure mode is not syntax. It is scattered truth: product claims in one prompt, design rules in another, route conventions in someone else's memory, and QA as an afterthought.",
+    },
+    {
+      eyebrow: "Proposed workflow",
+      heading: "Make PAGEWELL.md the page-generation contract.",
+      cards: [
+        {
+          kicker: "01",
+          title: "Initialize context",
+          text: "Generate PAGEWELL.md with product facts, claim boundaries, site implementation, route taxonomy, page patterns, and QA rules.",
+        },
+        {
+          kicker: "02",
+          title: "Generate by intent",
+          text: "Route product, docs, FAQ, glossary, comparison, free-tool, LP, and private requests to the right playbook.",
+        },
+        {
+          kicker: "03",
+          title: "Review before merge",
+          text: "Run metadata, schema, claim, design, genericness, and discovery checks before code is considered done.",
+        },
+      ],
+    },
+    {
+      eyebrow: "Next step",
+      heading: "Start with one safe generated route.",
+      body:
+        "A practical first test is a non-private docs or FAQ page where facts are easy to verify and the implementation path is simple. After QA passes, expand to use-case pages, free tools, and comparison routes.",
+    },
+  ]}
+/>

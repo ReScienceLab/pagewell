@@ -5,7 +5,7 @@ Framework-agnostic agent skills for generating SEO, GEO, free tools, landing, do
 Pagewell captures the useful parts of AI landing-page systems without a no-code builder:
 
 ```txt
-DESIGN.md + SITE_PROFILE.md + product facts + page brief
+DESIGN.md + PAGEWELL.md + page brief
 → framework-neutral page spec
 → implementation in the current site's stack
 → SEO/GEO/schema/claim QA
@@ -67,12 +67,11 @@ Detailed page-type, SEO, free-tool, and claim-check guidance lives in `skills/pa
 
 | File | Purpose |
 |---|---|
-| `SITE_PROFILE.md` | Describes how the current website is built and where pages/routes/metadata live. |
-| `DESIGN.md` | Describes visual identity and design tokens. Must strictly conform to the Google Labs Code `DESIGN.md` spec: https://github.com/google-labs-code/design.md. |
-| Product/company facts | Canonical truth source for product names, descriptions, commands, URLs, claims, pricing/status. |
+| `PAGEWELL.md` | Unified Pagewell context: product/company facts, claim rules, site implementation, route taxonomy, page/component patterns, generation rules, and anti-generic QA rules. |
+| `DESIGN.md` | Visual identity and design tokens. Must strictly conform to the Google Labs Code `DESIGN.md` spec: https://github.com/google-labs-code/design.md. |
 | Page brief | The specific page to generate: route, intent, keyword, audience, CTA, facts, constraints. |
 
-If `SITE_PROFILE.md`, `DESIGN.md`, or product facts do not exist, run the relevant setup skills first.
+If `PAGEWELL.md` does not exist, Pagewell routes first to `skills/discover-site.md`. Existing `SITE_PROFILE.md`, product fact files, or page-pattern notes are treated as legacy/source inputs that `discover-site.md` imports into `PAGEWELL.md`.
 
 ## Repository layout
 
@@ -81,9 +80,9 @@ skills/pagewell/  Installable skills.sh package (`SKILL.md` + references).
 skills/*.md       Source core modules used to build packaged references.
 playbooks/        Source page-type, SEO, free-tool, and claim-check rules.
 adapters/         Source framework-specific implementation guidance.
-schemas/          Source JSON schemas for site profiles, product facts, briefs, specs, and clusters.
+schemas/          Source JSON schemas for Pagewell context, site profiles, product facts, briefs, specs, and clusters.
 docs/             Source strategy docs for design, SEO/GEO, page types, and comparisons.
-examples/         Example briefs, product facts, design files, and site profiles.
+examples/         Example briefs, product facts, design files, and legacy site profiles.
 site/             Static Astro marketing/docs website.
 ```
 

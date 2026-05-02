@@ -8,7 +8,7 @@ This is an advanced SEO tactic and should not be used casually. The goal is fres
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - old route/page file
 - performance/indexing evidence
 - reason for republishing

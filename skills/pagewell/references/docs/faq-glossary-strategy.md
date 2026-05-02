@@ -20,7 +20,7 @@ Good questions:
 - `How to <action> without <constraint>?`
 - `<product> vs <alternative>?`
 
-FAQ structure:
+FAQ coverage:
 
 1. H1 as exact question.
 2. First sentence gives direct answer.
@@ -46,7 +46,7 @@ Good terms:
 - feature-adjacent terms
 - formats, protocols, workflows, standards
 
-Glossary structure:
+Glossary coverage:
 
 1. H1: `What is <Term>?`
 2. One-line definition.
@@ -72,3 +72,4 @@ Glossary pages can use:
 - No padding for word count.
 - No definitions outside the site's real domain.
 - Use internal links to connect related concepts and product workflows.
+- Treat coverage lists as intent requirements, not mandatory headings or fixed layouts.

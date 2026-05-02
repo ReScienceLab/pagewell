@@ -21,9 +21,8 @@ Think: generators, converters, analyzers, validators, calculators, and previewer
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - `DESIGN.md`
-- canonical product/company facts
 - target product or business area
 - ICP details if available
 - optional keyword data or competitor examples

@@ -8,9 +8,8 @@ Use-case pages should give a clear answer, explain the problem, map the product 
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - `DESIGN.md`
-- canonical product facts
 - page brief with route, keyword/intent, audience, product, CTA, and constraints
 
 ## Framework-neutral page spec
@@ -42,7 +41,10 @@ schema:
   - FAQPage
 ```
 
-## Required structure
+
+Section labels in this spec are coverage labels, not mandatory headings or fixed layout order. Adapt the final architecture to `PAGEWELL.md` page/component patterns and the route intent.
+
+## Required coverage
 
 1. H1 with the specific workflow or primary keyword.
 2. Short direct answer/problem statement in the first screen.
@@ -67,7 +69,7 @@ schema:
 
 ## Implementation rules
 
-- Read the recommended adapter from `SITE_PROFILE.md`.
+- Read the site implementation and recommended adapter from `PAGEWELL.md`.
 - Follow existing route/content conventions.
 - Reuse existing components and layout.
 - Do not create a new design language.

@@ -1,6 +1,6 @@
 # Adapter: Astro
 
-Use this adapter when `SITE_PROFILE.md` identifies Astro.
+Use this adapter when `PAGEWELL.md` identifies Astro.
 
 ## Detection
 

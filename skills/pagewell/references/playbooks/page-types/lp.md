@@ -8,9 +8,8 @@ LP pages optimize message match and conversion. They may be indexable, but shoul
 
 ## Required inputs
 
-- `SITE_PROFILE.md`
+- `PAGEWELL.md`
 - `DESIGN.md`
-- canonical product facts
 - page brief with route, campaign, audience, offer, CTA, traffic source, and index/noindex decision
 
 ## Framework-neutral page spec
@@ -36,7 +35,10 @@ schema:
   - FAQPage
 ```
 
-## Required structure
+
+Section labels in this spec are coverage labels, not mandatory headings or fixed layout order. Adapt the final architecture to `PAGEWELL.md` page/component patterns and the route intent.
+
+## Required coverage
 
 1. Focused hero with one primary CTA.
 2. Message match to ad/source/audience.
@@ -56,7 +58,7 @@ schema:
 
 ## Implementation rules
 
-- Read the recommended adapter from `SITE_PROFILE.md`.
+- Read the site implementation and recommended adapter from `PAGEWELL.md`.
 - Follow route/content conventions.
 - Reuse components and design tokens.
 - Do not make the page visually inconsistent with the site.
