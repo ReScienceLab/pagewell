@@ -4,7 +4,7 @@ description: Generate, plan, QA, and maintain SEO/GEO pages as code. Use for lan
 license: MIT
 metadata:
   author: ReScienceLab
-  version: "0.2.0"
+  version: "0.2.1"
   homepage: https://pagewell.dev
 ---
 
