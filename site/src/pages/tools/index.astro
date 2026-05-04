@@ -1,0 +1,118 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CommandCopy from "../../components/CommandCopy.astro";
+import FAQ from "../../components/FAQ.astro";
+import { absoluteUrl } from "../../lib/seo";
+import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+
+const tools = [
+  {
+    name: "llms.txt Validator",
+    href: "/tools/llms-txt-validator",
+    category: "AI discovery",
+    description:
+      "Paste an llms.txt draft and check structure, absolute URLs, private content risks, length, and hype language in the browser.",
+  },
+  {
+    name: "PAGEWELL.md Validator",
+    href: "/tools/pagewell-context-validator",
+    category: "Agent context",
+    description:
+      "Validate a PAGEWELL.md draft for product facts, claim rules, site conventions, route taxonomy, page patterns, and QA sections.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Are Pagewell tools free to use?",
+    answer:
+      "Yes. The public tools on this hub provide first value without signup and run client-side unless a page explicitly says otherwise.",
+  },
+  {
+    question: "Do these tools replace the Pagewell workflow?",
+    answer:
+      "No. They are quick checks for specific artifacts. Pagewell still uses PAGEWELL.md, DESIGN.md, page briefs, adapters, and QA playbooks before it changes repo files.",
+  },
+  {
+    question: "Can Pagewell generate tools like these in another repo?",
+    answer:
+      "Yes. Pagewell includes a free-tool workflow for no-signup utilities with crawlable SEO shells, working input/output behavior, schema, FAQs, and related links.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Free Pagewell Tools",
+    description: "Free browser-based tools for Pagewell context, SEO/GEO artifacts, and AI discovery files.",
+    url: absoluteUrl("/tools"),
+    hasPart: tools.map((tool) => ({
+      "@type": "WebApplication",
+      name: tool.name,
+      applicationCategory: "UtilityApplication",
+      url: absoluteUrl(tool.href),
+      description: tool.description,
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    })),
+  },
+  breadcrumbListSchema([
+    { name: "Home", item: "/" },
+    { name: "Tools", item: "/tools" },
+  ]),
+  faqPageSchema(faqs),
+];
+---
+
+<BaseLayout
+  title="Free Pagewell Tools for AI Discovery and Agent Context"
+  description="Free browser-based Pagewell tools for validating llms.txt files, PAGEWELL.md context, and page-generation artifacts. No signup required."
+  canonical="/tools"
+  jsonLd={jsonLd}
+>
+  <section class="section generated-hero">
+    <div class="container generated-hero__inner">
+      <p class="eyebrow">Free tools</p>
+      <h1 class="display-section">Free Pagewell tools for pages as code.</h1>
+      <p class="body generated-hero__lede">
+        Validate the context and discovery files coding agents rely on before they generate SEO/GEO pages, free tools, docs, and comparison pages in your repo.
+      </p>
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container generated-section__inner">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">Tool hub</p>
+        <h2 class="display-section">Start with a working utility, not a signup wall.</h2>
+        <p class="body section-lede">
+          Each tool returns a concrete browser-only result and points back to the Pagewell workflow when you want an agent to apply the same checks inside a repo.
+        </p>
+      </div>
+      <div class="generated-card-grid">
+        {tools.map((tool) => (
+          <a class="card generated-card" href={tool.href}>
+            <p class="kicker">{tool.category}</p>
+            <h3>{tool.name}</h3>
+            <p>{tool.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container split">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">Repo workflow</p>
+        <h2 class="display-section">Use the checks in a real site repo.</h2>
+        <p class="body section-lede">
+          Install Pagewell when you want an agent to generate or maintain pages, update discovery files, and run QA against product facts and design rules.
+        </p>
+      </div>
+      <CommandCopy command="bunx skills add ReScienceLab/pagewell --skill pagewell" note="Then ask your coding agent to validate PAGEWELL.md, llms.txt, sitemap behavior, and generated page metadata." />
+    </div>
+  </section>
+
+  <FAQ items={faqs} />
+</BaseLayout>

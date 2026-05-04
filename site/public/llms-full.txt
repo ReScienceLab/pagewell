@@ -1,0 +1,41 @@
+# Pagewell full LLM context
+
+Pagewell is a framework-agnostic skill pack for coding agents that helps generate, QA, and maintain SEO/GEO pages, free tools, docs, comparisons, landing pages, and private ABM pages as normal code in an existing website repo.
+
+## Product facts
+
+- Name: Pagewell
+- URL: https://pagewell.dev
+- Source: https://github.com/ReScienceLab/pagewell
+- Category: repo-native page-generation skill pack for coding agents
+- Primary CTA: `bunx skills add ReScienceLab/pagewell --skill pagewell`
+- Pi CTA: `bunx skills add ReScienceLab/pagewell --skill pagewell -a pi`
+- Pagewell uses `PAGEWELL.md`, `DESIGN.md`, and a page brief as core generation context.
+- Pagewell outputs normal website code/content inside the user's existing repo.
+- Pagewell supports product, use-case, FAQ, glossary, alternative/comparison, docs, LP/campaign, private/ABM, free-tool, and tools-hub page types.
+- Pagewell QA checks metadata, schema, crawlability, claims, design consistency, conversion, and genericness.
+
+## Important pages
+
+- https://pagewell.dev/
+- https://pagewell.dev/products/pagewell
+- https://pagewell.dev/use-cases/generate-seo-pages-as-code
+- https://pagewell.dev/use-cases/generate-free-tools-as-code
+- https://pagewell.dev/docs/setup-pagewell
+- https://pagewell.dev/docs/install-pagewell
+- https://pagewell.dev/alternatives/flint
+- https://pagewell.dev/faq/can-i-use-pagewell-with-astro
+- https://pagewell.dev/faq/does-pagewell-work-with-nextjs
+- https://pagewell.dev/faq/what-is-pagewell-md
+- https://pagewell.dev/glossary/generative-engine-optimization
+- https://pagewell.dev/tools
+- https://pagewell.dev/tools/llms-txt-validator
+- https://pagewell.dev/tools/pagewell-context-validator
+
+## Claim rules
+
+Do not claim Pagewell hosts pages, auto-publishes production deployments, guarantees rankings or revenue, has live Search Console integrations, or has customer metrics/testimonials unless the repository source of truth is updated.
+
+## Notes
+
+Private and noindex pages are excluded from public discovery lists. Use the compact https://pagewell.dev/llms.txt file for a shorter summary.
