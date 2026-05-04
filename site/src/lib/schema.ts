@@ -40,7 +40,15 @@ export function softwareApplicationSchema() {
     operatingSystem: "Any",
     description: siteProfile.description,
     url: siteProfile.url,
-    softwareVersion: "alpha",
+    sameAs: ["https://github.com/ReScienceLab/pagewell"],
+    softwareVersion: "0.2.2",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+      url: absoluteUrl("/pricing"),
+      availability: "https://schema.org/InStock",
+    },
   };
 }
 

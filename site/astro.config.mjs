@@ -8,6 +8,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
+      customPages: ["https://pagewell.dev/pricing.md", "https://pagewell.dev/llms.txt", "https://pagewell.dev/llms-full.txt"],
       filter: (page) => {
         const pathname = new URL(page).pathname;
         return !pathname.startsWith("/private/") && !pathname.startsWith("/og/");

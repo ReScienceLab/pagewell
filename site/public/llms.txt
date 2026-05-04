@@ -15,13 +15,23 @@ Pagewell is a framework-agnostic skill pack for coding agents that helps generat
 - https://pagewell.dev/faq/what-is-pagewell-md
 - https://pagewell.dev/glossary/generative-engine-optimization
 - https://pagewell.dev/tools
+- https://pagewell.dev/pricing
+- https://pagewell.dev/pricing.md
 
 ## Public tools
 - https://pagewell.dev/tools/llms-txt-validator
 - https://pagewell.dev/tools/pagewell-context-validator
 
+## Machine-readable files
+- https://pagewell.dev/llms-full.txt
+- https://pagewell.dev/pricing.md
+
 ## Source
 - https://github.com/ReScienceLab/pagewell
+
+## Pricing note
+- No hosted Pagewell cloud plan, paid tier, seat price, usage quota, or SLA is listed on this website today.
+- External costs come from the user's chosen AI agent, model provider, repository, CI, hosting, and deployment stack.
 
 ## Notes
 - Pagewell does not host pages or auto-publish production deployments.
