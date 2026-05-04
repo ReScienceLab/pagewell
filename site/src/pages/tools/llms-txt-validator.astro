@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import CodeWindow from "../../components/CodeWindow.astro";
 import CommandCopy from "../../components/CommandCopy.astro";
 import FAQ from "../../components/FAQ.astro";
-import { breadcrumbListSchema } from "../../lib/schema";
+import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
 
 const faqs = [
   {
@@ -40,8 +40,10 @@ const jsonLd = [
   },
   breadcrumbListSchema([
     { name: "Home", item: "/" },
-    { name: "Tools", item: "/tools/llms-txt-validator" },
+    { name: "Tools", item: "/tools" },
+    { name: "llms.txt Validator", item: "/tools/llms-txt-validator" },
   ]),
+  faqPageSchema(faqs),
 ];
 
 const sample = `# Pagewell
