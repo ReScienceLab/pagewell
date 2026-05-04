@@ -41,65 +41,56 @@ function wrapText(value: string, maxLineLength = 20) {
   return lines.slice(0, 3);
 }
 
-function ditherField() {
-  const dots: string[] = [];
-  for (let row = 0; row < 17; row += 1) {
-    for (let col = 0; col < 23; col += 1) {
-      const cx = 730 + col * 20;
-      const cy = 92 + row * 20;
-      const wave = Math.sin((row * 0.9 + col * 0.6) * 0.9);
-      const falloff = Math.max(0, 1 - (row + col * 0.38) / 24);
-      const radius = Math.max(1.2, 5.2 * falloff + wave * 1.1);
-      const opacity = Math.max(0.05, Math.min(0.45, falloff * 0.46));
-      dots.push(`<circle cx="${cx}" cy="${cy}" r="${radius.toFixed(1)}" fill="#0099ff" fill-opacity="${opacity.toFixed(2)}"/>`);
+function blueField() {
+  const marks: string[] = [];
+  for (let row = 0; row < 24; row += 1) {
+    for (let col = 0; col < 30; col += 1) {
+      const x = 600 + col * 21 + (row % 2) * 8;
+      const y = 22 + row * 25;
+      const wave = Math.sin(col * 0.62 + row * 0.48);
+      const diagonal = (col - row * 0.58) / 20;
+      const band = Math.max(0, 1 - Math.abs(diagonal - 0.62));
+      const radius = Math.max(1.1, 7.8 * band + wave * 1.4);
+      const opacity = Math.max(0.03, Math.min(0.42, band * 0.34 + 0.05));
+      if (band < 0.08 && (row + col) % 5 !== 0) continue;
+      marks.push(`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${radius.toFixed(1)}" fill="#0099ff" fill-opacity="${opacity.toFixed(2)}"/>`);
     }
   }
-  return dots.join("\n  ");
+  return marks.join("\n  ");
 }
 
-function asciiTexture() {
-  const rows = [
-    "PAGEWELL.md  DESIGN.md  BRIEF.md",
-    "route:/pricing  schema:offer  qa:claims",
-    "adapter:astro  output:normal-code",
-    "llms.txt  sitemap  robots  og/svg",
-  ];
+function glyphMist() {
+  const rows = ["PAGEWELL  ROUTES  SCHEMA", "////  BRIEF  QA  LLM", "{ metadata }  { claims }", "ASTRO NEXT WORKERS HTML", "SITEMAP ROBOTS OG SVG"];
   return rows
-    .map((row, index) => `<text x="86" y="${486 + index * 24}" class="ascii">${escapeXml(row)}</text>`)
+    .map((row, index) => `<text x="716" y="${184 + index * 48}" class="glyph">${escapeXml(row)}</text>`)
     .join("\n  ");
 }
 
 function svg({ title, eyebrow }: OgPage) {
   const lines = wrapText(title);
   const text = lines
-    .map((line, index) => `<text x="84" y="${252 + index * 84}" class="title">${escapeXml(line)}</text>`)
+    .map((line, index) => `<text x="72" y="${250 + index * 84}" class="title">${escapeXml(line)}</text>`)
     .join("\n  ");
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1200" height="630" fill="#000000"/>
-  <rect x="40" y="40" width="1120" height="550" rx="20" fill="#030303" stroke="#1b1b1b"/>
-  <path d="M781 40H1160V419C1051 322 961 229 781 40Z" fill="#0099ff" fill-opacity="0.08"/>
-  ${ditherField()}
-  <path d="M77 87H225" stroke="#0099ff" stroke-width="2"/>
-  <path d="M77 87V207" stroke="#0099ff" stroke-width="2"/>
-  <path d="M1123 543H976" stroke="#0099ff" stroke-width="2"/>
-  <path d="M1123 543V424" stroke="#0099ff" stroke-width="2"/>
-  <rect x="72" y="451" width="620" height="104" rx="12" fill="#090909" stroke="#1c2b36"/>
+  <path d="M716 0C843 95 948 173 1200 188V630H847C787 496 731 341 716 0Z" fill="#0099ff" fill-opacity="0.055"/>
+  <path d="M651 76C786 144 919 146 1124 88" stroke="#0099ff" stroke-opacity="0.18" stroke-width="2" fill="none"/>
+  <path d="M595 438C746 359 949 386 1180 292" stroke="#0099ff" stroke-opacity="0.14" stroke-width="2" fill="none"/>
+  <path d="M676 565C803 494 966 525 1156 454" stroke="#0099ff" stroke-opacity="0.12" stroke-width="2" fill="none"/>
+  ${blueField()}
+  ${glyphMist()}
   <style>
     .brand{font: 500 28px Inter, system-ui, sans-serif; fill: #ffffff; letter-spacing: -0.03em;}
-    .mark{font: 650 28px Geist, Inter, system-ui, sans-serif; fill: #000000;}
-    .eyebrow{font: 450 20px 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0099ff; letter-spacing: 0.08em; text-transform: uppercase;}
-    .title{font: 650 76px Geist, Inter, system-ui, sans-serif; fill: #ffffff; letter-spacing: -0.055em;}
-    .caption{font: 400 24px Inter, system-ui, sans-serif; fill: #a6a6a6;}
-    .ascii{font: 450 14px 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace; fill: #a6a6a6; letter-spacing: 0.01em;}
+    .eyebrow{font: 450 19px 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0099ff; letter-spacing: 0.08em; text-transform: uppercase;}
+    .title{font: 650 77px Geist, Inter, system-ui, sans-serif; fill: #ffffff; letter-spacing: -0.056em;}
+    .caption{font: 400 23px Inter, system-ui, sans-serif; fill: #a6a6a6;}
+    .glyph{font: 450 18px 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0099ff; fill-opacity: 0.16; letter-spacing: 0.06em;}
   </style>
-  <rect x="84" y="78" width="36" height="36" rx="8" fill="#ffffff"/>
-  <text x="94" y="104" class="mark">P</text>
-  <text x="136" y="104" class="brand">Pagewell</text>
-  <text x="84" y="166" class="eyebrow">${escapeXml(eyebrow)}</text>
+  <text x="72" y="102" class="brand">Pagewell</text>
+  <text x="72" y="160" class="eyebrow">${escapeXml(eyebrow)}</text>
   ${text}
-  ${asciiTexture()}
-  <text x="744" y="537" class="caption">Repo-native SEO/GEO pages, tools, docs, and QA as code.</text>
+  <text x="72" y="552" class="caption">Repo-native SEO/GEO pages, tools, docs, and QA as code.</text>
 </svg>`;
 }
 
