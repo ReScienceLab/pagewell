@@ -1,5 +1,5 @@
 ---
-import { ogImageForPath, siteProfile, withSiteTitle } from "../lib/seo";
+import { siteProfile, withSiteTitle } from "../lib/seo";
 
 type JsonLd = Record<string, unknown>;
 
@@ -23,10 +23,9 @@ const {
 
 const siteUrl = Astro.site ?? new URL(siteProfile.url);
 const path = canonical ?? Astro.url.pathname;
-const isHomepage = path === "/" || path === "";
-const pageTitle = withSiteTitle(title, { appendBrand: isHomepage });
+const pageTitle = withSiteTitle(title);
 const canonicalUrl = new URL(path, siteUrl).toString();
-const imageUrl = new URL(ogImage ?? (noindex ? siteProfile.ogImage : ogImageForPath(path)), siteUrl).toString();
+const imageUrl = new URL(ogImage ?? siteProfile.ogImage, siteUrl).toString();
 const schemas = (Array.isArray(jsonLd) ? jsonLd : [jsonLd]).filter(Boolean);
 const serializeJsonLd = (schema: JsonLd) =>
   JSON.stringify(schema).replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026");

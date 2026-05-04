@@ -16,7 +16,7 @@ export type SEOInput = {
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
 };
 
-export function withSiteTitle(title?: string, options: { appendBrand?: boolean } = {}) {
+export function withSiteTitle(title?: string, options: { appendBrand?: boolean } = { appendBrand: true }) {
   if (!title) return siteProfile.defaultTitle;
   if (title.includes(siteProfile.name)) return title;
   return options.appendBrand ? `${title} — ${siteProfile.name}` : title;
@@ -24,9 +24,4 @@ export function withSiteTitle(title?: string, options: { appendBrand?: boolean }
 
 export function absoluteUrl(path = "/") {
   return new URL(path, siteProfile.url).toString();
-}
-
-export function ogImageForPath(path = "/") {
-  const normalized = path === "/" || path === "" ? "home" : path.replace(/^\//, "").replace(/\/$/, "");
-  return `/og/${normalized}.svg`;
 }
