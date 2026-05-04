@@ -13,6 +13,7 @@ const pages = [
   { slug: "faq/what-is-pagewell-md", title: "What is PAGEWELL.md?", eyebrow: "FAQ" },
   { slug: "glossary/generative-engine-optimization", title: "Generative Engine Optimization", eyebrow: "Glossary" },
   { slug: "tools", title: "Free Pagewell tools", eyebrow: "Tools" },
+  { slug: "pricing", title: "Transparent repo-native pricing", eyebrow: "Pricing" },
   { slug: "tools/llms-txt-validator", title: "llms.txt Validator", eyebrow: "Free tool" },
   { slug: "tools/pagewell-context-validator", title: "PAGEWELL.md Validator", eyebrow: "Free tool" },
 ];
