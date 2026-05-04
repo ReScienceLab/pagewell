@@ -16,9 +16,10 @@ export type SEOInput = {
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
 };
 
-export function withSiteTitle(title?: string) {
+export function withSiteTitle(title?: string, options: { appendBrand?: boolean } = { appendBrand: true }) {
   if (!title) return siteProfile.defaultTitle;
-  return title.includes(siteProfile.name) ? title : `${title} — ${siteProfile.name}`;
+  if (title.includes(siteProfile.name)) return title;
+  return options.appendBrand ? `${title} — ${siteProfile.name}` : title;
 }
 
 export function absoluteUrl(path = "/") {

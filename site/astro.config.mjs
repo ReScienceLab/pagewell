@@ -8,7 +8,10 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      filter: (page) => !new URL(page).pathname.startsWith("/private/"),
+      filter: (page) => {
+        const pathname = new URL(page).pathname;
+        return !pathname.startsWith("/private/") && !pathname.startsWith("/og/");
+      },
     }),
   ],
 });

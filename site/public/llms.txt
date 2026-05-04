@@ -14,6 +14,7 @@ Pagewell is a framework-agnostic skill pack for coding agents that helps generat
 - https://pagewell.dev/faq/does-pagewell-work-with-nextjs
 - https://pagewell.dev/faq/what-is-pagewell-md
 - https://pagewell.dev/glossary/generative-engine-optimization
+- https://pagewell.dev/tools
 
 ## Public tools
 - https://pagewell.dev/tools/llms-txt-validator
