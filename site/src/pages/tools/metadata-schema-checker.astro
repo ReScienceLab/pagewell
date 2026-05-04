@@ -1,0 +1,388 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CodeWindow from "../../components/CodeWindow.astro";
+import CommandCopy from "../../components/CommandCopy.astro";
+import FAQ from "../../components/FAQ.astro";
+import { absoluteUrl } from "../../lib/seo";
+import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+
+const faqs = [
+  {
+    question: "What can I paste into the metadata and schema checker?",
+    answer:
+      "Paste rendered HTML source, a page head snippet, or JSON-LD. The checker works best with final HTML because it can inspect title, meta description, canonical, social tags, H1s, and schema together.",
+  },
+  {
+    question: "Does this validate live URLs?",
+    answer:
+      "No. The MVP is browser-only and uses pasted text so there is no fetch, crawl, API cost, or server-side processing.",
+  },
+  {
+    question: "Can this replace structured data testing tools?",
+    answer:
+      "No. It is a fast Pagewell-style preflight. Use official rich result or schema testing tools for final eligibility checks when needed.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "Metadata + Schema Checker",
+    description:
+      "Check pasted HTML for title, meta description, canonical, Open Graph, Twitter tags, H1 count, and JSON-LD parseability.",
+    url: absoluteUrl("/tools/metadata-schema-checker"),
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Any",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+  },
+  breadcrumbListSchema([
+    { name: "Home", item: "/" },
+    { name: "Tools", item: "/tools" },
+    { name: "Metadata + Schema Checker", item: "/tools/metadata-schema-checker" },
+  ]),
+  faqPageSchema(faqs),
+];
+
+const sample = `<title>Page Brief Generator - Free SEO Brief Tool — Pagewell</title>
+<meta name="description" content="Generate a Pagewell-ready page brief for SEO pages, landing pages, docs, comparisons, and free tools as code. No signup required." />
+<link rel="canonical" href="https://pagewell.dev/tools/page-brief-generator" />
+<meta property="og:title" content="Page Brief Generator - Free SEO Brief Tool — Pagewell" />
+<meta property="og:description" content="Generate a Pagewell-ready page brief for SEO pages, landing pages, docs, comparisons, and free tools as code. No signup required." />
+<meta property="og:image" content="https://pagewell.dev/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Page Brief Generator - Free SEO Brief Tool — Pagewell" />
+<meta name="twitter:description" content="Generate a Pagewell-ready page brief for SEO pages, landing pages, docs, comparisons, and free tools as code." />
+<h1>Page brief generator for pages as code.</h1>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Page Brief Generator",
+  "applicationCategory": "DeveloperApplication",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>`;
+---
+
+<BaseLayout
+  title="Metadata + Schema Checker - Free HTML SEO Check"
+  description="Paste HTML and check title, meta description, canonical, Open Graph, Twitter tags, H1 count, and JSON-LD parseability. No signup."
+  canonical="/tools/metadata-schema-checker"
+  jsonLd={jsonLd}
+>
+  <section class="section generated-hero">
+    <div class="container generated-hero__inner">
+      <p class="eyebrow">Free tool</p>
+      <h1 class="display-section">Metadata and schema checker for page code.</h1>
+      <p class="body generated-hero__lede">
+        Paste rendered HTML or a head snippet and get a browser-only check for titles, descriptions, canonicals, social tags, H1s, and JSON-LD before code review.
+      </p>
+    </div>
+  </section>
+
+  <section class="generated-band">
+    <div class="container tool-panel" data-metadata-tool>
+      <div class="tool-card">
+        <label for="metadata-input">HTML, head snippet, or JSON-LD</label>
+        <textarea id="metadata-input" spellcheck="false" data-metadata-input>{sample}</textarea>
+        <div class="tool-actions">
+          <button class="pill" type="button" data-check-metadata>Check metadata</button>
+          <button class="pill pill--ghost" type="button" data-reset-metadata>Reset sample</button>
+        </div>
+        <p class="tool-message" data-metadata-message>Runs locally in your browser.</p>
+      </div>
+      <div class="tool-card">
+        <label for="metadata-output">Metadata result</label>
+        <output id="metadata-output" class="tool-output" data-metadata-output>Click “Check metadata” to inspect the pasted HTML.</output>
+        <div class="tool-actions">
+          <button class="pill pill--ghost" type="button" data-copy-metadata>Copy checklist</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container generated-section__inner">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">How to use</p>
+        <h2 class="display-section">Preflight the tags an agent may forget.</h2>
+        <p class="body section-lede">
+          Pagewell QA checks generated pages before discovery updates. This utility turns the metadata and schema portion into a fast pasted-HTML preflight.
+        </p>
+      </div>
+      <div class="generated-card-grid">
+        <article class="card generated-card">
+          <p class="kicker">01</p>
+          <h3>Paste rendered HTML</h3>
+          <p>Use view-source output, a built page snippet, or the head and H1 area from a generated route.</p>
+        </article>
+        <article class="card generated-card">
+          <p class="kicker">02</p>
+          <h3>Check required tags</h3>
+          <p>Inspect title length, description length, canonical URL, social tags, H1 count, and robots hints.</p>
+        </article>
+        <article class="card generated-card">
+          <p class="kicker">03</p>
+          <h3>Parse JSON-LD</h3>
+          <p>Confirm schema blocks parse and that visible FAQ or free-tool facts justify the detected types.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container split">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">Example output</p>
+        <h2 class="display-section">Useful checks combine syntax and intent.</h2>
+        <p class="body section-lede">
+          The checker is intentionally practical: it flags missing tags, parse failures, questionable lengths, and schema that needs visible page support.
+        </p>
+      </div>
+      <CodeWindow
+        title="metadata result"
+        lines={[
+          "Score: 88/100",
+          "[pass] Title found: 58 characters.",
+          "[pass] Canonical URL is absolute.",
+          "[warn] Missing twitter:description.",
+          "[pass] JSON-LD block 1 parsed: WebApplication.",
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container generated-section__inner">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">Related tools</p>
+        <h2 class="display-section">Connect metadata checks to the full Pagewell workflow.</h2>
+      </div>
+      <div class="generated-card-grid generated-card-grid--related">
+        <a class="card generated-card generated-link-card" href="/tools/page-brief-generator">
+          <p class="kicker">Generator</p>
+          <h3>Page Brief Generator</h3>
+          <p>Create a route brief with schema guidance before asking an agent to generate code.</p>
+        </a>
+        <a class="card generated-card generated-link-card" href="/tools/ai-landing-page-qa-grader">
+          <p class="kicker">Analyzer</p>
+          <h3>AI Landing Page QA Grader</h3>
+          <p>Score generated copy for genericness, unsupported claims, FAQ coverage, and CTA clarity.</p>
+        </a>
+        <a class="card generated-card generated-link-card" href="/tools/llms-txt-validator">
+          <p class="kicker">Discovery</p>
+          <h3>llms.txt Validator</h3>
+          <p>Check the AI discovery file after durable public routes and tools are ready.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container generated-section__inner">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">Product CTA</p>
+        <h2 class="display-section">Want metadata generated and checked in source?</h2>
+        <p class="body section-lede">
+          Install Pagewell so your agent can use the target repo's layout, SEO head component, schema helpers, and discovery rules instead of checking a pasted snippet only.
+        </p>
+      </div>
+      <CommandCopy command="bunx skills add ReScienceLab/pagewell --skill pagewell" note="Then ask: Use Pagewell to generate this page and QA metadata, schema, canonical, and discovery files." />
+    </div>
+  </section>
+
+  <FAQ items={faqs} />
+</BaseLayout>
+
+<script is:inline>
+  const input = document.querySelector("[data-metadata-input]");
+  const output = document.querySelector("[data-metadata-output]");
+  const message = document.querySelector("[data-metadata-message]");
+  const check = document.querySelector("[data-check-metadata]");
+  const reset = document.querySelector("[data-reset-metadata]");
+  const copy = document.querySelector("[data-copy-metadata]");
+
+  function attr(tag, name) {
+    const match = tag.match(new RegExp(`${name}\\s*=\\s*(["'])(.*?)\\1`, "i"));
+    return match?.[2] || "";
+  }
+
+  function metaTags(text) {
+    return Array.from(text.matchAll(/<meta\s+[^>]*>/gi)).map((match) => match[0]);
+  }
+
+  function linkTags(text) {
+    return Array.from(text.matchAll(/<link\s+[^>]*>/gi)).map((match) => match[0]);
+  }
+
+  function findMeta(text, key, value) {
+    return metaTags(text).find((tag) => attr(tag, key).toLowerCase() === value.toLowerCase()) || "";
+  }
+
+  function metaContent(text, key, value) {
+    const tag = findMeta(text, key, value);
+    return tag ? attr(tag, "content") : "";
+  }
+
+  function visibleText(text) {
+    return text.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ");
+  }
+
+  function extractJsonLdBlocks(text) {
+    const blocks = [];
+    const scriptRegex = /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
+    let match;
+    while ((match = scriptRegex.exec(text))) {
+      blocks.push(match[1].trim());
+    }
+    const trimmed = text.trim();
+    if (!blocks.length && /^[\[{]/.test(trimmed)) blocks.push(trimmed);
+    return blocks;
+  }
+
+  function collectTypes(value, types = []) {
+    if (Array.isArray(value)) {
+      value.forEach((item) => collectTypes(item, types));
+    } else if (value && typeof value === "object") {
+      const type = value["@type"];
+      if (Array.isArray(type)) types.push(...type);
+      else if (type) types.push(type);
+      if (value["@graph"]) collectTypes(value["@graph"], types);
+      Object.keys(value).forEach((key) => {
+        if (key !== "@graph" && typeof value[key] === "object") collectTypes(value[key], types);
+      });
+    }
+    return [...new Set(types)];
+  }
+
+  function lengthStatus(label, value, min, max, passes, warnings, fails) {
+    if (!value) {
+      fails.push(`${label} is missing.`);
+      return;
+    }
+    if (value.length < min) warnings.push(`${label} is short at ${value.length} characters; consider ${min}-${max}.`);
+    else if (value.length > max) warnings.push(`${label} is long at ${value.length} characters; consider ${min}-${max}.`);
+    else passes.push(`${label} found: ${value.length} characters.`);
+  }
+
+  function analyze(text) {
+    const passes = [];
+    const warnings = [];
+    const fails = [];
+    const schemaNotes = [];
+    const title = text.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1]?.replace(/\s+/g, " ").trim() || "";
+    const description = metaContent(text, "name", "description");
+    const robots = metaContent(text, "name", "robots");
+    const canonicalTag = linkTags(text).find((tag) => attr(tag, "rel").toLowerCase() === "canonical") || "";
+    const canonical = canonicalTag ? attr(canonicalTag, "href") : "";
+    const h1Count = (text.match(/<h1[\s>]/gi) || []).length + (text.match(/^#\s+\S+/gm) || []).length;
+    const plain = visibleText(text).toLowerCase();
+
+    lengthStatus("Title", title, 20, 70, passes, warnings, fails);
+    lengthStatus("Meta description", description, 70, 170, passes, warnings, fails);
+
+    if (!canonical) fails.push("Canonical link is missing.");
+    else if (/^https?:\/\//i.test(canonical)) passes.push("Canonical URL is absolute.");
+    else warnings.push("Canonical exists but is relative; final rendered HTML should use an absolute canonical URL.");
+
+    if (h1Count === 1) passes.push("Exactly one H1 detected.");
+    else if (h1Count === 0) fails.push("No H1 detected in the pasted snippet.");
+    else fails.push(`Detected ${h1Count} possible H1s; keep one primary H1.`);
+
+    if (/noindex/i.test(robots)) warnings.push("Robots meta includes noindex; confirm this route should be excluded from search and discovery files.");
+    else passes.push("No noindex robots meta detected.");
+
+    const ogChecks = ["og:title", "og:description", "og:image"];
+    const missingOg = ogChecks.filter((name) => !metaContent(text, "property", name));
+    if (!missingOg.length) passes.push("Core Open Graph tags are present.");
+    else warnings.push(`Missing Open Graph tags: ${missingOg.join(", ")}.`);
+
+    const twitterChecks = ["twitter:card", "twitter:title", "twitter:description"];
+    const missingTwitter = twitterChecks.filter((name) => !metaContent(text, "name", name));
+    if (!missingTwitter.length) passes.push("Core Twitter tags are present.");
+    else warnings.push(`Missing Twitter tags: ${missingTwitter.join(", ")}.`);
+
+    const blocks = extractJsonLdBlocks(text);
+    if (!blocks.length) {
+      warnings.push("No JSON-LD block detected. Add supported schema when visible page facts justify it.");
+    } else {
+      blocks.forEach((block, index) => {
+        try {
+          const parsed = JSON.parse(block);
+          const types = collectTypes(parsed);
+          schemaNotes.push(`JSON-LD block ${index + 1} parsed: ${types.length ? types.join(", ") : "type not declared"}.`);
+          passes.push(`JSON-LD block ${index + 1} is parseable.`);
+          if (types.includes("FAQPage") && !/faq|frequently asked|question/.test(plain)) {
+            warnings.push("FAQPage schema detected but visible FAQ language was not obvious in the pasted snippet.");
+          }
+          if (types.includes("WebApplication") && !/"price"\s*:\s*"?0"?/i.test(block)) {
+            warnings.push("WebApplication schema detected without a free Offer price of 0; add it if this is a free tool.");
+          }
+        } catch (error) {
+          fails.push(`JSON-LD block ${index + 1} does not parse: ${error.message}`);
+        }
+      });
+    }
+
+    const score = Math.max(0, Math.min(100, 100 - fails.length * 18 - warnings.length * 6));
+    const status = score >= 85 ? "PASS" : score >= 70 ? "PASS WITH NOTES" : "NEEDS WORK";
+
+    return [
+      `Score: ${score}/100 (${status})`,
+      "",
+      "Passes",
+      ...(passes.length ? passes.map((item) => `[pass] ${item}`) : ["[pass] None yet."]),
+      "",
+      "Warnings",
+      ...(warnings.length ? warnings.map((item) => `[warn] ${item}`) : ["[warn] None."]),
+      "",
+      "Failures",
+      ...(fails.length ? fails.map((item) => `[fail] ${item}`) : ["[fail] None."]),
+      "",
+      "Schema notes",
+      ...(schemaNotes.length ? schemaNotes.map((item) => `- ${item}`) : ["- No schema types detected."]),
+      "",
+      "Pagewell fix checklist",
+      "- Verify title, description, canonical, and one H1 in the actual rendered route.",
+      "- Keep FAQPage schema synchronized with visible FAQ content.",
+      "- Use WebApplication schema with offers.price = 0 for durable free tools.",
+      "- Check every schema claim against PAGEWELL.md or visible page facts.",
+      "- Update sitemap, robots, and llms.txt only for durable indexable public routes.",
+    ].join("\n");
+  }
+
+  function setMessage(text) {
+    if (message) message.textContent = text;
+  }
+
+  check?.addEventListener("click", () => {
+    const text = input?.value || "";
+    if (!text.trim()) {
+      setMessage("Paste HTML or JSON-LD before checking.");
+      return;
+    }
+    if (output) output.textContent = analyze(text);
+    setMessage("Metadata and schema check complete.");
+  });
+
+  reset?.addEventListener("click", () => {
+    if (input) input.value = input.defaultValue;
+    if (output) output.textContent = "Click “Check metadata” to inspect the pasted HTML.";
+    setMessage("Sample restored.");
+  });
+
+  copy?.addEventListener("click", async () => {
+    const text = output?.textContent || "";
+    if (!text || text.startsWith("Click")) {
+      setMessage("Run the checker before copying.");
+      return;
+    }
+    await navigator.clipboard.writeText(text);
+    setMessage("Metadata checklist copied to clipboard.");
+  });
+</script>

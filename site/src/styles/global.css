@@ -900,8 +900,26 @@ svg {
 .tool-card label,
 .tool-card output,
 .tool-card textarea,
+.tool-card input,
+.tool-card select,
 .tool-card button {
   width: 100%;
+}
+
+.tool-form {
+  display: grid;
+  gap: 14px;
+}
+
+.tool-field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.tool-field {
+  display: grid;
+  gap: 8px;
 }
 
 .tool-card label {
@@ -912,8 +930,9 @@ svg {
 }
 
 .tool-card textarea,
+.tool-card input,
+.tool-card select,
 .tool-output {
-  min-height: 270px;
   padding: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-card);
@@ -922,6 +941,20 @@ svg {
   font-family: var(--font-mono);
   font-size: 12px;
   line-height: 1.7;
+}
+
+.tool-card input,
+.tool-card select {
+  min-height: 50px;
+}
+
+.tool-card textarea,
+.tool-output {
+  min-height: 270px;
+}
+
+.tool-form textarea {
+  min-height: 160px;
 }
 
 .tool-card textarea {
@@ -964,7 +997,8 @@ svg {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .tool-panel {
+  .tool-panel,
+  .tool-field-grid {
     grid-template-columns: 1fr;
   }
 }

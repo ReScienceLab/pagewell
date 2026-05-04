@@ -19,6 +19,9 @@ Pagewell is a framework-agnostic skill pack for coding agents that helps generat
 - https://pagewell.dev/pricing.md
 
 ## Public tools
+- https://pagewell.dev/tools/page-brief-generator
+- https://pagewell.dev/tools/ai-landing-page-qa-grader
+- https://pagewell.dev/tools/metadata-schema-checker
 - https://pagewell.dev/tools/llms-txt-validator
 - https://pagewell.dev/tools/pagewell-context-validator
 
