@@ -24,7 +24,7 @@ function escapeXml(value: string) {
   return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 }
 
-function wrapText(value: string, maxLineLength = 22) {
+function wrapText(value: string, maxLineLength = 20) {
   const words = value.split(/\s+/);
   const lines: string[] = [];
   let line = "";
@@ -41,27 +41,65 @@ function wrapText(value: string, maxLineLength = 22) {
   return lines.slice(0, 3);
 }
 
+function ditherField() {
+  const dots: string[] = [];
+  for (let row = 0; row < 17; row += 1) {
+    for (let col = 0; col < 23; col += 1) {
+      const cx = 730 + col * 20;
+      const cy = 92 + row * 20;
+      const wave = Math.sin((row * 0.9 + col * 0.6) * 0.9);
+      const falloff = Math.max(0, 1 - (row + col * 0.38) / 24);
+      const radius = Math.max(1.2, 5.2 * falloff + wave * 1.1);
+      const opacity = Math.max(0.05, Math.min(0.45, falloff * 0.46));
+      dots.push(`<circle cx="${cx}" cy="${cy}" r="${radius.toFixed(1)}" fill="#0099ff" fill-opacity="${opacity.toFixed(2)}"/>`);
+    }
+  }
+  return dots.join("\n  ");
+}
+
+function asciiTexture() {
+  const rows = [
+    "PAGEWELL.md  DESIGN.md  BRIEF.md",
+    "route:/pricing  schema:offer  qa:claims",
+    "adapter:astro  output:normal-code",
+    "llms.txt  sitemap  robots  og/svg",
+  ];
+  return rows
+    .map((row, index) => `<text x="86" y="${486 + index * 24}" class="ascii">${escapeXml(row)}</text>`)
+    .join("\n  ");
+}
+
 function svg({ title, eyebrow }: OgPage) {
   const lines = wrapText(title);
   const text = lines
-    .map((line, index) => `<text x="80" y="${330 + index * 92}" class="title">${escapeXml(line)}</text>`)
-    .join("");
+    .map((line, index) => `<text x="84" y="${252 + index * 84}" class="title">${escapeXml(line)}</text>`)
+    .join("\n  ");
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1200" height="630" fill="#000000"/>
-  <circle cx="1010" cy="116" r="260" fill="#0099ff" fill-opacity="0.16"/>
-  <circle cx="1045" cy="128" r="122" fill="#0099ff" fill-opacity="0.20"/>
-  <rect x="48" y="48" width="1104" height="534" rx="28" stroke="#1c2b36"/>
+  <rect x="40" y="40" width="1120" height="550" rx="20" fill="#030303" stroke="#1b1b1b"/>
+  <path d="M781 40H1160V419C1051 322 961 229 781 40Z" fill="#0099ff" fill-opacity="0.08"/>
+  ${ditherField()}
+  <path d="M77 87H225" stroke="#0099ff" stroke-width="2"/>
+  <path d="M77 87V207" stroke="#0099ff" stroke-width="2"/>
+  <path d="M1123 543H976" stroke="#0099ff" stroke-width="2"/>
+  <path d="M1123 543V424" stroke="#0099ff" stroke-width="2"/>
+  <rect x="72" y="451" width="620" height="104" rx="12" fill="#090909" stroke="#1c2b36"/>
   <style>
-    .brand{font: 500 34px Inter, system-ui, sans-serif; fill: #ffffff; letter-spacing: -0.03em;}
-    .eyebrow{font: 500 24px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0099ff; letter-spacing: 0.08em; text-transform: uppercase;}
-    .title{font: 650 78px Inter, system-ui, sans-serif; fill: #ffffff; letter-spacing: -0.055em;}
-    .caption{font: 400 26px Inter, system-ui, sans-serif; fill: #a6a6a6;}
+    .brand{font: 500 28px Inter, system-ui, sans-serif; fill: #ffffff; letter-spacing: -0.03em;}
+    .mark{font: 650 28px Geist, Inter, system-ui, sans-serif; fill: #000000;}
+    .eyebrow{font: 450 20px 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0099ff; letter-spacing: 0.08em; text-transform: uppercase;}
+    .title{font: 650 76px Geist, Inter, system-ui, sans-serif; fill: #ffffff; letter-spacing: -0.055em;}
+    .caption{font: 400 24px Inter, system-ui, sans-serif; fill: #a6a6a6;}
+    .ascii{font: 450 14px 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace; fill: #a6a6a6; letter-spacing: 0.01em;}
   </style>
-  <text x="80" y="120" class="brand">Pagewell</text>
-  <text x="80" y="218" class="eyebrow">${escapeXml(eyebrow)}</text>
+  <rect x="84" y="78" width="36" height="36" rx="8" fill="#ffffff"/>
+  <text x="94" y="104" class="mark">P</text>
+  <text x="136" y="104" class="brand">Pagewell</text>
+  <text x="84" y="166" class="eyebrow">${escapeXml(eyebrow)}</text>
   ${text}
-  <text x="80" y="535" class="caption">Repo-native SEO/GEO pages, tools, docs, and QA as code.</text>
+  ${asciiTexture()}
+  <text x="744" y="537" class="caption">Repo-native SEO/GEO pages, tools, docs, and QA as code.</text>
 </svg>`;
 }
 
