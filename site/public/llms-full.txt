@@ -10,6 +10,9 @@ Pagewell is a framework-agnostic skill pack for coding agents that helps generat
 - Category: repo-native page-generation skill pack for coding agents
 - Primary CTA: `bunx skills add ReScienceLab/pagewell --skill pagewell`
 - Pi CTA: `bunx skills add ReScienceLab/pagewell --skill pagewell -a pi`
+- Pricing page: https://pagewell.dev/pricing
+- Machine-readable pricing: https://pagewell.dev/pricing.md
+- Pricing status: no hosted Pagewell cloud plan, paid tier, seat price, usage quota, or SLA is listed on this website today.
 - Pagewell uses `PAGEWELL.md`, `DESIGN.md`, and a page brief as core generation context.
 - Pagewell outputs normal website code/content inside the user's existing repo.
 - Pagewell supports product, use-case, FAQ, glossary, alternative/comparison, docs, LP/campaign, private/ABM, free-tool, and tools-hub page types.
@@ -31,6 +34,14 @@ Pagewell is a framework-agnostic skill pack for coding agents that helps generat
 - https://pagewell.dev/tools
 - https://pagewell.dev/tools/llms-txt-validator
 - https://pagewell.dev/tools/pagewell-context-validator
+- https://pagewell.dev/pricing
+- https://pagewell.dev/pricing.md
+
+## Pricing and procurement facts
+
+- Pagewell works inside the user's existing website repo and deployment flow.
+- Pagewell does not include AI model usage, coding-agent subscriptions, repository hosting, CI, preview deployments, production hosting, analytics, or monitoring.
+- The source repository includes an MIT License; review the repository before adopting it.
 
 ## Claim rules
 
