@@ -23,7 +23,8 @@ const {
 
 const siteUrl = Astro.site ?? new URL(siteProfile.url);
 const path = canonical ?? Astro.url.pathname;
-const pageTitle = withSiteTitle(title);
+const isHome = path === "/";
+const pageTitle = withSiteTitle(title, { appendBrand: isHome });
 const canonicalUrl = new URL(path, siteUrl).toString();
 const imageUrl = new URL(ogImage ?? siteProfile.ogImage, siteUrl).toString();
 const schemas = (Array.isArray(jsonLd) ? jsonLd : [jsonLd]).filter(Boolean);

@@ -16,7 +16,7 @@ export type SEOInput = {
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
 };
 
-export function withSiteTitle(title?: string, options: { appendBrand?: boolean } = { appendBrand: true }) {
+export function withSiteTitle(title?: string, options: { appendBrand?: boolean } = { appendBrand: false }) {
   if (!title) return siteProfile.defaultTitle;
   if (title.includes(siteProfile.name)) return title;
   return options.appendBrand ? `${title} — ${siteProfile.name}` : title;
