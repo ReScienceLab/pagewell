@@ -1,0 +1,344 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CodeWindow from "../../components/CodeWindow.astro";
+import CommandCopy from "../../components/CommandCopy.astro";
+import FAQ from "../../components/FAQ.astro";
+import { absoluteUrl } from "../../lib/seo";
+import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+
+const faqs = [
+  {
+    question: "What does the AI landing page QA grader check?",
+    answer:
+      "It checks pasted page copy or HTML for a clear H1, CTA, FAQ, metadata hints, unsupported superlatives, generic SaaS phrases, proof signals, claim risk, and Pagewell-style QA gaps.",
+  },
+  {
+    question: "Is this a full SEO audit?",
+    answer:
+      "No. It is a fast browser-only first pass for generated page copy. Pagewell QA in a repo should still inspect metadata, schema, links, design consistency, claims, and discovery files against actual source files.",
+  },
+  {
+    question: "Does the grader upload my landing page copy?",
+    answer:
+      "No. The grader runs locally in your browser and does not submit pasted text or HTML to a server.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "AI Landing Page QA Grader",
+    description:
+      "Grade AI-generated landing page copy for genericness, unsupported claims, CTA clarity, metadata hints, and Pagewell-style QA gaps.",
+    url: absoluteUrl("/tools/ai-landing-page-qa-grader"),
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Any",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+  },
+  breadcrumbListSchema([
+    { name: "Home", item: "/" },
+    { name: "Tools", item: "/tools" },
+    { name: "AI Landing Page QA Grader", item: "/tools/ai-landing-page-qa-grader" },
+  ]),
+  faqPageSchema(faqs),
+];
+
+const sample = `# Generate SEO pages as code without losing control of the repo
+
+Pagewell helps coding agents create SEO/GEO pages, free tools, docs, comparison pages, and discovery updates as normal code inside an existing website repo.
+
+Developers and growth teams use PAGEWELL.md for product facts, DESIGN.md for visual rules, and a page brief for route-specific intent before generation starts.
+
+Use the workflow when you need metadata, schema, internal links, claim checks, and anti-generic QA before a page lands in code review.
+
+Install Pagewell:
+bunx skills add ReScienceLab/pagewell --skill pagewell
+
+## FAQ
+Can Pagewell publish pages automatically?
+No. Pagewell creates normal code/content in the user's repo and does not auto-publish production deployments.`;
+---
+
+<BaseLayout
+  title="AI Landing Page QA Grader - Free Page Check"
+  description="Grade AI-generated landing page copy for genericness, unsupported claims, CTA clarity, metadata hints, FAQ coverage, and Pagewell QA gaps."
+  canonical="/tools/ai-landing-page-qa-grader"
+  jsonLd={jsonLd}
+>
+  <section class="section generated-hero">
+    <div class="container generated-hero__inner">
+      <p class="eyebrow">Free tool</p>
+      <h1 class="display-section">AI landing page QA grader for generated pages.</h1>
+      <p class="body generated-hero__lede">
+        Paste page copy or HTML and get a browser-only score for genericness, claim risk, CTA clarity, metadata hints, and Pagewell-style quality gates.
+      </p>
+    </div>
+  </section>
+
+  <section class="generated-band">
+    <div class="container tool-panel" data-qa-tool>
+      <div class="tool-card">
+        <label for="qa-input">Landing page copy or HTML</label>
+        <textarea id="qa-input" spellcheck="false" data-qa-input>{sample}</textarea>
+        <div class="tool-actions">
+          <button class="pill" type="button" data-grade-page>Grade landing page</button>
+          <button class="pill pill--ghost" type="button" data-reset-qa>Reset sample</button>
+        </div>
+        <p class="tool-message" data-qa-message>Runs locally in your browser.</p>
+      </div>
+      <div class="tool-card">
+        <label for="qa-output">QA result</label>
+        <output id="qa-output" class="tool-output" data-qa-output>Click “Grade landing page” to score the pasted copy.</output>
+        <div class="tool-actions">
+          <button class="pill pill--ghost" type="button" data-copy-qa>Copy QA result</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container generated-section__inner">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">How to use</p>
+        <h2 class="display-section">Catch the patterns that make AI pages feel generic.</h2>
+        <p class="body section-lede">
+          This grader is intentionally opinionated around Pagewell QA: factual claims, concrete mechanics, metadata, schema hints, and conversion clarity matter more than fluent filler.
+        </p>
+      </div>
+      <div class="generated-card-grid">
+        <article class="card generated-card">
+          <p class="kicker">01</p>
+          <h3>Paste the generated draft</h3>
+          <p>Use rendered copy, markdown, or HTML from a generated page before it goes into review.</p>
+        </article>
+        <article class="card generated-card">
+          <p class="kicker">02</p>
+          <h3>Review fails and warnings</h3>
+          <p>Fix missing H1s, weak CTAs, unsupported superlatives, generic phrases, and thin proof.</p>
+        </article>
+        <article class="card generated-card">
+          <p class="kicker">03</p>
+          <h3>Run repo QA next</h3>
+          <p>Use Pagewell inside the repo to verify actual metadata, schema, links, claims, design, and discovery behavior.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container split">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">Example output</p>
+        <h2 class="display-section">The useful output is the fix list.</h2>
+        <p class="body section-lede">
+          A pass/fail score is not enough. The grader points to specific copy and QA issues the agent should resolve.
+        </p>
+      </div>
+      <CodeWindow
+        title="qa result"
+        lines={[
+          "Score: 82/100",
+          "[pass] Clear top-level H1 or markdown heading detected.",
+          "[warn] Add a visible FAQ section if the page includes FAQ schema.",
+          "[warn] Replace generic phrase: streamline your workflow.",
+          "[fail] Add a concrete primary CTA.",
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container generated-section__inner">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">Related tools</p>
+        <h2 class="display-section">Use the grader after brief generation and before metadata checks.</h2>
+      </div>
+      <div class="generated-card-grid generated-card-grid--related">
+        <a class="card generated-card generated-link-card" href="/tools/page-brief-generator">
+          <p class="kicker">Generator</p>
+          <h3>Page Brief Generator</h3>
+          <p>Create the route, intent, facts, CTA, and Pagewell prompt before asking an agent to generate a page.</p>
+        </a>
+        <a class="card generated-card generated-link-card" href="/tools/metadata-schema-checker">
+          <p class="kicker">Checker</p>
+          <h3>Metadata + Schema Checker</h3>
+          <p>Paste HTML and inspect metadata, canonical, social tags, H1 count, and JSON-LD parseability.</p>
+        </a>
+        <a class="card generated-card generated-link-card" href="/use-cases/generate-seo-pages-as-code">
+          <p class="kicker">Workflow</p>
+          <h3>Generate SEO pages as code</h3>
+          <p>See how Pagewell turns a brief into normal route code with QA and discovery updates.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container generated-section__inner">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">Product CTA</p>
+        <h2 class="display-section">Want the same QA inside the repo?</h2>
+        <p class="body section-lede">
+          Install Pagewell and ask your agent to run QA against actual source files, PAGEWELL.md product facts, DESIGN.md visual rules, and discovery behavior.
+        </p>
+      </div>
+      <CommandCopy command="bunx skills add ReScienceLab/pagewell --skill pagewell" note="Then ask: Use Pagewell to QA this generated page for metadata, schema, claims, design, and genericness." />
+    </div>
+  </section>
+
+  <FAQ items={faqs} />
+</BaseLayout>
+
+<script is:inline>
+  const input = document.querySelector("[data-qa-input]");
+  const output = document.querySelector("[data-qa-output]");
+  const message = document.querySelector("[data-qa-message]");
+  const grade = document.querySelector("[data-grade-page]");
+  const reset = document.querySelector("[data-reset-qa]");
+  const copy = document.querySelector("[data-copy-qa]");
+
+  const genericPhrases = [
+    "all-in-one",
+    "boost productivity",
+    "cutting-edge",
+    "game changer",
+    "industry-leading",
+    "powerful platform",
+    "revolutionize",
+    "save time and money",
+    "seamless experience",
+    "streamline your workflow",
+    "supercharge",
+    "transform your business",
+    "unlock your potential",
+  ];
+
+  function stripHtml(text) {
+    return text.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ");
+  }
+
+  function findGeneric(text) {
+    const lower = text.toLowerCase();
+    return genericPhrases.filter((phrase) => lower.includes(phrase));
+  }
+
+  function hasCta(text) {
+    return /\b(install|try|start|sign up|get started|book|download|copy|request|view github|contact|buy|subscribe)\b/i.test(text);
+  }
+
+  function analyze(text) {
+    const passes = [];
+    const warnings = [];
+    const fails = [];
+    const plain = stripHtml(text).replace(/\s+/g, " ").trim();
+    const genericMatches = findGeneric(plain);
+    const htmlMode = /<\w+[^>]*>/.test(text);
+
+    if (plain.length >= 500) passes.push("Enough copy exists for a meaningful first-pass QA review.");
+    else warnings.push("Draft is short; add enough context for the page intent, proof, objections, and CTA.");
+
+    if (/<h1[\s>]/i.test(text) || /^#\s+\S+/m.test(text)) passes.push("Clear top-level H1 or markdown heading detected.");
+    else fails.push("Add exactly one clear H1 that includes the route's primary intent or keyword.");
+
+    const h1Count = (text.match(/<h1[\s>]/gi) || []).length + (text.match(/^#\s+\S+/gm) || []).length;
+    if (h1Count > 1) warnings.push(`Detected ${h1Count} possible H1s; keep one primary H1 per indexable page.`);
+
+    if (hasCta(plain)) passes.push("Primary CTA language is present.");
+    else fails.push("Add a concrete primary CTA, not just informational copy.");
+
+    if (/faq|frequently asked|\bq:|question/i.test(text)) passes.push("FAQ-style content appears to be present.");
+    else warnings.push("Add visible FAQ content when the page targets search intent or uses FAQPage schema.");
+
+    if (/example|workflow|command|schema|metadata|code review|repo|source|because|proof|supported claim/i.test(plain)) {
+      passes.push("Concrete mechanics, proof, or implementation language detected.");
+    } else {
+      warnings.push("Add concrete mechanics, examples, commands, proof, or repo-specific implementation details.");
+    }
+
+    if (genericMatches.length > 0) {
+      warnings.push(`Replace generic phrases: ${genericMatches.join(", ")}.`);
+    } else {
+      passes.push("No common generic SaaS filler phrases detected.");
+    }
+
+    if (/\b(best|#1|guaranteed|unmatched|world[- ]class|market[- ]leading|industry[- ]leading)\b/i.test(plain)) {
+      fails.push("Remove or source superlatives such as best, #1, guaranteed, unmatched, or industry-leading.");
+    } else {
+      passes.push("No obvious unsupported superlatives detected.");
+    }
+
+    if (/\b\d+(%|x|k|m|\+)|\$\d+/i.test(plain) && !/source|according to|from|reported|benchmark|survey/i.test(plain)) {
+      warnings.push("Numeric claims appear without an obvious source note; verify them against product facts or cited evidence.");
+    }
+
+    if (htmlMode) {
+      if (/<title>[^<]{20,70}<\/title>/i.test(text)) passes.push("HTML includes a title in a reasonable length range.");
+      else warnings.push("If this is full HTML, add or tighten the title tag to roughly 20-70 characters.");
+
+      if (/<meta\s+name=["']description["'][^>]+content=["'][^"']{70,170}["']/i.test(text)) {
+        passes.push("HTML includes a meta description in a reasonable length range.");
+      } else {
+        warnings.push("If this is full HTML, add a meta description around 70-170 characters.");
+      }
+
+      if (/application\/ld\+json/i.test(text)) passes.push("JSON-LD script is present; validate it with the metadata checker next.");
+      else warnings.push("If this is final HTML, add supported JSON-LD where visible page facts justify it.");
+    } else {
+      warnings.push("Pasted content is copy/markdown, not full HTML; verify title, description, canonical, and schema in the repo.");
+    }
+
+    const score = Math.max(0, Math.min(100, 100 - fails.length * 16 - warnings.length * 6 - genericMatches.length * 2));
+    const status = score >= 85 ? "PASS" : score >= 70 ? "PASS WITH NOTES" : "NEEDS WORK";
+
+    return [
+      `Score: ${score}/100 (${status})`,
+      "",
+      "Passes",
+      ...(passes.length ? passes.map((item) => `[pass] ${item}`) : ["[pass] None yet."]),
+      "",
+      "Warnings",
+      ...(warnings.length ? warnings.map((item) => `[warn] ${item}`) : ["[warn] None." ]),
+      "",
+      "Critical fixes",
+      ...(fails.length ? fails.map((item) => `[fail] ${item}`) : ["[fail] None." ]),
+      "",
+      "Pagewell QA prompt",
+      "Use Pagewell to QA this page against PAGEWELL.md and DESIGN.md. Check one H1, metadata, canonical, JSON-LD validity, FAQ/schema consistency, unsupported claims, genericness, CTA clarity, internal links, crawlability, and discovery-file behavior.",
+    ].join("\n");
+  }
+
+  function setMessage(text) {
+    if (message) message.textContent = text;
+  }
+
+  grade?.addEventListener("click", () => {
+    const text = input?.value || "";
+    if (!text.trim()) {
+      setMessage("Paste page copy or HTML before grading.");
+      return;
+    }
+    if (output) output.textContent = analyze(text);
+    setMessage("Landing page QA complete.");
+  });
+
+  reset?.addEventListener("click", () => {
+    if (input) input.value = input.defaultValue;
+    if (output) output.textContent = "Click “Grade landing page” to score the pasted copy.";
+    setMessage("Sample restored.");
+  });
+
+  copy?.addEventListener("click", async () => {
+    const text = output?.textContent || "";
+    if (!text || text.startsWith("Click")) {
+      setMessage("Grade a page before copying.");
+      return;
+    }
+    await navigator.clipboard.writeText(text);
+    setMessage("QA result copied to clipboard.");
+  });
+</script>

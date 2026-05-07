@@ -37,7 +37,7 @@ const jsonLd = [
   h1="Generate free tools as code."
   lede="Pagewell helps coding agents turn a free-tool brief into a working route in your existing repo: input, output, example, CTA, FAQ, WebApplication schema, and QA included."
   primaryCta={{ label: "Install Pagewell", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
-  secondaryCta={{ label: "Try the context validator", href: "/tools/pagewell-context-validator" }}
+  secondaryCta={{ label: "Try the page brief generator", href: "/tools/page-brief-generator" }}
   highlights={[
     {
       kicker: "No signup wall",
@@ -118,9 +118,9 @@ const jsonLd = [
     },
   ]}
   related={[
-    { label: "PAGEWELL.md validator", href: "/tools/pagewell-context-validator", text: "Validate the context file before generating more routes." },
-    { label: "llms.txt validator", href: "/tools/llms-txt-validator", text: "Check an AI discovery file before shipping it." },
-    { label: "Install Pagewell", href: "/docs/install-pagewell", text: "Add Pagewell to your coding agent first." },
+    { label: "Page brief generator", href: "/tools/page-brief-generator", text: "Draft the route, input/output behavior, facts, CTA, and Pagewell prompt for a new tool." },
+    { label: "AI landing page QA grader", href: "/tools/ai-landing-page-qa-grader", text: "Check generated tool-page copy for genericness, unsupported claims, and CTA clarity." },
+    { label: "Metadata + schema checker", href: "/tools/metadata-schema-checker", text: "Preflight WebApplication schema, title, canonical, social tags, and H1 behavior." },
   ]}
   faqs={faqs}
   jsonLd={jsonLd}

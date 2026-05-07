@@ -7,6 +7,27 @@ import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
 
 const tools = [
   {
+    name: "Page Brief Generator",
+    href: "/tools/page-brief-generator",
+    category: "Page planning",
+    description:
+      "Generate a Pagewell-ready markdown brief with route, intent, keyword, audience, CTA, facts, schema guidance, and an agent prompt.",
+  },
+  {
+    name: "AI Landing Page QA Grader",
+    href: "/tools/ai-landing-page-qa-grader",
+    category: "Page QA",
+    description:
+      "Paste generated page copy or HTML and score genericness, unsupported claims, CTA clarity, FAQ coverage, and metadata hints.",
+  },
+  {
+    name: "Metadata + Schema Checker",
+    href: "/tools/metadata-schema-checker",
+    category: "Technical SEO",
+    description:
+      "Check pasted HTML for title, meta description, canonical, Open Graph, Twitter tags, H1 count, and JSON-LD parseability.",
+  },
+  {
     name: "llms.txt Validator",
     href: "/tools/llms-txt-validator",
     category: "AI discovery",
@@ -31,7 +52,7 @@ const faqs = [
   {
     question: "Do these tools replace the Pagewell workflow?",
     answer:
-      "No. They are quick checks for specific artifacts. Pagewell still uses PAGEWELL.md, DESIGN.md, page briefs, adapters, and QA playbooks before it changes repo files.",
+      "No. They are quick generators and checks for specific artifacts. Pagewell still uses PAGEWELL.md, DESIGN.md, page briefs, adapters, and QA playbooks before it changes repo files.",
   },
   {
     question: "Can Pagewell generate tools like these in another repo?",
@@ -45,7 +66,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Free Pagewell Tools",
-    description: "Free browser-based tools for Pagewell context, SEO/GEO artifacts, and AI discovery files.",
+    description: "Free browser-based tools for Pagewell page briefs, landing-page QA, metadata, schema, context, and AI discovery files.",
     url: absoluteUrl("/tools"),
     hasPart: tools.map((tool) => ({
       "@type": "WebApplication",
@@ -65,8 +86,8 @@ const jsonLd = [
 ---
 
 <BaseLayout
-  title="Free Pagewell Tools for AI Discovery and Agent Context"
-  description="Free browser-based Pagewell tools for validating llms.txt files, PAGEWELL.md context, and page-generation artifacts. No signup required."
+  title="Free Pagewell Tools for Pages as Code"
+  description="Free browser-based Pagewell tools for page briefs, AI landing page QA, metadata, schema, PAGEWELL.md context, and llms.txt. No signup required."
   canonical="/tools"
   jsonLd={jsonLd}
 >
@@ -75,7 +96,7 @@ const jsonLd = [
       <p class="eyebrow">Free tools</p>
       <h1 class="display-section">Free Pagewell tools for pages as code.</h1>
       <p class="body generated-hero__lede">
-        Validate the context and discovery files coding agents rely on before they generate SEO/GEO pages, free tools, docs, and comparison pages in your repo.
+        Generate briefs, grade AI landing pages, and validate the metadata, schema, context, and discovery files coding agents rely on before they edit your repo.
       </p>
     </div>
   </section>
@@ -86,7 +107,7 @@ const jsonLd = [
         <p class="eyebrow">Tool hub</p>
         <h2 class="display-section">Start with a working utility, not a signup wall.</h2>
         <p class="body section-lede">
-          Each tool returns a concrete browser-only result and points back to the Pagewell workflow when you want an agent to apply the same checks inside a repo.
+          Each tool returns a concrete browser-only result and points back to the Pagewell workflow when you want an agent to apply the same planning or QA step inside a repo.
         </p>
       </div>
       <div class="generated-card-grid">

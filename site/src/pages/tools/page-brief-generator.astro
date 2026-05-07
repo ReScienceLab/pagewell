@@ -1,0 +1,398 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CodeWindow from "../../components/CodeWindow.astro";
+import CommandCopy from "../../components/CommandCopy.astro";
+import FAQ from "../../components/FAQ.astro";
+import { absoluteUrl } from "../../lib/seo";
+import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+
+const faqs = [
+  {
+    question: "What does the page brief generator create?",
+    answer:
+      "It creates a copyable markdown brief with route, intent, audience, keyword, CTA, required sections, claim constraints, schema guidance, and a Pagewell-ready agent prompt.",
+  },
+  {
+    question: "Does this tool send my inputs to a server?",
+    answer:
+      "No. The generator runs in your browser with deterministic client-side logic. It does not upload your product, keyword, or claim notes.",
+  },
+  {
+    question: "Can Pagewell turn the generated brief into code?",
+    answer:
+      "Yes. Install Pagewell in a website repo, then ask your coding agent to use the copied brief with PAGEWELL.md and DESIGN.md before generating the route.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "Page Brief Generator",
+    description:
+      "Generate a Pagewell-ready page brief for SEO pages, free tools, docs, comparison pages, and landing pages as code.",
+    url: absoluteUrl("/tools/page-brief-generator"),
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Any",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+  },
+  breadcrumbListSchema([
+    { name: "Home", item: "/" },
+    { name: "Tools", item: "/tools" },
+    { name: "Page Brief Generator", item: "/tools/page-brief-generator" },
+  ]),
+  faqPageSchema(faqs),
+];
+
+const factsSample = `- Product outputs normal website code inside the existing repo
+- The site uses Astro file-based routes and BaseLayout metadata props
+- Primary CTA is the Pagewell install command
+- Do not claim guaranteed rankings or automatic publishing`;
+
+const constraintsSample = `Use PAGEWELL.md and DESIGN.md first.
+Keep the page indexable unless it is private or ABM.
+Include FAQ schema only when visible FAQ copy exists.`;
+---
+
+<BaseLayout
+  title="Page Brief Generator - Free SEO Brief Tool"
+  description="Generate a Pagewell-ready page brief for SEO pages, landing pages, docs, comparisons, and free tools as code. No signup required."
+  canonical="/tools/page-brief-generator"
+  jsonLd={jsonLd}
+>
+  <section class="section generated-hero">
+    <div class="container generated-hero__inner">
+      <p class="eyebrow">Free tool</p>
+      <h1 class="display-section">Page brief generator for pages as code.</h1>
+      <p class="body generated-hero__lede">
+        Turn a keyword, audience, product, and CTA into a copyable Pagewell-ready markdown brief your coding agent can use before it edits a repo.
+      </p>
+    </div>
+  </section>
+
+  <section class="generated-band">
+    <div class="container tool-panel tool-panel--wide" data-brief-tool>
+      <div class="tool-card">
+        <form class="tool-form" data-brief-form>
+          <div class="tool-field-grid">
+            <label class="tool-field" for="brief-page-type">
+              Page type
+              <select id="brief-page-type" data-brief-field="pageType">
+                <option value="use-case">Use case</option>
+                <option value="product">Product</option>
+                <option value="free-tool">Free tool</option>
+                <option value="docs">Docs/tutorial</option>
+                <option value="faq">FAQ</option>
+                <option value="glossary">Glossary</option>
+                <option value="alternative">Alternative/comparison</option>
+                <option value="lp">Landing page</option>
+                <option value="private">Private ABM</option>
+              </select>
+            </label>
+            <label class="tool-field" for="brief-keyword">
+              Keyword or query
+              <input id="brief-keyword" data-brief-field="keyword" type="text" value="generate SEO pages as code" />
+            </label>
+            <label class="tool-field" for="brief-audience">
+              Audience
+              <input id="brief-audience" data-brief-field="audience" type="text" value="developers and SEO teams using coding agents" />
+            </label>
+            <label class="tool-field" for="brief-product">
+              Product or offer
+              <input id="brief-product" data-brief-field="product" type="text" value="Pagewell" />
+            </label>
+            <label class="tool-field" for="brief-route">
+              Preferred route optional
+              <input id="brief-route" data-brief-field="route" type="text" placeholder="/use-cases/generate-seo-pages-as-code" />
+            </label>
+            <label class="tool-field" for="brief-cta">
+              Primary CTA
+              <input id="brief-cta" data-brief-field="cta" type="text" value="Install Pagewell" />
+            </label>
+          </div>
+          <label class="tool-field" for="brief-facts">
+            Product facts and supported claims
+            <textarea id="brief-facts" data-brief-field="facts" spellcheck="false">{factsSample}</textarea>
+          </label>
+          <label class="tool-field" for="brief-constraints">
+            Constraints and claims to avoid
+            <textarea id="brief-constraints" data-brief-field="constraints" spellcheck="false">{constraintsSample}</textarea>
+          </label>
+          <div class="tool-actions">
+            <button class="pill" type="submit">Generate page brief</button>
+            <button class="pill pill--ghost" type="button" data-reset-brief>Reset sample</button>
+          </div>
+          <p class="tool-message" data-brief-message>Runs locally in your browser. No signup and no upload.</p>
+        </form>
+      </div>
+      <div class="tool-card">
+        <label for="brief-output">Generated brief</label>
+        <output id="brief-output" class="tool-output" data-brief-output>Click “Generate page brief” to create a copyable markdown brief.</output>
+        <div class="tool-actions">
+          <button class="pill pill--ghost" type="button" data-copy-brief>Copy brief</button>
+          <button class="pill pill--ghost" type="button" data-download-brief>Download .md</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container generated-section__inner">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">How to use</p>
+        <h2 class="display-section">Start with the decision an agent needs before code changes.</h2>
+        <p class="body section-lede">
+          Pagewell works best when the route, intent, audience, facts, CTA, and claim boundaries are explicit before generation starts.
+        </p>
+      </div>
+      <div class="generated-card-grid">
+        <article class="card generated-card">
+          <p class="kicker">01</p>
+          <h3>Describe the page job</h3>
+          <p>Pick the page type and add the keyword or audience query the route should answer.</p>
+        </article>
+        <article class="card generated-card">
+          <p class="kicker">02</p>
+          <h3>Add facts and boundaries</h3>
+          <p>Paste supported claims, known repo conventions, and claims the agent must not invent.</p>
+        </article>
+        <article class="card generated-card">
+          <p class="kicker">03</p>
+          <h3>Copy into Pagewell</h3>
+          <p>Use the generated markdown as the brief after Pagewell reads PAGEWELL.md and DESIGN.md.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container split">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">Example output</p>
+        <h2 class="display-section">The brief becomes a reviewable contract.</h2>
+        <p class="body section-lede">
+          A good brief gives the agent enough structure to generate code without making up product facts, schema claims, or route intent.
+        </p>
+      </div>
+      <CodeWindow
+        title="page-brief.md"
+        lines={[
+          "# Page brief",
+          "Route: /use-cases/generate-seo-pages-as-code",
+          "Page type: use-case",
+          "Intent: explain a repo-native workflow",
+          "CTA: Install Pagewell",
+          "Required sections: hero, workflow, examples, FAQ, CTA",
+          "QA focus: metadata, schema, claims, genericness",
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container generated-section__inner">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">Related tools</p>
+        <h2 class="display-section">Move from brief to quality gates.</h2>
+      </div>
+      <div class="generated-card-grid generated-card-grid--related">
+        <a class="card generated-card generated-link-card" href="/tools/ai-landing-page-qa-grader">
+          <p class="kicker">Analyzer</p>
+          <h3>AI Landing Page QA Grader</h3>
+          <p>Score generated page copy for genericness, unsupported claims, CTA clarity, and Pagewell-style QA gaps.</p>
+        </a>
+        <a class="card generated-card generated-link-card" href="/tools/metadata-schema-checker">
+          <p class="kicker">Checker</p>
+          <h3>Metadata + Schema Checker</h3>
+          <p>Paste HTML and check title, description, canonical, Open Graph, Twitter, H1, and JSON-LD basics.</p>
+        </a>
+        <a class="card generated-card generated-link-card" href="/tools/pagewell-context-validator">
+          <p class="kicker">Validator</p>
+          <h3>PAGEWELL.md Validator</h3>
+          <p>Check whether the repo context has facts, route patterns, component patterns, and QA rules.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section generated-section">
+    <div class="container generated-section__inner">
+      <div class="section-heading section-heading--left">
+        <p class="eyebrow">Product CTA</p>
+        <h2 class="display-section">Want an agent to turn the brief into code?</h2>
+        <p class="body section-lede">
+          Install Pagewell in the target repo, then ask your coding agent to use the generated brief with the repo's PAGEWELL.md and DESIGN.md.
+        </p>
+      </div>
+      <CommandCopy command="bunx skills add ReScienceLab/pagewell --skill pagewell" note="Then ask: Use Pagewell to generate this route from the copied page brief." />
+    </div>
+  </section>
+
+  <FAQ items={faqs} />
+</BaseLayout>
+
+<script is:inline>
+  const form = document.querySelector("[data-brief-form]");
+  const output = document.querySelector("[data-brief-output]");
+  const message = document.querySelector("[data-brief-message]");
+  const copy = document.querySelector("[data-copy-brief]");
+  const download = document.querySelector("[data-download-brief]");
+  const reset = document.querySelector("[data-reset-brief]");
+
+  const pageTypeRules = {
+    product: {
+      label: "product",
+      prefix: "/products/",
+      intent: "explain the canonical product/entity and route qualified visitors to the primary CTA",
+      sections: ["hero", "product mechanics", "who it is for", "workflow", "proof or supported claims", "FAQ", "CTA"],
+      schema: "SoftwareApplication or Product schema only when supported by visible facts",
+    },
+    "use-case": {
+      label: "use-case",
+      prefix: "/use-cases/",
+      intent: "explain a specific job-to-be-done and connect it to the product workflow",
+      sections: ["hero", "problem context", "workflow", "examples", "QA or implementation notes", "related routes", "FAQ", "CTA"],
+      schema: "FAQPage plus BreadcrumbList when FAQ is visible",
+    },
+    "free-tool": {
+      label: "free-tool",
+      prefix: "/tools/",
+      intent: "provide first value with a working no-signup utility and route users to the product after the result",
+      sections: ["hero", "working tool interface", "how to use", "example input/output", "related tools", "FAQ", "product CTA"],
+      schema: "WebApplication with free Offer, FAQPage, and BreadcrumbList",
+    },
+    docs: {
+      label: "docs",
+      prefix: "/docs/",
+      intent: "help a developer complete a concrete setup or implementation task",
+      sections: ["hero", "prerequisites", "steps", "commands", "verification", "troubleshooting", "FAQ", "CTA"],
+      schema: "FAQPage and BreadcrumbList; HowTo only if every visible step is complete and factual",
+    },
+    faq: {
+      label: "faq",
+      prefix: "/faq/",
+      intent: "answer one exact support or search question directly",
+      sections: ["direct answer", "short explanation", "example", "related links", "CTA"],
+      schema: "FAQPage only when the visible page is a matching FAQ answer",
+    },
+    glossary: {
+      label: "glossary",
+      prefix: "/glossary/",
+      intent: "define one term and show how it applies to the product category",
+      sections: ["definition", "why it matters", "example", "related terms or routes", "FAQ", "CTA"],
+      schema: "DefinedTerm plus FAQPage when visible FAQ exists",
+    },
+    alternative: {
+      label: "alternative/comparison",
+      prefix: "/alternatives/",
+      intent: "compare options with supported facts and clear when-to-choose framing",
+      sections: ["hero", "short verdict", "comparison dimensions", "when to choose each", "claim notes", "FAQ", "CTA"],
+      schema: "FAQPage and BreadcrumbList; run claim-check before publishing",
+    },
+    lp: {
+      label: "landing page",
+      prefix: "/lp/",
+      intent: "convert a campaign or launch audience with a focused promise and CTA",
+      sections: ["hero", "offer", "proof or mechanism", "how it works", "objection handling", "FAQ", "CTA"],
+      schema: "FAQPage and BreadcrumbList when indexable; noindex if temporary campaign",
+    },
+    private: {
+      label: "private ABM",
+      prefix: "/private/",
+      intent: "support a specific account or outbound follow-up without public indexing",
+      sections: ["personalized context", "relevant workflow", "next step", "CTA"],
+      schema: "No public schema required; set noindex,nofollow and exclude from discovery files",
+    },
+  };
+
+  function field(name) {
+    return form?.querySelector(`[data-brief-field="${name}"]`);
+  }
+
+  function value(name) {
+    return field(name)?.value.trim() || "";
+  }
+
+  function slugify(text) {
+    return (text || "page")
+      .toLowerCase()
+      .replace(/&/g, " and ")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 70) || "page";
+  }
+
+  function bullets(text) {
+    return text
+      .split(/\n+/)
+      .map((line) => line.replace(/^[-*]\s*/, "").trim())
+      .filter(Boolean);
+  }
+
+  function formatList(items) {
+    return items.length ? items.map((item) => `- ${item}`).join("\n") : "- _Add specifics before generation._";
+  }
+
+  function generateBrief() {
+    const type = value("pageType") || "use-case";
+    const rules = pageTypeRules[type] || pageTypeRules["use-case"];
+    const keyword = value("keyword") || "untitled page";
+    const audience = value("audience") || "target audience";
+    const product = value("product") || "product";
+    const cta = value("cta") || "primary CTA";
+    const route = value("route") || `${rules.prefix}${slugify(keyword)}`;
+    const facts = bullets(value("facts"));
+    const constraints = bullets(value("constraints"));
+    const noindex = type === "private" ? "true" : "false";
+    const title = `${keyword.replace(/\s+/g, " ").trim()} - ${product}`;
+
+    return `# Page brief\n\nRoute: ${route}\nPage type: ${rules.label}\nTitle: ${title}\nPrimary keyword/query: ${keyword}\nAudience: ${audience}\nProduct/offer: ${product}\nIntent: ${rules.intent}\nPrimary CTA: ${cta}\nNoindex: ${noindex}\n\n## Required sections\n${formatList(rules.sections)}\n\n## Product facts and supported claims\n${formatList(facts)}\n\n## Constraints and claims to avoid\n${formatList(constraints)}\n\n## Schema recommendation\n- ${rules.schema}\n\n## Internal links to consider\n- /tools\n- /docs/install-pagewell\n- /docs/setup-pagewell\n- /use-cases/generate-seo-pages-as-code\n\n## QA focus\n- Unique title, description, canonical, and one H1\n- Supported claims only; no invented metrics, prices, customers, or guarantees\n- Specific product mechanics instead of generic SaaS copy\n- Visible FAQ must match FAQPage schema\n- Discovery files updated only for durable indexable routes\n\n## Pagewell prompt\nUse Pagewell to generate ${route} from this brief. Read PAGEWELL.md and DESIGN.md first, create a framework-neutral page spec, implement the route using the current site's conventions, run QA for metadata/schema/claims/genericness/design, and update discovery files if the page is indexable.`;
+  }
+
+  function setMessage(text) {
+    if (message) message.textContent = text;
+  }
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!output) return;
+    output.textContent = generateBrief();
+    setMessage("Generated a Pagewell-ready markdown brief.");
+  });
+
+  reset?.addEventListener("click", () => {
+    form?.reset();
+    if (output) output.textContent = "Click “Generate page brief” to create a copyable markdown brief.";
+    setMessage("Sample values restored.");
+  });
+
+  copy?.addEventListener("click", async () => {
+    const text = output?.textContent || "";
+    if (!text || text.startsWith("Click")) {
+      setMessage("Generate a brief before copying.");
+      return;
+    }
+    await navigator.clipboard.writeText(text);
+    setMessage("Brief copied to clipboard.");
+  });
+
+  download?.addEventListener("click", () => {
+    const text = output?.textContent || "";
+    if (!text || text.startsWith("Click")) {
+      setMessage("Generate a brief before downloading.");
+      return;
+    }
+    const blob = new Blob([text], { type: "text/markdown" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "page-brief.md";
+    link.click();
+    URL.revokeObjectURL(url);
+    setMessage("Downloaded page-brief.md.");
+  });
+</script>

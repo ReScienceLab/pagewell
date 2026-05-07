@@ -1,0 +1,104 @@
+---
+import GeneratedPage from "../../components/GeneratedPage.astro";
+import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+
+const faqs = [
+  {
+    question: "Is Pagewell a Webflow alternative?",
+    answer:
+      "Only for teams that want repo-native agent workflows. Webflow is a hosted visual page builder; Pagewell is a skill pack that generates code inside an existing website repo.",
+  },
+  {
+    question: "When should I choose a hosted builder like Webflow?",
+    answer:
+      "A hosted visual builder fits when designers and marketers need a no-code surface for layout, animations, hosting, and CMS publishing without touching a codebase.",
+  },
+  {
+    question: "When should I choose Pagewell?",
+    answer:
+      "Choose Pagewell when your site already lives in code and you want agents to create routes, components, metadata, schema, and discovery updates as reviewable repo changes.",
+  },
+];
+
+const jsonLd = [
+  breadcrumbListSchema([
+    { name: "Home", item: "/" },
+    { name: "Alternatives", item: "/alternatives/webflow" },
+  ]),
+  faqPageSchema(faqs),
+];
+---
+
+<GeneratedPage
+  title="Pagewell vs Webflow - Repo-Native vs Hosted Page Builder"
+  description="Compare Pagewell and Webflow for marketing page generation: repo-native agent skills versus a hosted visual page builder."
+  canonical="/alternatives/webflow"
+  eyebrow="Comparison dry run"
+  h1="Pagewell vs Webflow: repo-native skills or a hosted visual builder?"
+  lede="Both approaches help teams ship more targeted pages. The difference is where the page system lives: Pagewell works inside your repo, while Webflow provides a hosted visual builder for marketing teams."
+  primaryCta={{ label: "Install Pagewell", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
+  secondaryCta={{ label: "Read setup doc", href: "/docs/setup-pagewell" }}
+  highlights={[
+    {
+      kicker: "Pagewell",
+      title: "Repo-native skill pack",
+      text: "Best fit when agents should edit the existing codebase and produce routes, content, components, metadata, schema, QA notes, and discovery updates.",
+    },
+    {
+      kicker: "Webflow",
+      title: "Hosted visual page builder",
+      text: "Best fit when designers and marketers need a no-code surface for layout, animations, CMS collections, hosting, and publishing.",
+    },
+    {
+      kicker: "Decision",
+      title: "Choose by ownership model",
+      text: "The practical question is whether your source of truth should remain in the repo or move into a managed page builder.",
+    },
+  ]}
+  sections={[
+    {
+      eyebrow: "Decision summary",
+      heading: "Start with where your website changes should live.",
+      body:
+        "If marketing pages must be normal code reviewed through your existing repo, Pagewell is the more natural architecture. If the team wants a hosted product surface that handles design, CMS, hosting, and publishing together, Webflow may fit better.",
+    },
+    {
+      eyebrow: "Comparison table",
+      heading: "Different systems for different operating models.",
+      rows: [
+        ["Dimension", "Pagewell", "Webflow"],
+        ["System of record", "Existing website repo", "Hosted Webflow platform"],
+        ["Primary user", "Coding agents with developer review", "Designers and marketers using a visual UI"],
+        ["Design source", "DESIGN.md plus existing site components", "Visual canvas and design system"],
+        ["Output", "Normal code/content changes", "Pages managed and hosted through Webflow"],
+        ["Best-fit motion", "SEO/GEO pages, docs, free tools, and repo-native page clusters", "Visual landing pages, CMS-driven content, and design-heavy campaigns"],
+      ]
+    },
+    {
+      eyebrow: "Choose Pagewell when",
+      heading: "The repo needs to stay the source of truth.",
+      bullets: [
+        "Your team wants to review page changes as diffs before merge.",
+        "Generated pages must reuse existing layouts, components, static generation, and deployment conventions.",
+        "You want explicit claim checks, anti-generic QA, and discovery updates documented in the same repo.",
+        "Free tools or docs need to live beside the product website code rather than in a hosted page builder.",
+      ],
+    },
+    {
+      eyebrow: "Choose Webflow when",
+      heading: "The marketing team needs a visual builder and CMS.",
+      bullets: [
+        "Designers and marketers need a no-code canvas for layout, animations, and responsive design.",
+        "CMS collections, hosting, publishing, and form handling are the main requirements.",
+        "Campaign pages need a managed product surface rather than repo-based code review.",
+      ],
+    },
+  ]}
+  related={[
+    { label: "Pagewell product page", href: "/products/pagewell", text: "Learn what Pagewell does and does not do." },
+    { label: "Generate SEO pages as code", href: "/use-cases/generate-seo-pages-as-code", text: "See the repo-native use case in detail." },
+    { label: "llms.txt validator", href: "/tools/llms-txt-validator", text: "Try the free tool generated in this dry run." },
+  ]}
+  faqs={faqs}
+  jsonLd={jsonLd}
+/>
