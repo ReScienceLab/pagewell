@@ -37,6 +37,16 @@ sections:
       - "Check the generated route, metadata, schema, and internal links before merge."
       - "Confirm claims against source-of-truth files before publishing."
       - "Keep pricing, product, and support details current in your own site context."
+related:
+  - label: "What is Pagewell?"
+    href: "/products/pagewell"
+    text: "Understand the repo-native page-generation workflow."
+  - label: "Set up Pagewell"
+    href: "/docs/setup-pagewell"
+    text: "Prepare PAGEWELL.md, DESIGN.md, and page briefs."
+  - label: "Pagewell tools"
+    href: "/tools"
+    text: "Use free validators for llms.txt and Pagewell context files."
 faqs:
   - question: "Is Pagewell free to use?"
     answer: "The Pagewell repository includes an MIT License and this website does not list any paid Pagewell plan today. Review the GitHub repository and license before adopting it in a production workflow."
