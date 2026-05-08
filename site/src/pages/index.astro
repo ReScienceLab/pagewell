@@ -1,5 +1,5 @@
 ---
-import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import ArtifactTable from "../components/ArtifactTable.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CodeWindow from "../components/CodeWindow.astro";
@@ -11,7 +11,10 @@ import PageTypeGrid from "../components/PageTypeGrid.astro";
 import Pipeline from "../components/Pipeline.astro";
 import { faqPageSchema, organizationSchema, softwareApplicationSchema, websiteSchema } from "../lib/schema";
 
-const { data } = (await getEntry("home", "index"))!;
+const entries = await getCollection("home");
+const page = entries.find((e) => e.id === "index");
+if (!page) throw new Error("index entry not found");
+const { data } = page;
 
 const jsonLd = [websiteSchema(), organizationSchema(), softwareApplicationSchema(), faqPageSchema(data.faqItems)];
 ---

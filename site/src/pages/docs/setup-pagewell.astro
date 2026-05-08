@@ -1,9 +1,12 @@
 ---
-import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import GeneratedPage from "../../components/GeneratedPage.astro";
 import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
 
-const { data } = (await getEntry("docs", "setup-pagewell"))!;
+const entries = await getCollection("docs");
+const page = entries.find((e) => e.id === "setup-pagewell");
+if (!page) throw new Error("setup-pagewell entry not found");
+const { data } = page;
 
 const jsonLd = [
   breadcrumbListSchema([
