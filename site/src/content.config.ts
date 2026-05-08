@@ -142,6 +142,43 @@ const faq = defineCollection({
   schema: generatedPageSchema,
 });
 
+const toolPages = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/tool-pages" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    canonical: z.string(),
+    heroEyebrow: z.string(),
+    heroH1: z.string(),
+    heroLede: z.string(),
+    heroProof: z.array(z.string()),
+    primaryCtaLabel: z.string(),
+    primaryCtaHref: z.string(),
+    sections: z.array(z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      lede: z.string().optional(),
+      cards: z.array(cardSchema).optional(),
+      codeTitle: z.string().optional(),
+      codeLines: z.array(z.string()).optional(),
+    })),
+    relatedTools: z.array(z.object({
+      label: z.string(),
+      href: z.string(),
+      text: z.string(),
+      kicker: z.string(),
+    })).optional(),
+    finalCta: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      lede: z.string(),
+      command: z.string().optional(),
+      note: z.string().optional(),
+    }).optional(),
+    faqs: z.array(faqItemSchema).optional(),
+  }),
+});
+
 const tools = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/tools" }),
   schema: z.object({
@@ -175,4 +212,5 @@ export const collections = {
   glossary,
   faq,
   tools,
+  "tool-pages": toolPages,
 };
