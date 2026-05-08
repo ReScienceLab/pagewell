@@ -1,0 +1,205 @@
+---
+import { getEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CodeWindow from "../../components/CodeWindow.astro";
+import CommandCopy from "../../components/CommandCopy.astro";
+import FAQ from "../../components/FAQ.astro";
+import { absoluteUrl } from "../../lib/seo";
+import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+
+const page = await getEntry("tool-pages", "internal-link-map-generator");
+const { data } = page!;
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "Internal Link Map Generator",
+    description: data.description,
+    url: absoluteUrl(data.canonical),
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Any",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  },
+  breadcrumbListSchema([
+    { name: "Home", item: "/" },
+    { name: "Tools", item: "/tools" },
+    { name: "Internal Link Map Generator", item: data.canonical },
+  ]),
+  faqPageSchema(data.faqs ?? []),
+];
+---
+
+<BaseLayout title={data.title} description={data.description} canonical={data.canonical} jsonLd={jsonLd}>
+  <section class="section generated-hero">
+    <div class="container generated-hero__inner">
+      <p class="eyebrow">{data.heroEyebrow}</p>
+      <h1 class="display-section">{data.heroH1}</h1>
+      <p class="body generated-hero__lede">{data.heroLede}</p>
+      <div class="generated-actions">
+        <a class="pill" href={data.primaryCtaHref}>{data.primaryCtaLabel}</a>
+        <a class="pill pill--ghost" href="/tools">View all tools</a>
+      </div>
+      <ul class="tool-proof-list" aria-label="Tool privacy and access">
+        {data.heroProof.map((p) => <li>{p}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="generated-band" id="tool">
+    <div class="container tool-panel tool-panel--wide" data-link-tool>
+      <div class="tool-card">
+        <label class="tool-field" for="link-routes">
+          Routes (one per line)
+          <textarea id="link-routes" spellcheck="false" data-link-routes placeholder="/products/pagewell&#10;/use-cases/generate-seo-pages&#10;/tools/page-brief-generator"></textarea>
+        </label>
+        <label class="tool-field" for="link-keywords" style="margin-top:1rem;">
+          Target keywords (one per line, matching routes)
+          <textarea id="link-keywords" spellcheck="false" data-link-keywords placeholder="repo-native page generation&#10;generate SEO pages as code&#10;page brief generator"></textarea>
+        </label>
+        <div class="tool-actions">
+          <button class="pill" type="button" data-generate-links>Generate link map</button>
+          <button class="pill pill--ghost" type="button" data-reset-links>Reset</button>
+        </div>
+        <p class="tool-message" data-link-message>Runs locally in your browser. No signup and no upload.</p>
+      </div>
+      <div class="tool-card">
+        <label for="link-output">Link map</label>
+        <output id="link-output" class="tool-output" data-link-output>Enter routes and keywords, then click “Generate link map.”</output>
+        <div class="tool-actions">
+          <button class="pill pill--ghost" type="button" data-copy-links>Copy link map</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {data.sections.map((section) => (
+    <section class="section generated-section">
+      <div class="container generated-section__inner">
+        <div class="section-heading section-heading--left">
+          <p class="eyebrow">{section.eyebrow}</p>
+          <h2 class="display-section">{section.heading}</h2>
+          {section.lede && <p class="body section-lede">{section.lede}</p>}
+        </div>
+        {section.cards && (
+          <div class="generated-card-grid">
+            {section.cards.map((card) => (
+              <article class="card generated-card">
+                {card.kicker && <p class="kicker">{card.kicker}</p>}
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+              </article>
+            ))}
+          </div>
+        )}
+        {section.codeLines && <CodeWindow title={section.codeTitle ?? "example"} lines={section.codeLines} />}
+      </div>
+    </section>
+  ))}
+
+  {data.relatedTools && (
+    <section class="section generated-section">
+      <div class="container generated-section__inner">
+        <div class="section-heading section-heading--left">
+          <p class="eyebrow">Related tools</p>
+          <h2 class="display-section">Plan links before you build the pages.</h2>
+        </div>
+        <div class="generated-card-grid generated-card-grid--related">
+          {data.relatedTools.map((t) => (
+            <a class="card generated-card generated-link-card" href={t.href}>
+              <p class="kicker">{t.kicker}</p>
+              <h3>{t.label}</h3>
+              <p>{t.text}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {data.finalCta && (
+    <section class="section generated-section">
+      <div class="container generated-section__inner">
+        <div class="section-heading section-heading--left">
+          <p class="eyebrow">{data.finalCta.eyebrow}</p>
+          <h2 class="display-section">{data.finalCta.heading}</h2>
+          <p class="body section-lede">{data.finalCta.lede}</p>
+        </div>
+        <CommandCopy command={data.finalCta.command} note={data.finalCta.note} />
+      </div>
+    </section>
+  )}
+
+  <FAQ items={data.faqs ?? []} />
+</BaseLayout>
+
+<script is:inline>
+  function generate() {
+    const routesInput = document.querySelector("[data-link-routes]");
+    const keywordsInput = document.querySelector("[data-link-keywords]");
+    const output = document.querySelector("[data-link-output]");
+    const message = document.querySelector("[data-link-message]");
+
+    const routes = (routesInput?.value || "").split("\n").map(s => s.trim()).filter(Boolean);
+    const keywords = (keywordsInput?.value || "").split("\n").map(s => s.trim()).filter(Boolean);
+
+    if (routes.length === 0) {
+      message.textContent = "Add at least one route.";
+      return;
+    }
+
+    const links = [];
+    for (let i = 0; i < routes.length; i++) {
+      for (let j = 0; j < routes.length; j++) {
+        if (i === j) continue;
+        const a = keywords[i] || routes[i];
+        const b = keywords[j] || routes[j];
+        const wordsA = a.toLowerCase().split(/\s+/);
+        const wordsB = b.toLowerCase().split(/\s+/);
+        const overlap = wordsA.filter(w => wordsB.includes(w) && w.length > 3);
+        if (overlap.length > 0) {
+          links.push({ from: routes[i], to: routes[j], anchor: keywords[j] || routes[j], reason: `Keyword overlap: ${overlap.join(", ")}` });
+        }
+      }
+    }
+
+    const deduped = [];
+    const seen = new Set();
+    for (const link of links) {
+      const key = `${link.from}|${link.to}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        deduped.push(link);
+      }
+    }
+
+    const lines = ["## Suggested Internal Link Map", "", "| From | To | Anchor text | Reason |", "|---|---|---|---|"];
+    if (deduped.length === 0) {
+      lines.push("| — | — | — | No keyword overlap detected. Add more specific keywords. |");
+    } else {
+      for (const link of deduped.slice(0, 30)) {
+        lines.push(`| ${link.from} | ${link.to} | ${link.anchor} | ${link.reason} |`);
+      }
+    }
+    lines.push("", "## Implementation notes", "- Review each suggestion for relevance before adding.", "- Prioritize links that help the reader, not just SEO.", "- Update discovery files (sitemap, llms.txt) when new routes ship.");
+
+    output.textContent = lines.join("\n");
+    message.textContent = `Generated ${deduped.length} link suggestion${deduped.length === 1 ? "" : "s"}.`;
+  }
+
+  document.querySelector("[data-generate-links]")?.addEventListener("click", generate);
+
+  document.querySelector("[data-reset-links]")?.addEventListener("click", () => {
+    document.querySelector("[data-link-routes]").value = "";
+    document.querySelector("[data-link-keywords]").value = "";
+    document.querySelector("[data-link-output]").textContent = "Enter routes and keywords, then click “Generate link map.”";
+    document.querySelector("[data-link-message]").textContent = "Runs locally in your browser. No signup and no upload.";
+  });
+
+  document.querySelector("[data-copy-links]")?.addEventListener("click", async () => {
+    const text = document.querySelector("[data-link-output]")?.textContent || "";
+    if (!text || text.startsWith("Enter")) return;
+    await navigator.clipboard.writeText(text);
+    document.querySelector("[data-link-message]").textContent = "Link map copied.";
+  });
+</script>
