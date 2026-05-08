@@ -77,10 +77,19 @@ No. Pagewell creates normal code/content in the user's repo and does not auto-pu
       <p class="body generated-hero__lede">
         Paste page copy or HTML and get a browser-only score for genericness, claim risk, CTA clarity, metadata hints, and Pagewell-style quality gates.
       </p>
+      <div class="generated-actions">
+        <a class="pill" href="#tool">Start grading</a>
+        <a class="pill pill--ghost" href="/tools">View all tools</a>
+      </div>
+      <ul class="tool-proof-list" aria-label="Tool privacy and access">
+        <li>No signup</li>
+        <li>Runs in browser</li>
+        <li>No upload</li>
+      </ul>
     </div>
   </section>
 
-  <section class="generated-band">
+  <section class="generated-band" id="tool">
     <div class="container tool-panel" data-qa-tool>
       <div class="tool-card">
         <label for="qa-input">Landing page copy or HTML</label>
@@ -89,7 +98,7 @@ No. Pagewell creates normal code/content in the user's repo and does not auto-pu
           <button class="pill" type="button" data-grade-page>Grade landing page</button>
           <button class="pill pill--ghost" type="button" data-reset-qa>Reset sample</button>
         </div>
-        <p class="tool-message" data-qa-message>Runs locally in your browser.</p>
+        <p class="tool-message" data-qa-message>Runs locally in your browser. No signup and no upload.</p>
       </div>
       <div class="tool-card">
         <label for="qa-output">QA result</label>
@@ -181,7 +190,7 @@ No. Pagewell creates normal code/content in the user's repo and does not auto-pu
   <section class="section generated-section">
     <div class="container generated-section__inner">
       <div class="section-heading section-heading--left">
-        <p class="eyebrow">Product CTA</p>
+        <p class="eyebrow">Catch generic copy before merge</p>
         <h2 class="display-section">Want the same QA inside the repo?</h2>
         <p class="body section-lede">
           Install Pagewell and ask your agent to run QA against actual source files, PAGEWELL.md product facts, DESIGN.md visual rules, and discovery behavior.
