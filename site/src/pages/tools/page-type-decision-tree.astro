@@ -1,0 +1,282 @@
+---
+import { getEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CodeWindow from "../../components/CodeWindow.astro";
+import CommandCopy from "../../components/CommandCopy.astro";
+import FAQ from "../../components/FAQ.astro";
+import { absoluteUrl } from "../../lib/seo";
+import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+
+const page = await getEntry("tool-pages", "page-type-decision-tree");
+const { data } = page!;
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "Page Type Decision Tree",
+    description: data.description,
+    url: absoluteUrl(data.canonical),
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Any",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  },
+  breadcrumbListSchema([
+    { name: "Home", item: "/" },
+    { name: "Tools", item: "/tools" },
+    { name: "Page Type Decision Tree", item: data.canonical },
+  ]),
+  faqPageSchema(data.faqs ?? []),
+];
+---
+
+<BaseLayout title={data.title} description={data.description} canonical={data.canonical} jsonLd={jsonLd}>
+  <section class="section generated-hero">
+    <div class="container generated-hero__inner">
+      <p class="eyebrow">{data.heroEyebrow}</p>
+      <h1 class="display-section">{data.heroH1}</h1>
+      <p class="body generated-hero__lede">{data.heroLede}</p>
+      <div class="generated-actions">
+        <a class="pill" href={data.primaryCtaHref}>{data.primaryCtaLabel}</a>
+        <a class="pill pill--ghost" href="/tools">View all tools</a>
+      </div>
+      <ul class="tool-proof-list" aria-label="Tool privacy and access">
+        {data.heroProof.map((p) => <li>{p}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="generated-band" id="tool">
+    <div class="container tool-panel tool-panel--wide" data-decision-tool>
+      <div class="tool-card">
+        <form class="tool-form" data-decision-form>
+          <label class="tool-field" for="dec-goal">
+            Primary goal
+            <select id="dec-goal" data-decision-field="goal">
+              <option value="seo">Rank for a search query</option>
+              <option value="convert">Convert visitors to signups</option>
+              <option value="educate">Teach a concept or workflow</option>
+              <option value="compare">Compare options</option>
+              <option value="utility">Provide a working tool</option>
+              <option value="outbound">Support a sales conversation</option>
+            </select>
+          </label>
+          <label class="tool-field" for="dec-audience">
+            Audience intent
+            <select id="dec-audience" data-decision-field="audience">
+              <option value="search">They are searching for an answer</option>
+              <option value="browse">They are evaluating solutions</option>
+              <option value="buy">They are ready to decide</option>
+              <option value="learn">They want to understand how something works</option>
+            </select>
+          </label>
+          <label class="tool-field" for="dec-repeatable">
+            Is the job repeatable?
+            <select id="dec-repeatable" data-decision-field="repeatable">
+              <option value="no">One-time decision or read</option>
+              <option value="yes">Reusable input/output task</option>
+            </select>
+          </label>
+          <label class="tool-field" for="dec-lifecycle">
+            Where in the buyer journey?
+            <select id="dec-lifecycle" data-decision-field="lifecycle">
+              <option value="awareness">Awareness — they don't know the solution exists</option>
+              <option value="consideration">Consideration — comparing approaches</option>
+              <option value="decision">Decision — choosing a specific tool</option>
+            </select>
+          </label>
+          <label class="tool-field" for="dec-timeline">
+            Timeline
+            <select id="dec-timeline" data-decision-field="timeline">
+              <option value="fast">Ship this week</option>
+              <option value="medium">Ship this month</option>
+              <option value="strategic">Part of a long-term cluster</option>
+            </select>
+          </label>
+          <div class="tool-actions">
+            <button class="pill" type="submit">Get recommendation</button>
+            <button class="pill pill--ghost" type="button" data-reset-decision>Reset</button>
+          </div>
+          <p class="tool-message" data-decision-message>Runs locally in your browser. No signup and no upload.</p>
+        </form>
+      </div>
+      <div class="tool-card">
+        <label for="decision-output">Recommendation</label>
+        <output id="decision-output" class="tool-output" data-decision-output>Answer the questions and click “Get recommendation” to see your page type.</output>
+        <div class="tool-actions">
+          <button class="pill pill--ghost" type="button" data-copy-decision>Copy recommendation</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {data.sections.map((section) => (
+    <section class="section generated-section">
+      <div class="container generated-section__inner">
+        <div class="section-heading section-heading--left">
+          <p class="eyebrow">{section.eyebrow}</p>
+          <h2 class="display-section">{section.heading}</h2>
+          {section.lede && <p class="body section-lede">{section.lede}</p>}
+        </div>
+        {section.cards && (
+          <div class="generated-card-grid">
+            {section.cards.map((card) => (
+              <article class="card generated-card">
+                {card.kicker && <p class="kicker">{card.kicker}</p>}
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+              </article>
+            ))}
+          </div>
+        )}
+        {section.codeLines && <CodeWindow title={section.codeTitle ?? "example"} lines={section.codeLines} />}
+      </div>
+    </section>
+  ))}
+
+  {data.relatedTools && (
+    <section class="section generated-section">
+      <div class="container generated-section__inner">
+        <div class="section-heading section-heading--left">
+          <p class="eyebrow">Related tools</p>
+          <h2 class="display-section">From decision to code — in one workflow.</h2>
+        </div>
+        <div class="generated-card-grid generated-card-grid--related">
+          {data.relatedTools.map((t) => (
+            <a class="card generated-card generated-link-card" href={t.href}>
+              <p class="kicker">{t.kicker}</p>
+              <h3>{t.label}</h3>
+              <p>{t.text}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {data.finalCta && (
+    <section class="section generated-section">
+      <div class="container generated-section__inner">
+        <div class="section-heading section-heading--left">
+          <p class="eyebrow">{data.finalCta.eyebrow}</p>
+          <h2 class="display-section">{data.finalCta.heading}</h2>
+          <p class="body section-lede">{data.finalCta.lede}</p>
+        </div>
+        <CommandCopy command={data.finalCta.command} note={data.finalCta.note} />
+      </div>
+    </section>
+  )}
+
+  <FAQ items={data.faqs ?? []} />
+</BaseLayout>
+
+<script is:inline>
+  const form = document.querySelector("[data-decision-form]");
+  const output = document.querySelector("[data-decision-output]");
+  const message = document.querySelector("[data-decision-message]");
+
+  function val(name) {
+    const el = document.querySelector(`[data-decision-field="${name}"]`);
+    return el?.value || "";
+  }
+
+  function recommend(event) {
+    event.preventDefault();
+    const goal = val("goal");
+    const audience = val("audience");
+    const repeatable = val("repeatable");
+    const lifecycle = val("lifecycle");
+    const timeline = val("timeline");
+
+    let type = "use-case";
+    let reason = "A use-case page connects a specific job to your product workflow.";
+    let sections = ["hero", "problem context", "workflow", "examples", "FAQ", "CTA"];
+    let schema = "FAQPage plus BreadcrumbList";
+    let routePrefix = "/use-cases/";
+
+    if (goal === "utility" || (goal === "seo" && repeatable === "yes")) {
+      type = "free-tool";
+      reason = "A working utility earns links and captures demand better than another article.";
+      sections = ["hero", "working tool", "how-to-use", "example", "FAQ", "product CTA"];
+      schema = "WebApplication with free Offer, FAQPage";
+      routePrefix = "/tools/";
+    } else if (goal === "compare") {
+      type = "alternative";
+      reason = "Comparison pages rank for high-intent queries and guide evaluation-stage visitors.";
+      sections = ["hero", "verdict", "comparison dimensions", "when to choose", "FAQ", "CTA"];
+      schema = "FAQPage and BreadcrumbList";
+      routePrefix = "/alternatives/";
+    } else if (goal === "educate" && audience === "search") {
+      type = "faq";
+      reason = "FAQ pages answer exact questions directly and can earn featured snippets.";
+      sections = ["direct answer", "short explanation", "example", "related links", "CTA"];
+      schema = "FAQPage";
+      routePrefix = "/faq/";
+    } else if (goal === "educate" && audience === "learn") {
+      type = "glossary";
+      reason = "Glossary pages define terms and connect them to your product category.";
+      sections = ["definition", "why it matters", "example", "related terms", "FAQ", "CTA"];
+      schema = "DefinedTerm plus FAQPage";
+      routePrefix = "/glossary/";
+    } else if (goal === "convert" && lifecycle === "decision") {
+      type = "lp";
+      reason = "A focused landing page converts campaign traffic with a single promise and CTA.";
+      sections = ["hero", "offer", "mechanism", "objection handling", "FAQ", "CTA"];
+      schema = "FAQPage and BreadcrumbList";
+      routePrefix = "/lp/";
+    } else if (goal === "outbound") {
+      type = "private";
+      reason = "Private ABM pages support specific accounts without public indexing.";
+      sections = ["personalized context", "relevant workflow", "next step", "CTA"];
+      schema = "Noindex,nofollow; exclude from discovery files";
+      routePrefix = "/private/";
+    } else if (goal === "educate" && timeline === "strategic") {
+      type = "docs";
+      reason = "Docs pages rank for how-to queries and establish implementation authority.";
+      sections = ["hero", "prerequisites", "steps", "commands", "verification", "FAQ", "CTA"];
+      schema = "FAQPage and BreadcrumbList";
+      routePrefix = "/docs/";
+    }
+
+    const lines = [
+      "## Recommended page type",
+      `Type: ${type}`,
+      ``,
+      `Why: ${reason}`,
+      ``,
+      `## Pre-filled brief`,
+      `Route: ${routePrefix}your-page-slug`,
+      `Page type: ${type}`,
+      `Goal: ${goal}`,
+      `Audience intent: ${audience}`,
+      `Buyer journey stage: ${lifecycle}`,
+      ``,
+      `## Suggested sections`,
+      ...sections.map(s => `- ${s}`),
+      ``,
+      `## Schema recommendation`,
+      `- ${schema}`,
+      ``,
+      `## Next step`,
+      `Use the Page Brief Generator to add product facts, claim constraints, and a primary CTA.`,
+    ];
+
+    output.textContent = lines.join("\n");
+    message.textContent = "Recommendation generated.";
+  }
+
+  form?.addEventListener("submit", recommend);
+
+  document.querySelector("[data-reset-decision]")?.addEventListener("click", () => {
+    form?.reset();
+    output.textContent = "Answer the questions and click “Get recommendation” to see your page type.";
+    message.textContent = "Defaults restored.";
+  });
+
+  document.querySelector("[data-copy-decision]")?.addEventListener("click", async () => {
+    const text = output?.textContent || "";
+    if (!text || text.startsWith("Answer")) return;
+    await navigator.clipboard.writeText(text);
+    message.textContent = "Recommendation copied.";
+  });
+</script>

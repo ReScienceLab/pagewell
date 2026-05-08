@@ -1,0 +1,219 @@
+---
+import { getEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CodeWindow from "../../components/CodeWindow.astro";
+import CommandCopy from "../../components/CommandCopy.astro";
+import FAQ from "../../components/FAQ.astro";
+import { absoluteUrl } from "../../lib/seo";
+import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+
+const page = await getEntry("tool-pages", "ai-copy-genericness-scorecard");
+const { data } = page!;
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "AI Copy Genericness Scorecard",
+    description: data.description,
+    url: absoluteUrl(data.canonical),
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Any",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  },
+  breadcrumbListSchema([
+    { name: "Home", item: "/" },
+    { name: "Tools", item: "/tools" },
+    { name: "AI Copy Genericness Scorecard", item: data.canonical },
+  ]),
+  faqPageSchema(data.faqs ?? []),
+];
+---
+
+<BaseLayout title={data.title} description={data.description} canonical={data.canonical} jsonLd={jsonLd}>
+  <section class="section generated-hero">
+    <div class="container generated-hero__inner">
+      <p class="eyebrow">{data.heroEyebrow}</p>
+      <h1 class="display-section">{data.heroH1}</h1>
+      <p class="body generated-hero__lede">{data.heroLede}</p>
+      <div class="generated-actions">
+        <a class="pill" href={data.primaryCtaHref}>{data.primaryCtaLabel}</a>
+        <a class="pill pill--ghost" href="/tools">View all tools</a>
+      </div>
+      <ul class="tool-proof-list" aria-label="Tool privacy and access">
+        {data.heroProof.map((p) => <li>{p}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="generated-band" id="tool">
+    <div class="container tool-panel" data-scorecard-tool>
+      <div class="tool-card">
+        <label for="scorecard-input">Landing page copy or HTML</label>
+        <textarea id="scorecard-input" spellcheck="false" data-scorecard-input></textarea>
+        <label for="custom-phrases" style="margin-top:1rem;">Custom banned phrases (one per line, optional)</label>
+        <textarea id="custom-phrases" spellcheck="false" data-custom-phrases placeholder="e.g.&#10;transform your business&#10;next-gen platform"></textarea>
+        <div class="tool-actions">
+          <button class="pill" type="button" data-score-btn>Score my copy</button>
+          <button class="pill pill--ghost" type="button" data-reset-btn>Reset</button>
+        </div>
+        <p class="tool-message" data-scorecard-message>Runs locally in your browser. No signup and no upload.</p>
+      </div>
+      <div class="tool-card">
+        <label for="scorecard-output">Scorecard result</label>
+        <output id="scorecard-output" class="tool-output" data-scorecard-output>Click “Score my copy” to see your genericness score.</output>
+        <div class="tool-actions">
+          <button class="pill pill--ghost" type="button" data-copy-btn>Copy result</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {data.sections.map((section) => (
+    <section class="section generated-section">
+      <div class="container generated-section__inner">
+        <div class="section-heading section-heading--left">
+          <p class="eyebrow">{section.eyebrow}</p>
+          <h2 class="display-section">{section.heading}</h2>
+          {section.lede && <p class="body section-lede">{section.lede}</p>}
+        </div>
+        {section.cards && (
+          <div class="generated-card-grid">
+            {section.cards.map((card) => (
+              <article class="card generated-card">
+                {card.kicker && <p class="kicker">{card.kicker}</p>}
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+              </article>
+            ))}
+          </div>
+        )}
+        {section.codeLines && <CodeWindow title={section.codeTitle ?? "example"} lines={section.codeLines} />}
+      </div>
+    </section>
+  ))}
+
+  {data.relatedTools && (
+    <section class="section generated-section">
+      <div class="container generated-section__inner">
+        <div class="section-heading section-heading--left">
+          <p class="eyebrow">Related tools</p>
+          <h2 class="display-section">Fix the copy, then check the rest.</h2>
+        </div>
+        <div class="generated-card-grid generated-card-grid--related">
+          {data.relatedTools.map((t) => (
+            <a class="card generated-card generated-link-card" href={t.href}>
+              <p class="kicker">{t.kicker}</p>
+              <h3>{t.label}</h3>
+              <p>{t.text}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {data.finalCta && (
+    <section class="section generated-section">
+      <div class="container generated-section__inner">
+        <div class="section-heading section-heading--left">
+          <p class="eyebrow">{data.finalCta.eyebrow}</p>
+          <h2 class="display-section">{data.finalCta.heading}</h2>
+          <p class="body section-lede">{data.finalCta.lede}</p>
+        </div>
+        <CommandCopy command={data.finalCta.command} note={data.finalCta.note} />
+      </div>
+    </section>
+  )}
+
+  <FAQ items={data.faqs ?? []} />
+</BaseLayout>
+
+<script is:inline>
+  const defaultPhrases = [
+    "all-in-one", "boost productivity", "cutting-edge", "game changer",
+    "industry-leading", "powerful platform", "revolutionize", "save time and money",
+    "seamless experience", "streamline your workflow", "supercharge",
+    "transform your business", "unlock your potential", "next-gen", "best-in-class",
+    "world-class", "unmatched", "unparalleled", " Effortless", "Frictionless",
+  ];
+
+  const superlatives = ["best", "#1", "guaranteed", "unmatched", "world-class", "market-leading", "industry-leading", "fastest", "cheapest", "most powerful"];
+
+  function stripHtml(text) {
+    return text.replace(/\u003cscript[\s\S]*?\u003c\/script\u003e/gi, " ").replace(/\u003cstyle[\s\S]*?\u003c\/style\u003e/gi, " ").replace(/\u003c[^\u003e]+\u003e/g, " ");
+  }
+
+  function analyze() {
+    const input = document.querySelector("[data-scorecard-input]");
+    const customInput = document.querySelector("[data-custom-phrases]");
+    const output = document.querySelector("[data-scorecard-output]");
+    const message = document.querySelector("[data-scorecard-message]");
+
+    const text = input?.value || "";
+    if (!text.trim()) {
+      message.textContent = "Paste some copy first.";
+      return;
+    }
+
+    const plain = stripHtml(text).replace(/\s+/g, " ").trim().toLowerCase();
+    const custom = (customInput?.value || "").split("\n").map(s => s.trim().toLowerCase()).filter(Boolean);
+    const allPhrases = [...defaultPhrases, ...custom];
+
+    const genericMatches = allPhrases.filter(p => plain.includes(p));
+    const superMatches = superlatives.filter(s => new RegExp(`\\b${s}\\b`, "i").test(plain));
+
+    const hasMechanics = /\b(example|command|code|workflow|repo|route|schema|metadata|because|how|step|file|config)\b/i.test(plain);
+    const hasProof = /\b(\d+%|\$\d+|\d+x|\d+ hours|\d+ days|case study|customer|team|user)\b/i.test(plain);
+    const wordCount = plain.split(/\s+/).length;
+
+    let score = 100;
+    score -= genericMatches.length * 4;
+    score -= superMatches.length * 8;
+    if (!hasMechanics) score -= 15;
+    if (!hasProof) score -= 10;
+    if (wordCount < 50) score -= 10;
+    score = Math.max(0, Math.min(100, score));
+
+    const benchmark = score <= 20 ? "top quartile — strong specificity." : score <= 40 ? "above average — some filler remains." : score <= 60 ? "average — noticeable generic language." : "below average — significant filler detected.";
+
+    const lines = [
+      `Genericness score: ${score}/100`,
+      `Benchmark: ${benchmark}`,
+      "",
+      `Generic phrases found: ${genericMatches.length}`,
+      ...(genericMatches.length ? genericMatches.map(p => `  - ${p}`) : ["  - None detected."]),
+      "",
+      `Unsupported superlatives: ${superMatches.length}`,
+      ...(superMatches.length ? superMatches.map(s => `  - ${s}`) : ["  - None detected."]),
+      "",
+      `Concrete mechanics: ${hasMechanics ? "Present" : "Missing — add commands, workflows, or examples."}`,
+      `Proof signals: ${hasProof ? "Present" : "Missing — add numbers, case references, or specifics."}`,
+      "",
+      "Fix checklist",
+      "- Replace each generic phrase with a specific product mechanic.",
+      "- Remove or source every superlative.",
+      "- Add at least one concrete example, command, or workflow step.",
+      "- Include a proof signal: metric, customer, use case, or timeframe.",
+    ];
+
+    output.textContent = lines.join("\n");
+    message.textContent = "Scorecard complete.";
+  }
+
+  document.querySelector("[data-score-btn]")?.addEventListener("click", analyze);
+
+  document.querySelector("[data-reset-btn]")?.addEventListener("click", () => {
+    document.querySelector("[data-scorecard-input]").value = "";
+    document.querySelector("[data-custom-phrases]").value = "";
+    document.querySelector("[data-scorecard-output]").textContent = "Click “Score my copy” to see your genericness score.";
+    document.querySelector("[data-scorecard-message]").textContent = "Runs locally in your browser. No signup and no upload.";
+  });
+
+  document.querySelector("[data-copy-btn]")?.addEventListener("click", async () => {
+    const text = document.querySelector("[data-scorecard-output]")?.textContent || "";
+    if (!text || text.startsWith("Click")) return;
+    await navigator.clipboard.writeText(text);
+    document.querySelector("[data-scorecard-message]").textContent = "Result copied.";
+  });
+</script>

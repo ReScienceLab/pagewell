@@ -1,0 +1,230 @@
+---
+import { getEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CodeWindow from "../../components/CodeWindow.astro";
+import CommandCopy from "../../components/CommandCopy.astro";
+import FAQ from "../../components/FAQ.astro";
+import { absoluteUrl } from "../../lib/seo";
+import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+
+const page = await getEntry("tool-pages", "seo-page-velocity-calculator");
+const { data } = page!;
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "SEO Page Velocity Calculator",
+    description: data.description,
+    url: absoluteUrl(data.canonical),
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Any",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  },
+  breadcrumbListSchema([
+    { name: "Home", item: "/" },
+    { name: "Tools", item: "/tools" },
+    { name: "SEO Page Velocity Calculator", item: data.canonical },
+  ]),
+  faqPageSchema(data.faqs ?? []),
+];
+---
+
+<BaseLayout title={data.title} description={data.description} canonical={data.canonical} jsonLd={jsonLd}>
+  <section class="section generated-hero">
+    <div class="container generated-hero__inner">
+      <p class="eyebrow">{data.heroEyebrow}</p>
+      <h1 class="display-section">{data.heroH1}</h1>
+      <p class="body generated-hero__lede">{data.heroLede}</p>
+      <div class="generated-actions">
+        <a class="pill" href={data.primaryCtaHref}>{data.primaryCtaLabel}</a>
+        <a class="pill pill--ghost" href="/tools">View all tools</a>
+      </div>
+      <ul class="tool-proof-list" aria-label="Tool privacy and access">
+        {data.heroProof.map((p) => <li>{p}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="generated-band" id="tool">
+    <div class="container tool-panel tool-panel--wide" data-velocity-tool>
+      <div class="tool-card">
+        <form class="tool-form" data-velocity-form>
+          <div class="tool-field-grid">
+            <label class="tool-field" for="v-backlog">
+              Pages in content map
+              <input id="v-backlog" type="number" data-velocity-field="backlog" value="48" min="0" />
+            </label>
+            <label class="tool-field" for="v-shipped">
+              Pages shipped last month
+              <input id="v-shipped" type="number" data-velocity-field="shipped" value="4" min="0" />
+            </label>
+            <label class="tool-field" for="v-team">
+              Team size (content + dev)
+              <input id="v-team" type="number" data-velocity-field="team" value="2" min="1" />
+            </label>
+            <label class="tool-field" for="v-hours">
+              Hours per page (brief to merge)
+              <input id="v-hours" type="number" data-velocity-field="hours" value="8" min="1" />
+            </label>
+            <label class="tool-field" for="v-review">
+              Review hours per page
+              <input id="v-review" type="number" data-velocity-field="review" value="4" min="0" />
+            </label>
+            <label class="tool-field" for="v-agent-review">
+              Agent review hours per page
+              <input id="v-agent-review" type="number" data-velocity-field="agentReview" value="1" min="0" />
+            </label>
+          </div>
+          <div class="tool-actions">
+            <button class="pill" type="submit">Calculate velocity</button>
+            <button class="pill pill--ghost" type="button" data-reset-velocity>Reset defaults</button>
+          </div>
+          <p class="tool-message" data-velocity-message>Runs locally in your browser. No signup and no upload.</p>
+        </form>
+      </div>
+      <div class="tool-card">
+        <label for="velocity-output">Velocity report</label>
+        <output id="velocity-output" class="tool-output" data-velocity-output>Enter your numbers and click “Calculate velocity” to see the report.</output>
+        <div class="tool-actions">
+          <button class="pill pill--ghost" type="button" data-copy-velocity>Copy report</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {data.sections.map((section) => (
+    <section class="section generated-section">
+      <div class="container generated-section__inner">
+        <div class="section-heading section-heading--left">
+          <p class="eyebrow">{section.eyebrow}</p>
+          <h2 class="display-section">{section.heading}</h2>
+          {section.lede && <p class="body section-lede">{section.lede}</p>}
+        </div>
+        {section.cards && (
+          <div class="generated-card-grid">
+            {section.cards.map((card) => (
+              <article class="card generated-card">
+                {card.kicker && <p class="kicker">{card.kicker}</p>}
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+              </article>
+            ))}
+          </div>
+        )}
+        {section.codeLines && <CodeWindow title={section.codeTitle ?? "example"} lines={section.codeLines} />}
+      </div>
+    </section>
+  ))}
+
+  {data.relatedTools && (
+    <section class="section generated-section">
+      <div class="container generated-section__inner">
+        <div class="section-heading section-heading--left">
+          <p class="eyebrow">Related tools</p>
+          <h2 class="display-section">Plan, generate, and check — in sequence.</h2>
+        </div>
+        <div class="generated-card-grid generated-card-grid--related">
+          {data.relatedTools.map((t) => (
+            <a class="card generated-card generated-link-card" href={t.href}>
+              <p class="kicker">{t.kicker}</p>
+              <h3>{t.label}</h3>
+              <p>{t.text}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {data.finalCta && (
+    <section class="section generated-section">
+      <div class="container generated-section__inner">
+        <div class="section-heading section-heading--left">
+          <p class="eyebrow">{data.finalCta.eyebrow}</p>
+          <h2 class="display-section">{data.finalCta.heading}</h2>
+          <p class="body section-lede">{data.finalCta.lede}</p>
+        </div>
+        <CommandCopy command={data.finalCta.command} note={data.finalCta.note} />
+      </div>
+    </section>
+  )}
+
+  <FAQ items={data.faqs ?? []} />
+</BaseLayout>
+
+<script is:inline>
+  const form = document.querySelector("[data-velocity-form]");
+  const output = document.querySelector("[data-velocity-output]");
+  const message = document.querySelector("[data-velocity-message]");
+
+  function val(name) {
+    const el = document.querySelector(`[data-velocity-field="${name}"]`);
+    return parseFloat(el?.value) || 0;
+  }
+
+  function calculate(event) {
+    event.preventDefault();
+    const backlog = val("backlog");
+    const shipped = val("shipped");
+    const team = val("team");
+    const hours = val("hours");
+    const review = val("review");
+    const agentReview = val("agentReview");
+
+    const currentPerPage = hours;
+    const currentMonthly = shipped;
+    const currentBacklogMonths = currentMonthly > 0 ? Math.ceil(backlog / currentMonthly) : 0;
+
+    const agentPerPage = hours - review + agentReview;
+    const agentMonthly = agentPerPage > 0 ? Math.floor((team * 160) / agentPerPage) : 0;
+    const agentBacklogMonths = agentMonthly > 0 ? Math.ceil(backlog / agentMonthly) : 0;
+    const annualDiff = (agentMonthly - currentMonthly) * 12;
+
+    const lines = [
+      "## SEO Page Velocity Report",
+      "",
+      `Content map backlog: ${backlog} pages`,
+      `Team size: ${team} people`,
+      `Current hours per page: ${currentPerPage}h`,
+      `Agent-assisted hours per page: ${agentPerPage}h`,
+      "",
+      "Current workflow",
+      `  Pages per month: ${currentMonthly}`,
+      `  Backlog clear time: ${currentBacklogMonths} month${currentBacklogMonths === 1 ? "" : "s"}`,
+      `  Annual pages shipped: ${currentMonthly * 12}`,
+      "",
+      "Agent-assisted workflow",
+      `  Pages per month: ${agentMonthly}`,
+      `  Backlog clear time: ${agentBacklogMonths} month${agentBacklogMonths === 1 ? "" : "s"}`,
+      `  Annual pages shipped: ${agentMonthly * 12}`,
+      `  Annual difference: +${annualDiff} pages`,
+      "",
+      "Assumptions",
+      `  - Agent handles metadata, schema, and discovery updates`,
+      `  - Human review drops from ${review}h to ${agentReview}h per page`,
+      `  - Team capacity: ${team} × 160h/month`,
+      "",
+      "Disclaimer: These are estimates. Actual velocity depends on review",
+      "thoroughness, repo complexity, and how well PAGEWELL.md is maintained.",
+    ];
+
+    output.textContent = lines.join("\n");
+    message.textContent = "Report generated.";
+  }
+
+  form?.addEventListener("submit", calculate);
+
+  document.querySelector("[data-reset-velocity]")?.addEventListener("click", () => {
+    form?.reset();
+    output.textContent = "Enter your numbers and click “Calculate velocity” to see the report.";
+    message.textContent = "Defaults restored.";
+  });
+
+  document.querySelector("[data-copy-velocity]")?.addEventListener("click", async () => {
+    const text = output?.textContent || "";
+    if (!text || text.startsWith("Enter")) return;
+    await navigator.clipboard.writeText(text);
+    message.textContent = "Report copied.";
+  });
+</script>
