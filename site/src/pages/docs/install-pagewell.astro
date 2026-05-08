@@ -31,7 +31,7 @@ const jsonLd = [
   eyebrow="Docs"
   h1="Install Pagewell in your coding agent."
   lede="Add the Pagewell skill pack, restart the agent session so the updated skill metadata loads, then let Pagewell discover the repo before generating pages."
-  primaryCta={{ label: "Install command", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
+  primaryCta={{ label: "Install Pagewell", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
   secondaryCta={{ label: "Why PAGEWELL.md matters", href: "/faq/what-is-pagewell-md" }}
   highlights={[
     {
@@ -111,4 +111,9 @@ const jsonLd = [
   ]}
   faqs={faqs}
   jsonLd={jsonLd}
+  finalCta={{
+    eyebrow: "Install Pagewell",
+    heading: "Ready to add Pagewell to your repo?",
+    copy: "Run the install command, restart your agent, and discover the repo before the first page request.",
+  }}
 />

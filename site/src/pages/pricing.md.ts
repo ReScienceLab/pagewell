@@ -10,7 +10,7 @@ Pagewell is a repo-native agent skill pack for generating, QA'ing, and maintaini
 
 - Public listed price: No paid Pagewell plan is listed on this website today.
 - License signal: The ReScienceLab/pagewell repository includes an MIT License.
-- Install command: bunx skills add ReScienceLab/pagewell --skill pagewell
+- Pagewell install command: bunx skills add ReScienceLab/pagewell --skill pagewell
 - Pi install command: bunx skills add ReScienceLab/pagewell --skill pagewell -a pi
 - Source: https://github.com/ReScienceLab/pagewell
 - Product page: https://pagewell.dev/products/pagewell

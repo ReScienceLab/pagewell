@@ -36,8 +36,8 @@ const jsonLd = [
   canonical="/pricing"
   eyebrow="Pricing"
   h1="Pagewell pricing is repo-native and transparent."
-  lede="Last updated: 2026-05-04. Pagewell is currently a repo-native agent skill pack you install into a coding agent workflow. This website does not list a hosted Pagewell cloud plan or paid tier today; external costs come from your own AI agent, model, repository, CI, hosting, and deployment stack."
-  primaryCta={{ label: "Install command", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
+  lede="Pagewell is free to install. Last updated: 2026-05-04. Pagewell is a repo-native agent skill pack you add to a coding agent workflow. This website does not list a hosted Pagewell cloud plan or paid tier today; external costs come from your own AI agent, model, repository, CI, hosting, and deployment stack."
+  primaryCta={{ label: "Install Pagewell", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
   secondaryCta={{ label: "Machine-readable pricing", href: "/pricing.md" }}
   highlights={[
     {
@@ -88,4 +88,9 @@ const jsonLd = [
   ]}
   faqs={faqs}
   jsonLd={jsonLd}
+  finalCta={{
+    eyebrow: "Install Pagewell",
+    heading: "Pagewell is free to install.",
+    copy: "Your only costs are the AI agent and infrastructure you already use. Install the skill pack and start generating pages today.",
+  }}
 />
