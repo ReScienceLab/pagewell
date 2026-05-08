@@ -82,10 +82,19 @@ const sample = `<title>Page Brief Generator - Free SEO Brief Tool — Pagewell</
       <p class="body generated-hero__lede">
         Paste rendered HTML or a head snippet and get a browser-only check for titles, descriptions, canonicals, social tags, H1s, and JSON-LD before code review.
       </p>
+      <div class="generated-actions">
+        <a class="pill" href="#tool">Check metadata</a>
+        <a class="pill pill--ghost" href="/tools">View all tools</a>
+      </div>
+      <ul class="tool-proof-list" aria-label="Tool privacy and access">
+        <li>No signup</li>
+        <li>Runs in browser</li>
+        <li>No upload</li>
+      </ul>
     </div>
   </section>
 
-  <section class="generated-band">
+  <section class="generated-band" id="tool">
     <div class="container tool-panel" data-metadata-tool>
       <div class="tool-card">
         <label for="metadata-input">HTML, head snippet, or JSON-LD</label>
@@ -94,7 +103,7 @@ const sample = `<title>Page Brief Generator - Free SEO Brief Tool — Pagewell</
           <button class="pill" type="button" data-check-metadata>Check metadata</button>
           <button class="pill pill--ghost" type="button" data-reset-metadata>Reset sample</button>
         </div>
-        <p class="tool-message" data-metadata-message>Runs locally in your browser.</p>
+        <p class="tool-message" data-metadata-message>Runs locally in your browser. No signup and no upload.</p>
       </div>
       <div class="tool-card">
         <label for="metadata-output">Metadata result</label>
@@ -186,7 +195,7 @@ const sample = `<title>Page Brief Generator - Free SEO Brief Tool — Pagewell</
   <section class="section generated-section">
     <div class="container generated-section__inner">
       <div class="section-heading section-heading--left">
-        <p class="eyebrow">Product CTA</p>
+        <p class="eyebrow">Generate metadata in source</p>
         <h2 class="display-section">Want metadata generated and checked in source?</h2>
         <p class="body section-lede">
           Install Pagewell so your agent can use the target repo's layout, SEO head component, schema helpers, and discovery rules instead of checking a pasted snippet only.

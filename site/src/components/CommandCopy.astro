@@ -5,7 +5,11 @@ interface Props {
   note?: string;
 }
 
-const { command = "bunx skills add ReScienceLab/pagewell --skill pagewell", label = "Copy", note } = Astro.props;
+const {
+  command = "bunx skills add ReScienceLab/pagewell --skill pagewell",
+  label = "Copy install command",
+  note,
+} = Astro.props;
 ---
 
 <div class="command-copy command" data-command-copy>
