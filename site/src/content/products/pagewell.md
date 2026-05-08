@@ -67,6 +67,12 @@ related:
   - label: "Pagewell vs Flint"
     href: "/alternatives/flint"
     text: "Compare repo-native skills with a hosted autonomous web platform."
+  - label: "Pagewell vs Webflow"
+    href: "/alternatives/webflow"
+    text: "Compare code-reviewed page generation with visual website building."
+  - label: "Pagewell vs WordPress"
+    href: "/alternatives/wordpress"
+    text: "Compare repo-native SEO workflows with CMS-managed publishing."
 faqs:
   - question: "What is Pagewell?"
     answer: "Pagewell is a repo-native skill pack for coding agents. It helps agents turn page briefs into normal website code with metadata, schema, claim checks, QA, and discovery updates."

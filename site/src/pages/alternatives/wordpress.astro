@@ -1,0 +1,104 @@
+---
+import GeneratedPage from "../../components/GeneratedPage.astro";
+import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+
+const faqs = [
+  {
+    question: "Is Pagewell a WordPress alternative?",
+    answer:
+      "Only for teams that want repo-native agent workflows. WordPress is a hosted CMS and site builder; Pagewell is a skill pack that generates code inside an existing website repo.",
+  },
+  {
+    question: "When should I choose a CMS like WordPress?",
+    answer:
+      "A hosted CMS fits when content editors need a familiar admin dashboard, plugin ecosystem, themes, and managed hosting without working in a codebase.",
+  },
+  {
+    question: "When should I choose Pagewell?",
+    answer:
+      "Choose Pagewell when your site already lives in code and you want agents to create routes, components, metadata, schema, and discovery updates as reviewable repo changes.",
+  },
+];
+
+const jsonLd = [
+  breadcrumbListSchema([
+    { name: "Home", item: "/" },
+    { name: "Alternatives", item: "/alternatives/wordpress" },
+  ]),
+  faqPageSchema(faqs),
+];
+---
+
+<GeneratedPage
+  title="Pagewell vs WordPress - Repo-Native vs CMS"
+  description="Compare Pagewell and WordPress for marketing page generation: repo-native agent skills versus a hosted CMS and site builder."
+  canonical="/alternatives/wordpress"
+  eyebrow="Comparison dry run"
+  h1="Pagewell vs WordPress: repo-native skills or a hosted CMS?"
+  lede="Both approaches help teams ship more targeted pages. The difference is where the page system lives: Pagewell works inside your repo, while WordPress provides a hosted CMS and site builder for marketing teams."
+  primaryCta={{ label: "Install Pagewell", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
+  secondaryCta={{ label: "Read setup doc", href: "/docs/setup-pagewell" }}
+  highlights={[
+    {
+      kicker: "Pagewell",
+      title: "Repo-native skill pack",
+      text: "Best fit when agents should edit the existing codebase and produce routes, content, components, metadata, schema, QA notes, and discovery updates.",
+    },
+    {
+      kicker: "WordPress",
+      title: "Hosted CMS and site builder",
+      text: "Best fit when content editors need a familiar admin dashboard, plugin ecosystem, themes, and managed hosting without touching code.",
+    },
+    {
+      kicker: "Decision",
+      title: "Choose by ownership model",
+      text: "The practical question is whether your source of truth should remain in the repo or move into a managed CMS.",
+    },
+  ]}
+  sections={[
+    {
+      eyebrow: "Decision summary",
+      heading: "Start with where your website changes should live.",
+      body:
+        "If marketing pages must be normal code reviewed through your existing repo, Pagewell is the more natural architecture. If the team wants a hosted product surface that handles content editing, themes, plugins, and publishing together, WordPress may fit better.",
+    },
+    {
+      eyebrow: "Comparison table",
+      heading: "Different systems for different operating models.",
+      rows: [
+        ["Dimension", "Pagewell", "WordPress"],
+        ["System of record", "Existing website repo", "Hosted WordPress platform"],
+        ["Primary user", "Coding agents with developer review", "Content editors and marketers using an admin UI"],
+        ["Design source", "DESIGN.md plus existing site components", "Themes and page builders"],
+        ["Output", "Normal code/content changes", "Pages managed and hosted through WordPress"],
+        ["Best-fit motion", "SEO/GEO pages, docs, free tools, and repo-native page clusters", "Blog content, plugin-driven features, and theme-based campaigns"],
+      ]
+    },
+    {
+      eyebrow: "Choose Pagewell when",
+      heading: "The repo needs to stay the source of truth.",
+      bullets: [
+        "Your team wants to review page changes as diffs before merge.",
+        "Generated pages must reuse existing layouts, components, static generation, and deployment conventions.",
+        "You want explicit claim checks, anti-generic QA, and discovery updates documented in the same repo.",
+        "Free tools or docs need to live beside the product website code rather than in a hosted CMS.",
+      ],
+    },
+    {
+      eyebrow: "Choose WordPress when",
+      heading: "The marketing team needs a familiar CMS and plugin ecosystem.",
+      bullets: [
+        "Content editors need a familiar admin dashboard for posts, pages, and media.",
+        "Plugins, themes, and managed hosting are the main requirements.",
+        "Campaign pages need a managed product surface rather than repo-based code review.",
+      ],
+    },
+  ]}
+  related={[
+    { label: "Pagewell product page", href: "/products/pagewell", text: "Learn what Pagewell does and does not do." },
+    { label: "Generate SEO pages as code", href: "/use-cases/generate-seo-pages-as-code", text: "See the repo-native use case in detail." },
+    { label: "llms.txt validator", href: "/tools/llms-txt-validator", text: "Try the free tool generated in this dry run." },
+  ]}
+  faqs={faqs}
+  jsonLd={jsonLd}
+/>
