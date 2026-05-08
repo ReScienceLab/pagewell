@@ -1,71 +1,17 @@
 ---
+import { getEntry } from "astro:content";
 import GeneratedPage from "../../components/GeneratedPage.astro";
 import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
 
-const faqs = [
-  {
-    question: "Can I use Pagewell with Astro?",
-    answer:
-      "Yes. Pagewell can generate Astro pages by reading PAGEWELL.md, DESIGN.md, and the Astro adapter, then following the repo's existing routes, layouts, components, metadata, and static build conventions.",
-  },
-];
+const { data } = (await getEntry("faq", "can-i-use-pagewell-with-astro"))!;
 
 const jsonLd = [
   breadcrumbListSchema([
     { name: "Home", item: "/" },
     { name: "FAQ", item: "/faq/can-i-use-pagewell-with-astro" },
   ]),
-  faqPageSchema(faqs),
+  faqPageSchema(data.faqs ?? []),
 ];
 ---
 
-<GeneratedPage
-  title="Can I Use Pagewell with Astro? - Yes"
-  description="Yes. Pagewell can generate Astro pages by following PAGEWELL.md, DESIGN.md, and the Astro adapter for existing site conventions."
-  canonical="/faq/can-i-use-pagewell-with-astro"
-  eyebrow="FAQ"
-  h1="Can I use Pagewell with Astro?"
-  lede="Yes. Pagewell can generate Astro pages by reading PAGEWELL.md, DESIGN.md, and the Astro adapter, then following the repo's existing routes, layouts, components, metadata, and static build conventions."
-  primaryCta={{ label: "Install Pagewell", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
-  secondaryCta={{ label: "Read setup doc", href: "/docs/setup-pagewell" }}
-  sections={[
-    {
-      eyebrow: "How it works",
-      heading: "The Astro adapter keeps generation inside existing conventions.",
-      body:
-        "For an Astro repo, Pagewell should inspect astro.config.*, src/pages, content collections, layouts, components, metadata helpers, and discovery files before creating a route.",
-      bullets: [
-        "If similar pages use file-based .astro routes, Pagewell creates a route under src/pages.",
-        "If similar pages use content collections and dynamic routes, Pagewell adds content to that system.",
-        "If the page is a free tool, Pagewell prefers Astro plus a small framework-free script instead of adding React or another client framework.",
-      ],
-    },
-    {
-      eyebrow: "Example",
-      heading: "This page uses Astro file routing.",
-      codeTitle: "generated route",
-      codeLines: [
-        "site/src/pages/faq/can-i-use-pagewell-with-astro.astro",
-        "imports:",
-        "  - BaseLayout via GeneratedPage.astro",
-        "  - FAQPage JSON-LD",
-        "  - BreadcrumbList JSON-LD",
-        "context:",
-        "  - PAGEWELL.md",
-        "  - DESIGN.md",
-        "  - adapters/astro.md",
-      ],
-    },
-  ]}
-  related={[
-    { label: "Set up Pagewell", href: "/docs/setup-pagewell", text: "Initialize PAGEWELL.md before generation." },
-    { label: "Generate SEO pages as code", href: "/use-cases/generate-seo-pages-as-code", text: "See the broader use case." },
-  ]}
-  faqs={faqs}
-  jsonLd={jsonLd}
-  finalCta={{
-    eyebrow: "Install Pagewell",
-    heading: "Ready to add Pagewell to your Astro site?",
-    copy: "Install Pagewell and let the Astro adapter generate routes that follow your existing layouts and components.",
-  }}
-/>
+<GeneratedPage {...data} jsonLd={jsonLd} />
