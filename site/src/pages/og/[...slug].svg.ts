@@ -14,8 +14,11 @@ const pages = [
   { slug: "glossary/generative-engine-optimization", title: "Generative Engine Optimization", eyebrow: "Glossary" },
   { slug: "tools", title: "Free Pagewell tools", eyebrow: "Tools" },
   { slug: "pricing", title: "Transparent repo-native pricing", eyebrow: "Pricing" },
-  { slug: "tools/llms-txt-validator", title: "llms.txt Validator", eyebrow: "Free tool" },
+  { slug: "tools/page-brief-generator", title: "Page Brief Generator", eyebrow: "Free tool" },
+  { slug: "tools/ai-landing-page-qa-grader", title: "AI Landing Page QA Grader", eyebrow: "Free tool" },
+  { slug: "tools/metadata-schema-checker", title: "Metadata + Schema Checker", eyebrow: "Free tool" },
   { slug: "tools/pagewell-context-validator", title: "PAGEWELL.md Validator", eyebrow: "Free tool" },
+  { slug: "tools/llms-txt-validator", title: "llms.txt Validator", eyebrow: "Free tool" },
 ];
 
 type OgPage = (typeof pages)[number];

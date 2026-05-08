@@ -1,5 +1,7 @@
 ---
 import CommandCopy from "./CommandCopy.astro";
+
+const proofPoints = ["MIT licensed", "Normal repo code", "No hosted builder", "QA for metadata, schema, and claims"];
 ---
 
 <section class="section cta-section" id="cta">
@@ -9,6 +11,9 @@ import CommandCopy from "./CommandCopy.astro";
     <p class="body cta-card__copy">
       Start with one homepage, use-case page, comparison, or free tool. Pagewell keeps the brief, design rules, stack conventions, QA gates, and discovery updates in the same repo as the code.
     </p>
+    <ul class="cta-proof-list" aria-label="Pagewell proof points">
+      {proofPoints.map((point) => <li>{point}</li>)}
+    </ul>
     <CommandCopy command="bunx skills add ReScienceLab/pagewell --skill pagewell" note="Installs the Pagewell agent skill via skills.sh." />
   </div>
 </section>

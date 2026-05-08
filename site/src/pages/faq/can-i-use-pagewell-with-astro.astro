@@ -23,10 +23,10 @@ const jsonLd = [
   title="Can I Use Pagewell with Astro? - Yes"
   description="Yes. Pagewell can generate Astro pages by following PAGEWELL.md, DESIGN.md, and the Astro adapter for existing site conventions."
   canonical="/faq/can-i-use-pagewell-with-astro"
-  eyebrow="FAQ dry run"
+  eyebrow="FAQ"
   h1="Can I use Pagewell with Astro?"
   lede="Yes. Pagewell can generate Astro pages by reading PAGEWELL.md, DESIGN.md, and the Astro adapter, then following the repo's existing routes, layouts, components, metadata, and static build conventions."
-  primaryCta={{ label: "Install command", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
+  primaryCta={{ label: "Install Pagewell", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
   secondaryCta={{ label: "Read setup doc", href: "/docs/setup-pagewell" }}
   sections={[
     {
@@ -42,7 +42,7 @@ const jsonLd = [
     },
     {
       eyebrow: "Example",
-      heading: "This dry-run page used Astro file routing.",
+      heading: "This page uses Astro file routing.",
       codeTitle: "generated route",
       codeLines: [
         "site/src/pages/faq/can-i-use-pagewell-with-astro.astro",
@@ -63,4 +63,9 @@ const jsonLd = [
   ]}
   faqs={faqs}
   jsonLd={jsonLd}
+  finalCta={{
+    eyebrow: "Install Pagewell",
+    heading: "Ready to add Pagewell to your Astro site?",
+    copy: "Install Pagewell and let the Astro adapter generate routes that follow your existing layouts and components.",
+  }}
 />

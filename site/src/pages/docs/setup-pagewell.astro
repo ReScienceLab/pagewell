@@ -33,10 +33,10 @@ const jsonLd = [
   title="Set Up Pagewell Context with PAGEWELL.md"
   description="Set up Pagewell with DESIGN.md and PAGEWELL.md so agents have product facts, site conventions, page patterns, and QA rules before generation."
   canonical="/docs/setup-pagewell"
-  eyebrow="Docs dry run"
+  eyebrow="Docs"
   h1="Set up Pagewell with PAGEWELL.md and DESIGN.md."
   lede="The first Pagewell run should create a unified context file that captures product truth, site conventions, route taxonomy, page patterns, and QA rules for future generation."
-  primaryCta={{ label: "Install command", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
+  primaryCta={{ label: "Install Pagewell", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
   secondaryCta={{ label: "View generated product page", href: "/products/pagewell" }}
   highlights={[
     {
@@ -107,8 +107,13 @@ const jsonLd = [
   related={[
     { label: "PAGEWELL.md validator", href: "/tools/pagewell-context-validator", text: "Check context sections before asking an agent to generate routes." },
     { label: "Page brief generator", href: "/tools/page-brief-generator", text: "Create a route-specific brief after the repo context is ready." },
-    { label: "Generate SEO pages as code", href: "/use-cases/generate-seo-pages-as-code", text: "The primary use-case dry run." },
+    { label: "Generate SEO pages as code", href: "/use-cases/generate-seo-pages-as-code", text: "The primary repo-native use case." },
   ]}
   faqs={faqs}
   jsonLd={jsonLd}
+  finalCta={{
+    eyebrow: "Set up Pagewell",
+    heading: "Ready to set up your repo context?",
+    copy: "Install Pagewell and run discover-site to create PAGEWELL.md so every future page uses real product facts.",
+  }}
 />

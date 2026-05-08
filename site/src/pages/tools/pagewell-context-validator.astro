@@ -104,10 +104,19 @@ PAGEWELL.md is the Pagewell source of truth for this repo. Use it with DESIGN.md
       <p class="body generated-hero__lede">
         Paste a PAGEWELL.md draft and get a browser-only check for the sections agents need before generating search-ready pages as code.
       </p>
+      <div class="generated-actions">
+        <a class="pill" href="#tool">Start validating</a>
+        <a class="pill pill--ghost" href="/tools">View all tools</a>
+      </div>
+      <ul class="tool-proof-list" aria-label="Tool privacy and access">
+        <li>No signup</li>
+        <li>Runs in browser</li>
+        <li>No upload</li>
+      </ul>
     </div>
   </section>
 
-  <section class="generated-band">
+  <section class="generated-band" id="tool">
     <div class="container tool-panel" data-context-tool>
       <div class="tool-card">
         <label for="context-input">PAGEWELL.md draft</label>
@@ -116,7 +125,7 @@ PAGEWELL.md is the Pagewell source of truth for this repo. Use it with DESIGN.md
           <button class="pill" type="button" data-validate-context>Validate PAGEWELL.md</button>
           <button class="pill pill--ghost" type="button" data-reset-context>Reset sample</button>
         </div>
-        <p class="tool-message" data-context-message>Runs locally in your browser.</p>
+        <p class="tool-message" data-context-message>Runs locally in your browser. No signup and no upload.</p>
       </div>
       <div class="tool-card">
         <label for="context-output">Context QA result</label>
@@ -186,7 +195,7 @@ PAGEWELL.md is the Pagewell source of truth for this repo. Use it with DESIGN.md
   <section class="section generated-section">
     <div class="container generated-section__inner">
       <div class="section-heading section-heading--left">
-        <p class="eyebrow">Product CTA</p>
+        <p class="eyebrow">Keep agent context current</p>
         <h2 class="display-section">Need the context generated from the repo instead?</h2>
         <p class="body section-lede">
           Install Pagewell and ask the discover-site module to inspect the framework, routes, components, content files, product facts, claims, and discovery files.

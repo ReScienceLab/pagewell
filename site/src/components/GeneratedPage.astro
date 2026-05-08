@@ -8,6 +8,19 @@ type CTA = {
   label: string;
   href?: string;
   command?: string;
+  copyLabel?: string;
+  note?: string;
+};
+
+type FinalCta = {
+  eyebrow?: string;
+  heading?: string;
+  copy?: string;
+  command?: string;
+  copyLabel?: string;
+  note?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
 };
 
 type Card = {
@@ -52,8 +65,23 @@ interface Props {
   sections: Section[];
   faqs?: FAQItem[];
   related?: RelatedLink[];
+  relatedHeading?: string;
+  showFinalCta?: boolean;
+  finalCta?: FinalCta;
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
+
+const defaultFinalCta = {
+  eyebrow: "Install Pagewell",
+  heading: "Ready to generate pages as code?",
+  copy:
+    "Give your coding agent the context, playbooks, adapters, and QA gates it needs before the next page request.",
+  command: "bunx skills add ReScienceLab/pagewell --skill pagewell",
+  copyLabel: "Copy install command",
+  note: "Installs the Pagewell agent skill via skills.sh.",
+  secondaryLabel: "Read install docs",
+  secondaryHref: "/docs/install-pagewell",
+};
 
 const {
   title,
@@ -69,8 +97,13 @@ const {
   sections,
   faqs = [],
   related = [],
+  relatedHeading = "Related workflows and routes.",
+  showFinalCta = true,
+  finalCta = {},
   jsonLd,
 } = Astro.props;
+
+const resolvedFinalCta = { ...defaultFinalCta, ...finalCta };
 ---
 
 <BaseLayout title={title} description={description} canonical={canonical} noindex={noindex} jsonLd={jsonLd}>
@@ -82,7 +115,11 @@ const {
       {(primaryCta || secondaryCta) && (
         <div class="generated-actions">
           {primaryCta?.command ? (
-            <CommandCopy command={primaryCta.command} note={primaryCta.label} />
+            <CommandCopy
+              command={primaryCta.command}
+              label={primaryCta.copyLabel ?? "Copy install command"}
+              note={primaryCta.note ?? "Installs the Pagewell agent skill via skills.sh."}
+            />
           ) : primaryCta?.href ? (
             <a class="pill" href={primaryCta.href}>{primaryCta.label}</a>
           ) : null}
@@ -159,7 +196,7 @@ const {
       <div class="container">
         <div class="section-heading section-heading--left">
           <p class="eyebrow">Related routes</p>
-          <h2 class="display-section">Keep the cluster connected.</h2>
+          <h2 class="display-section">{relatedHeading}</h2>
         </div>
         <div class="generated-card-grid generated-card-grid--related">
           {related.map((link) => (
@@ -174,4 +211,24 @@ const {
   )}
 
   {faqs.length > 0 && <FAQ items={faqs} />}
+
+  {showFinalCta && (
+    <section class="section final-cta-section">
+      <div class="container cta-card final-cta-card blue-ring">
+        <p class="eyebrow">{resolvedFinalCta.eyebrow}</p>
+        <h2 class="display-section">{resolvedFinalCta.heading}</h2>
+        <p class="body cta-card__copy">{resolvedFinalCta.copy}</p>
+        <div class="final-cta-actions">
+          <CommandCopy
+            command={resolvedFinalCta.command}
+            label={resolvedFinalCta.copyLabel}
+            note={resolvedFinalCta.note}
+          />
+          {resolvedFinalCta.secondaryHref && (
+            <a class="pill pill--ghost" href={resolvedFinalCta.secondaryHref}>{resolvedFinalCta.secondaryLabel}</a>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
 </BaseLayout>

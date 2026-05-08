@@ -4,12 +4,12 @@ import GeneratedPage from "../../components/GeneratedPage.astro";
 
 <GeneratedPage
   title="Private Pagewell Workflow for Anthropic"
-  description="A private dry-run ABM page showing how Pagewell handles supplied account context without indexing or sitemap inclusion."
+  description="A private ABM page showing how Pagewell handles supplied account context without indexing or sitemap inclusion."
   canonical="/private/anthropic-pagewell"
   noindex={true}
-  eyebrow="Private ABM dry run"
+  eyebrow="Private ABM"
   h1="A repo-native page workflow for AI-assisted marketing teams."
-  lede="This private dry run uses only generic, supplied context: an AI company may need a safer way for agents to create marketing pages without bypassing product facts, design rules, code review, or crawl controls."
+  lede="This private page uses only generic, supplied context: an AI company may need a safer way for agents to create marketing pages without bypassing product facts, design rules, code review, or crawl controls."
   primaryCta={{ label: "Install Pagewell", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
   secondaryCta={{ label: "Review setup", href: "/docs/setup-pagewell" }}
   highlights={[
@@ -64,4 +64,9 @@ import GeneratedPage from "../../components/GeneratedPage.astro";
         "A practical first test is a non-private docs or FAQ page where facts are easy to verify and the implementation path is simple. After QA passes, expand to use-case pages, free tools, and comparison routes.",
     },
   ]}
+  finalCta={{
+    eyebrow: "Install Pagewell",
+    heading: "Ready to generate private pages in your repo?",
+    copy: "Install Pagewell and create noindex ABM pages that stay out of sitemaps while still following your design rules.",
+  }}
 />
