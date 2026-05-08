@@ -1,9 +1,12 @@
 ---
-import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import GeneratedPage from "../components/GeneratedPage.astro";
 import { breadcrumbListSchema, faqPageSchema, softwareApplicationSchema } from "../lib/schema";
 
-const { data } = (await getEntry("pages", "pricing"))!;
+const entries = await getCollection("pages");
+const page = entries.find((e) => e.id === "pricing");
+if (!page) throw new Error("pricing entry not found");
+const { data } = page;
 
 const jsonLd = [
   softwareApplicationSchema(),

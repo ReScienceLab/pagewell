@@ -1,5 +1,5 @@
 ---
-import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CodeWindow from "../../components/CodeWindow.astro";
 import CommandCopy from "../../components/CommandCopy.astro";
@@ -7,8 +7,10 @@ import FAQ from "../../components/FAQ.astro";
 import { absoluteUrl } from "../../lib/seo";
 import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
 
-const page = await getEntry("tool-pages", "ai-copy-genericness-scorecard");
-const { data } = page!;
+const entries = await getCollection("tool-pages");
+const page = entries.find((e) => e.id === "ai-copy-genericness-scorecard");
+if (!page) throw new Error("ai-copy-genericness-scorecard entry not found");
+const { data } = page;
 
 const jsonLd = [
   {

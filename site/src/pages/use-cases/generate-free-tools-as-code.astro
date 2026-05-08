@@ -1,9 +1,12 @@
 ---
-import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import GeneratedPage from "../../components/GeneratedPage.astro";
 import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
 
-const { data } = (await getEntry("use-cases", "generate-free-tools-as-code"))!;
+const entries = await getCollection("use-cases");
+const page = entries.find((e) => e.id === "generate-free-tools-as-code");
+if (!page) throw new Error("generate-free-tools-as-code entry not found");
+const { data } = page;
 
 const jsonLd = [
   breadcrumbListSchema([
