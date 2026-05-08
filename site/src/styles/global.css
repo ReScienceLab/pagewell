@@ -382,7 +382,7 @@ svg {
   justify-content: center;
   color: var(--color-white);
   font-family: var(--font-display);
-  font-size: clamp(4.25rem, 16vw, 10.25rem);
+  font-size: clamp(3.75rem, 12vw, 8.5rem);
   font-weight: 680;
   line-height: 0.82;
   letter-spacing: clamp(-6.5px, -0.62vw, -2px);
@@ -412,6 +412,37 @@ svg {
   align-items: center;
   justify-content: center;
   gap: 12px;
+}
+
+.hero-proof,
+.tool-proof-list,
+.cta-proof-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-proof li,
+.tool-proof-list li,
+.cta-proof-list li {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: var(--radius-pill);
+  color: var(--color-muted);
+  background: rgba(255, 255, 255, 0.06);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1;
+}
+
+.generated-hero .tool-proof-list {
+  justify-content: flex-start;
 }
 
 .command-copy {
@@ -457,6 +488,20 @@ svg {
 
 .command-copy__note {
   margin-top: 10px;
+  text-align: center;
+}
+
+.generated-actions .command-copy__note,
+.final-cta-actions .command-copy__note {
+  flex-basis: 100%;
+  margin-top: -2px;
+}
+
+.generated-actions .command-copy__note {
+  text-align: left;
+}
+
+.final-cta-actions .command-copy__note {
   text-align: center;
 }
 
@@ -740,6 +785,21 @@ svg {
   max-width: 760px;
 }
 
+.cta-proof-list {
+  max-width: 760px;
+}
+
+.final-cta-section {
+  padding-top: 30px;
+}
+
+.final-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
 .site-footer {
   padding-block: 60px 30px;
 }
@@ -888,6 +948,10 @@ svg {
   align-items: stretch;
 }
 
+.tool-panel--wide {
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+}
+
 .tool-card {
   display: grid;
   gap: 14px;
@@ -945,6 +1009,26 @@ svg {
 
 .tool-card input,
 .tool-card select {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.tool-card select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--color-blue) 50%), linear-gradient(135deg, var(--color-blue) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.tool-card option {
+  color: var(--color-white);
+  background: var(--color-black);
+}
+
+.tool-card input,
+.tool-card select {
   min-height: 50px;
 }
 
@@ -998,6 +1082,7 @@ svg {
   }
 
   .tool-panel,
+  .tool-panel--wide,
   .tool-field-grid {
     grid-template-columns: 1fr;
   }
