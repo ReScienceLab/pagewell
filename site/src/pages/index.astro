@@ -70,8 +70,15 @@ const designLines = [
 const qaItems = [
   ["Search intent", "Every page starts with route, primary query or use case, audience, and CTA before code."],
   ["Schema + metadata", "Titles, descriptions, canonicals, Open Graph, and supported JSON-LD are part of the spec."],
-  ["Claim control", "Agents only use facts from product docs, briefs, or user-provided proof—not invented stats."],
+  ["Claim control", "Agents only use facts from product docs, briefs, or user-provided proof, not invented stats."],
   ["Discovery", "Internal links, sitemap, robots, and future discovery files stay aligned with generated routes."],
+];
+
+const heroProof = [
+  "MIT licensed",
+  "No hosted builder",
+  "Astro, Next.js, Workers, static HTML",
+  "QA for metadata, schema, and claims",
 ];
 
 const jsonLd = [websiteSchema(), organizationSchema(), softwareApplicationSchema(), faqPageSchema(faqItems)];
@@ -84,14 +91,17 @@ const jsonLd = [websiteSchema(), organizationSchema(), softwareApplicationSchema
       <HeroWordmark />
 
       <div class="hero__copy">
-        <h1 class="display-section">Your content plan is ready. Your website repo should be too.</h1>
+        <h1 class="display-section">Turn SEO page briefs into reviewable website code.</h1>
         <p class="body hero__description">
-          Pagewell gives coding agents the brief-to-merge workflow for shipping SEO pages, free tools, docs, landing pages, and private ABM pages as normal code—without a hosted builder.
+          Ship search-ready pages as normal code. Pagewell gives your coding agent the context, patterns, and QA rules it needs to generate pages that match your repo's conventions—so you review and merge, not rewrite.
         </p>
         <div class="hero__actions">
           <CommandCopy command="bunx skills add ReScienceLab/pagewell --skill pagewell" />
-          <a class="pill pill--ghost" href="https://github.com/ReScienceLab/pagewell">View GitHub</a>
+          <a class="pill pill--ghost" href="/docs/setup-pagewell">See how it works</a>
         </div>
+        <ul class="hero-proof" aria-label="Pagewell proof points">
+          {heroProof.map((point) => <li>{point}</li>)}
+        </ul>
       </div>
     </div>
   </section>
