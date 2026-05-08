@@ -41,7 +41,7 @@ export function softwareApplicationSchema() {
     description: siteProfile.description,
     url: siteProfile.url,
     sameAs: ["https://github.com/ReScienceLab/pagewell"],
-    softwareVersion: "0.2.5",
+    softwareVersion: "0.2.6",
     offers: {
       "@type": "Offer",
       price: "0",
