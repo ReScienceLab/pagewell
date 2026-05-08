@@ -1,24 +1,9 @@
 ---
+import { getEntry } from "astro:content";
 import GeneratedPage from "../../components/GeneratedPage.astro";
 import { breadcrumbListSchema, faqPageSchema, softwareApplicationSchema } from "../../lib/schema";
 
-const faqs = [
-  {
-    question: "What is Pagewell?",
-    answer:
-      "Pagewell is a repo-native skill pack for coding agents. It helps agents turn page briefs into normal website code with metadata, schema, claim checks, QA, and discovery updates.",
-  },
-  {
-    question: "Does Pagewell host my pages?",
-    answer:
-      "No. Pagewell works inside your existing repo and follows your site's framework conventions. Your existing build and deployment flow still owns hosting and publishing.",
-  },
-  {
-    question: "What files should Pagewell read before generation?",
-    answer:
-      "Pagewell should read DESIGN.md for visual rules, PAGEWELL.md for product/site/pattern truth, and a page brief for the route, audience, intent, CTA, and constraints.",
-  },
-];
+const { data } = (await getEntry("products", "pagewell"))!;
 
 const jsonLd = [
   softwareApplicationSchema(),
@@ -26,101 +11,8 @@ const jsonLd = [
     { name: "Home", item: "/" },
     { name: "Products", item: "/products/pagewell" },
   ]),
-  faqPageSchema(faqs),
+  faqPageSchema(data.faqs ?? []),
 ];
 ---
 
-<GeneratedPage
-  title="Pagewell - Repo-Native SEO Page Generation"
-  description="Pagewell helps coding agents generate, QA, and maintain SEO/GEO pages as normal code inside your existing website repo."
-  canonical="/products/pagewell"
-  eyebrow="Product"
-  h1="Pagewell turns page briefs into production website code."
-  lede="Use Pagewell when you want an agent to ship search-ready pages, free tools, docs, comparisons, and private ABM pages without moving your site into a hosted builder."
-  primaryCta={{ label: "Install Pagewell", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
-  secondaryCta={{ label: "Read setup context", href: "/docs/setup-pagewell" }}
-  highlights={[
-    {
-      kicker: "Context",
-      title: "DESIGN.md + PAGEWELL.md",
-      text: "Visual rules stay in DESIGN.md. Product facts, site conventions, route taxonomy, page patterns, and QA rules live in PAGEWELL.md.",
-    },
-    {
-      kicker: "Output",
-      title: "Normal site code",
-      text: "Pagewell routes work into Astro, Next.js, Workers, static HTML, or a custom adapter instead of producing a hosted page artifact.",
-    },
-    {
-      kicker: "Review",
-      title: "QA before merge",
-      text: "Metadata, schema, claim checks, discovery files, design consistency, and anti-generic checks are part of the workflow.",
-    },
-  ]}
-  sections={[
-    {
-      eyebrow: "What it is",
-      heading: "A page system for coding agents, not another CMS.",
-      body:
-        "Pagewell gives an agent the context, page-type playbooks, adapter guidance, and QA gates needed to make repo-native page changes that a human can review like any other diff.",
-      bullets: [
-        "The router chooses the right module and playbook from a natural-language request.",
-        "The generator creates a framework-neutral page spec before touching code.",
-        "The implementation follows the current repo's route, layout, metadata, and component conventions.",
-      ],
-    },
-    {
-      eyebrow: "Mechanism",
-      heading: "Every generated page starts with truth and patterns.",
-      cards: [
-        {
-          kicker: "01",
-          title: "PAGEWELL.md",
-          text: "Product facts, supported claims, prohibited claims, site implementation, route taxonomy, component patterns, generation rules, and anti-generic QA rules.",
-        },
-        {
-          kicker: "02",
-          title: "DESIGN.md",
-          text: "Colors, typography, spacing, component guidance, and visual do's/don'ts using the Google DESIGN.md format.",
-        },
-        {
-          kicker: "03",
-          title: "Playbook",
-          text: "Product, use-case, FAQ, glossary, comparison, docs, LP, private, and free-tool coverage rules that adapt to the site instead of forcing a fixed template.",
-        },
-      ],
-    },
-    {
-      eyebrow: "Example spec",
-      heading: "The agent sees coverage, evidence, and implementation before code.",
-      codeTitle: "pagewell page spec",
-      codeLines: [
-        "route: /use-cases/generate-seo-pages-as-code",
-        "pageType: use-case",
-        "primaryKeyword: generate SEO pages as code",
-        "context: PAGEWELL.md + DESIGN.md",
-        "coverage:",
-        "  - direct answer",
-        "  - repo workflow",
-        "  - adapter implementation",
-        "  - QA and discovery gates",
-        "antiGeneric:",
-        "  - cite product mechanics",
-        "  - avoid generic Problem/Solution headings",
-      ],
-    },
-  ]}
-  related={[
-    { label: "Generate SEO pages as code", href: "/use-cases/generate-seo-pages-as-code", text: "See the use-case page generated from the same context." },
-    { label: "Set up Pagewell", href: "/docs/setup-pagewell", text: "Read the setup doc for PAGEWELL.md and DESIGN.md." },
-    { label: "Pagewell vs Flint", href: "/alternatives/flint", text: "Compare repo-native skills with a hosted autonomous web platform." },
-    { label: "Pagewell vs Webflow", href: "/alternatives/webflow", text: "Compare code-reviewed page generation with visual website building." },
-    { label: "Pagewell vs WordPress", href: "/alternatives/wordpress", text: "Compare repo-native SEO workflows with CMS-managed publishing." },
-  ]}
-  faqs={faqs}
-  jsonLd={jsonLd}
-  finalCta={{
-    eyebrow: "Install Pagewell",
-    heading: "Ready to turn briefs into code?",
-    copy: "Give your coding agent the context, playbooks, and QA gates it needs to generate production pages in your repo.",
-  }}
-/>
+<GeneratedPage {...data} jsonLd={jsonLd} />
