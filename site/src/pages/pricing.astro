@@ -1,24 +1,9 @@
 ---
+import { getEntry } from "astro:content";
 import GeneratedPage from "../components/GeneratedPage.astro";
 import { breadcrumbListSchema, faqPageSchema, softwareApplicationSchema } from "../lib/schema";
 
-const faqs = [
-  {
-    question: "Is Pagewell free to use?",
-    answer:
-      "The Pagewell repository includes an MIT License and this website does not list any paid Pagewell plan today. Review the GitHub repository and license before adopting it in a production workflow.",
-  },
-  {
-    question: "What costs should I expect when using Pagewell?",
-    answer:
-      "Pagewell runs inside your existing coding-agent and website workflow. Any model usage, coding-agent subscription, repository hosting, CI, deployment, analytics, or third-party tool costs are separate from Pagewell.",
-  },
-  {
-    question: "Does Pagewell host, publish, or charge for generated pages?",
-    answer:
-      "No. Pagewell generates normal website code inside your existing repo. Your current build, review, hosting, and deployment flow still owns publishing.",
-  },
-];
+const { data } = (await getEntry("pages", "pricing"))!;
 
 const jsonLd = [
   softwareApplicationSchema(),
@@ -26,71 +11,8 @@ const jsonLd = [
     { name: "Home", item: "/" },
     { name: "Pricing", item: "/pricing" },
   ]),
-  faqPageSchema(faqs),
+  faqPageSchema(data.faqs ?? []),
 ];
 ---
 
-<GeneratedPage
-  title="Pagewell Pricing - Repo-Native Agent Skill"
-  description="Pagewell is a repo-native agent skill pack with no hosted paid plan listed on this website today. Review license, external costs, and pricing facts."
-  canonical="/pricing"
-  eyebrow="Pricing"
-  h1="Pagewell pricing is repo-native and transparent."
-  lede="Pagewell is free to install. Last updated: 2026-05-04. Pagewell is a repo-native agent skill pack you add to a coding agent workflow. This website does not list a hosted Pagewell cloud plan or paid tier today; external costs come from your own AI agent, model, repository, CI, hosting, and deployment stack."
-  primaryCta={{ label: "Install Pagewell", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
-  secondaryCta={{ label: "Machine-readable pricing", href: "/pricing.md" }}
-  highlights={[
-    {
-      kicker: "Listed price",
-      title: "No paid Pagewell plan listed",
-      text: "The public Pagewell site describes a skill pack and does not present hosted tiers, seats, quotas, SLAs, or usage-based billing.",
-    },
-    {
-      kicker: "License",
-      title: "MIT-licensed repository",
-      text: "The source repository includes an MIT License. Review the repository license before using Pagewell in your own workflow.",
-    },
-    {
-      kicker: "Costs",
-      title: "Bring your own stack",
-      text: "Model usage, AI coding tools, CI, hosting, analytics, and deployment costs belong to the external tools you choose.",
-    },
-  ]}
-  sections={[
-    {
-      eyebrow: "Machine-readable summary",
-      heading: "Pricing facts for AI agents and buyers.",
-      body:
-        "Use this page and /pricing.md when evaluating Pagewell programmatically. The important pricing distinction is that Pagewell is not a hosted builder; it works inside your existing repo and deployment flow.",
-      rows: [
-        ["Plan", "Current public status", "What is included"],
-        ["Pagewell skill pack", "No paid plan listed on this site", "PAGEWELL.md, DESIGN.md, page playbooks, generation guidance, QA checks, and discovery-file updates"],
-        ["Hosting and deployment", "Not included", "Use your existing website host, CI, review, and deployment pipeline"],
-        ["AI model or coding agent", "Not included", "Costs depend on the agent or model provider configured outside Pagewell"],
-      ],
-    },
-    {
-      eyebrow: "Adoption note",
-      heading: "Review generated code before publishing.",
-      body:
-        "Pagewell is designed to produce normal website diffs that teams can inspect. It does not guarantee rankings, revenue, conversion lift, or production publishing outcomes.",
-      bullets: [
-        "Check the generated route, metadata, schema, and internal links before merge.",
-        "Confirm claims against source-of-truth files before publishing.",
-        "Keep pricing, product, and support details current in your own site context.",
-      ],
-    },
-  ]}
-  related={[
-    { label: "What is Pagewell?", href: "/products/pagewell", text: "Understand the repo-native page-generation workflow." },
-    { label: "Set up Pagewell", href: "/docs/setup-pagewell", text: "Prepare PAGEWELL.md, DESIGN.md, and page briefs." },
-    { label: "Pagewell tools", href: "/tools", text: "Use free validators for llms.txt and Pagewell context files." },
-  ]}
-  faqs={faqs}
-  jsonLd={jsonLd}
-  finalCta={{
-    eyebrow: "Install Pagewell",
-    heading: "Pagewell is free to install.",
-    copy: "Your only costs are the AI agent and infrastructure you already use. Install the skill pack and start generating pages today.",
-  }}
-/>
+<GeneratedPage {...data} jsonLd={jsonLd} />

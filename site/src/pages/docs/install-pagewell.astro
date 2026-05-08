@@ -1,119 +1,17 @@
 ---
+import { getEntry } from "astro:content";
 import GeneratedPage from "../../components/GeneratedPage.astro";
 import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
 
-const faqs = [
-  {
-    question: "How do I install Pagewell?",
-    answer:
-      "Install Pagewell with the skills CLI using bunx skills add ReScienceLab/pagewell --skill pagewell. Pi users can add -a pi to target Pi specifically.",
-  },
-  {
-    question: "What should I run after installing Pagewell?",
-    answer:
-      "Ask your agent to use Pagewell to discover the repo and create PAGEWELL.md if it does not already exist. Keep DESIGN.md as the separate visual contract.",
-  },
-];
+const { data } = (await getEntry("docs", "install-pagewell"))!;
 
 const jsonLd = [
   breadcrumbListSchema([
     { name: "Home", item: "/" },
     { name: "Docs", item: "/docs/install-pagewell" },
   ]),
-  faqPageSchema(faqs),
+  faqPageSchema(data.faqs ?? []),
 ];
 ---
 
-<GeneratedPage
-  title="Install Pagewell - Add the Pagewell Agent Skill"
-  description="Install Pagewell with the skills CLI, target Pi when needed, then create PAGEWELL.md and DESIGN.md before generating repo-native pages."
-  canonical="/docs/install-pagewell"
-  eyebrow="Docs"
-  h1="Install Pagewell in your coding agent."
-  lede="Add the Pagewell skill pack, restart the agent session so the updated skill metadata loads, then let Pagewell discover the repo before generating pages."
-  primaryCta={{ label: "Install Pagewell", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
-  secondaryCta={{ label: "Why PAGEWELL.md matters", href: "/faq/what-is-pagewell-md" }}
-  highlights={[
-    {
-      kicker: "Step 01",
-      title: "Install the skill",
-      text: "Use the skills CLI to install the Pagewell router and packaged references for page generation, free tools, QA, and discovery files.",
-    },
-    {
-      kicker: "Step 02",
-      title: "Restart the agent",
-      text: "Agent harnesses load skill metadata at session start. Restart so the Pagewell description and commands are available.",
-    },
-    {
-      kicker: "Step 03",
-      title: "Discover the repo",
-      text: "Ask Pagewell to create or update PAGEWELL.md so future generation uses real product facts, route rules, and page patterns.",
-    },
-  ]}
-  sections={[
-    {
-      eyebrow: "Quickstart",
-      heading: "Install Pagewell with the skills CLI.",
-      body:
-        "Most users only need the pagewell skill entrypoint. The skill includes references for discovery, page generation, free tools, QA, SEO maintenance, adapters, schemas, and playbooks.",
-      codeTitle: "terminal",
-      codeLines: [
-        "bunx skills add ReScienceLab/pagewell --skill pagewell",
-        "",
-        "# Pi users can target Pi explicitly:",
-        "bunx skills add ReScienceLab/pagewell --skill pagewell -a pi",
-        "",
-        "# Existing installs can update:",
-        "bunx skills update pagewell -g -y",
-      ],
-    },
-    {
-      eyebrow: "First run",
-      heading: "Create the repo context before asking for a page.",
-      body:
-        "Pagewell generation works best after the discovery module has inspected the stack, routes, components, content data, discovery files, and product claims. That output belongs in PAGEWELL.md.",
-      codeTitle: "agent prompt",
-      codeLines: [
-        "Use Pagewell to discover this repo and create PAGEWELL.md.",
-        "Import useful product facts, route patterns, claim rules, and site conventions.",
-        "Keep DESIGN.md separate as the visual contract.",
-      ],
-    },
-    {
-      eyebrow: "Generate",
-      heading: "Then pass a route, intent, and constraints to Pagewell.",
-      body:
-        "A useful page request names the route, page type or intent, audience, CTA, and any facts the page is allowed to use. Pagewell will select the matching playbook and adapter.",
-      codeTitle: "example prompt",
-      codeLines: [
-        "Use Pagewell to generate /use-cases/generate-free-tools-as-code.",
-        "Page type: use-case.",
-        "Audience: developers and founders using coding agents.",
-        "CTA: install Pagewell.",
-        "Run QA and update discovery files afterward.",
-      ],
-    },
-    {
-      eyebrow: "Verification",
-      heading: "Run the target repo checks before opening a PR.",
-      bullets: [
-        "Run the site build/check commands documented in PAGEWELL.md.",
-        "Verify unique title, description, canonical, H1, schema, internal links, and sitemap behavior.",
-        "Check generated copy against supported and prohibited claims in PAGEWELL.md.",
-        "Confirm free tools provide first value without signup and no server upload claim unless implemented.",
-      ],
-    },
-  ]}
-  related={[
-    { label: "Set up Pagewell context", href: "/docs/setup-pagewell", text: "Create PAGEWELL.md and DESIGN.md before generation." },
-    { label: "What is PAGEWELL.md?", href: "/faq/what-is-pagewell-md", text: "A short answer for the unified context file." },
-    { label: "Generate SEO pages as code", href: "/use-cases/generate-seo-pages-as-code", text: "The core repo-native page workflow." },
-  ]}
-  faqs={faqs}
-  jsonLd={jsonLd}
-  finalCta={{
-    eyebrow: "Install Pagewell",
-    heading: "Ready to add Pagewell to your repo?",
-    copy: "Run the install command, restart your agent, and discover the repo before the first page request.",
-  }}
-/>
+<GeneratedPage {...data} jsonLd={jsonLd} />
