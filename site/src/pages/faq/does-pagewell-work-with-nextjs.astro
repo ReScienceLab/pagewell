@@ -1,9 +1,12 @@
 ---
-import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import GeneratedPage from "../../components/GeneratedPage.astro";
 import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
 
-const { data } = (await getEntry("faq", "does-pagewell-work-with-nextjs"))!;
+const entries = await getCollection("faq");
+const page = entries.find((e) => e.id === "does-pagewell-work-with-nextjs");
+if (!page) throw new Error("does-pagewell-work-with-nextjs entry not found");
+const { data } = page;
 
 const jsonLd = [
   breadcrumbListSchema([

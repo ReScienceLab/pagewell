@@ -1,12 +1,15 @@
 ---
-import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CommandCopy from "../../components/CommandCopy.astro";
 import FAQ from "../../components/FAQ.astro";
 import { absoluteUrl } from "../../lib/seo";
 import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
 
-const { data } = (await getEntry("tools", "index"))!;
+const entries = await getCollection("tools");
+const page = entries.find((e) => e.id === "index");
+if (!page) throw new Error("index entry not found");
+const { data } = page;
 
 const jsonLd = [
   {

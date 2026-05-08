@@ -1,9 +1,12 @@
 ---
-import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import GeneratedPage from "../../components/GeneratedPage.astro";
 import { breadcrumbListSchema } from "../../lib/schema";
 
-const { data } = (await getEntry("glossary", "generative-engine-optimization"))!;
+const entries = await getCollection("glossary");
+const page = entries.find((e) => e.id === "generative-engine-optimization");
+if (!page) throw new Error("generative-engine-optimization entry not found");
+const { data } = page;
 
 const definedTermSchema = {
   "@context": "https://schema.org",
