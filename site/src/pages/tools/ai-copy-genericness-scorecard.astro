@@ -135,13 +135,21 @@ const jsonLd = [
     "industry-leading", "powerful platform", "revolutionize", "save time and money",
     "seamless experience", "streamline your workflow", "supercharge",
     "transform your business", "unlock your potential", "next-gen", "best-in-class",
-    "world-class", "unmatched", "unparalleled", " Effortless", "Frictionless",
+    "world-class", "unmatched", "unparalleled", "effortless", "frictionless",
   ];
 
   const superlatives = ["best", "#1", "guaranteed", "unmatched", "world-class", "market-leading", "industry-leading", "fastest", "cheapest", "most powerful"];
 
   function stripHtml(text) {
     return text.replace(/\u003cscript[\s\S]*?\u003c\/script\u003e/gi, " ").replace(/\u003cstyle[\s\S]*?\u003c\/style\u003e/gi, " ").replace(/\u003c[^\u003e]+\u003e/g, " ");
+  }
+
+  function escapeRegExp(text) {
+    return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  function phraseMatcher(phrase) {
+    return new RegExp(`(^|[^A-Za-z0-9])${escapeRegExp(phrase)}(?=$|[^A-Za-z0-9])`, "i");
   }
 
   function analyze() {
@@ -158,21 +166,21 @@ const jsonLd = [
 
     const plain = stripHtml(text).replace(/\s+/g, " ").trim().toLowerCase();
     const custom = (customInput?.value || "").split("\n").map(s => s.trim().toLowerCase()).filter(Boolean);
-    const allPhrases = [...defaultPhrases, ...custom];
+    const allPhrases = [...defaultPhrases, ...custom].map(s => s.trim().toLowerCase()).filter(Boolean);
 
     const genericMatches = allPhrases.filter(p => plain.includes(p));
-    const superMatches = superlatives.filter(s => new RegExp(`\\b${s}\\b`, "i").test(plain));
+    const superMatches = superlatives.filter(s => phraseMatcher(s).test(plain));
 
     const hasMechanics = /\b(example|command|code|workflow|repo|route|schema|metadata|because|how|step|file|config)\b/i.test(plain);
     const hasProof = /\b(\d+%|\$\d+|\d+x|\d+ hours|\d+ days|case study|customer|team|user)\b/i.test(plain);
     const wordCount = plain.split(/\s+/).length;
 
-    let score = 100;
-    score -= genericMatches.length * 4;
-    score -= superMatches.length * 8;
-    if (!hasMechanics) score -= 15;
-    if (!hasProof) score -= 10;
-    if (wordCount < 50) score -= 10;
+    let score = 0;
+    score += genericMatches.length * 4;
+    score += superMatches.length * 8;
+    if (!hasMechanics) score += 15;
+    if (!hasProof) score += 10;
+    if (wordCount < 50) score += 10;
     score = Math.max(0, Math.min(100, score));
 
     const benchmark = score <= 20 ? "top quartile — strong specificity." : score <= 40 ? "above average — some filler remains." : score <= 60 ? "average — noticeable generic language." : "below average — significant filler detected.";

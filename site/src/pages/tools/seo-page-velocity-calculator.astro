@@ -163,6 +163,12 @@ const jsonLd = [
     return parseFloat(el?.value) || 0;
   }
 
+  function formatBacklogTime(backlog, months) {
+    if (backlog <= 0) return "0 months";
+    if (months === null) return "not clearing";
+    return `${months} month${months === 1 ? "" : "s"}`;
+  }
+
   function calculate(event) {
     event.preventDefault();
     const backlog = val("backlog");
@@ -174,12 +180,18 @@ const jsonLd = [
 
     const currentPerPage = hours;
     const currentMonthly = shipped;
-    const currentBacklogMonths = currentMonthly > 0 ? Math.ceil(backlog / currentMonthly) : 0;
+    const currentBacklogMonths = currentMonthly > 0 ? Math.ceil(backlog / currentMonthly) : null;
 
     const agentPerPage = hours - review + agentReview;
+    if (agentPerPage <= 0) {
+      message.textContent = "Review hours must be lower than total hours per page, or agent review hours must be greater than zero.";
+      return;
+    }
+
     const agentMonthly = agentPerPage > 0 ? Math.floor((team * 160) / agentPerPage) : 0;
-    const agentBacklogMonths = agentMonthly > 0 ? Math.ceil(backlog / agentMonthly) : 0;
+    const agentBacklogMonths = agentMonthly > 0 ? Math.ceil(backlog / agentMonthly) : null;
     const annualDiff = (agentMonthly - currentMonthly) * 12;
+    const annualDiffLabel = annualDiff > 0 ? `+${annualDiff}` : `${annualDiff}`;
 
     const lines = [
       "## SEO Page Velocity Report",
@@ -191,14 +203,14 @@ const jsonLd = [
       "",
       "Current workflow",
       `  Pages per month: ${currentMonthly}`,
-      `  Backlog clear time: ${currentBacklogMonths} month${currentBacklogMonths === 1 ? "" : "s"}`,
+      `  Backlog clear time: ${formatBacklogTime(backlog, currentBacklogMonths)}`,
       `  Annual pages shipped: ${currentMonthly * 12}`,
       "",
       "Agent-assisted workflow",
       `  Pages per month: ${agentMonthly}`,
-      `  Backlog clear time: ${agentBacklogMonths} month${agentBacklogMonths === 1 ? "" : "s"}`,
+      `  Backlog clear time: ${formatBacklogTime(backlog, agentBacklogMonths)}`,
       `  Annual pages shipped: ${agentMonthly * 12}`,
-      `  Annual difference: +${annualDiff} pages`,
+      `  Annual difference: ${annualDiffLabel} pages`,
       "",
       "Assumptions",
       `  - Agent handles metadata, schema, and discovery updates`,
