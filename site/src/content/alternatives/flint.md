@@ -5,6 +5,7 @@ canonical: "/alternatives/flint"
 eyebrow: "Comparison"
 h1: "Pagewell vs Flint: Keep pages in your repo, or use a platform?"
 lede: "Both help you ship more pages. The difference is where those pages live: in your repo with Pagewell, or on Flint's platform."
+directAnswer: "Choose Pagewell when your website already lives in a repo and page generation should produce reviewable code changes. Choose Flint when the team wants a hosted platform for page creation, editing, publishing, and GTM workflows outside the existing codebase."
 primaryCta:
   label: "Install Pagewell"
   command: "bunx skills add ReScienceLab/pagewell --skill pagewell"

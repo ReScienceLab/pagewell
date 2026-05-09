@@ -1,8 +1,10 @@
 ---
+import AnswerBlock from "./AnswerBlock.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CodeWindow from "./CodeWindow.astro";
 import CommandCopy from "./CommandCopy.astro";
 import FAQ from "./FAQ.astro";
+import PageMeta from "./PageMeta.astro";
 
 type CTA = {
   label: string;
@@ -59,6 +61,10 @@ interface Props {
   eyebrow: string;
   h1: string;
   lede: string;
+  directAnswer?: string;
+  lastUpdated?: string;
+  author?: string;
+  reviewedFor?: string;
   primaryCta?: CTA;
   secondaryCta?: CTA;
   highlights?: Card[];
@@ -91,6 +97,10 @@ const {
   eyebrow,
   h1,
   lede,
+  directAnswer,
+  lastUpdated,
+  author,
+  reviewedFor,
   primaryCta,
   secondaryCta,
   highlights = [],
@@ -112,6 +122,7 @@ const resolvedFinalCta = { ...defaultFinalCta, ...finalCta };
       <p class="eyebrow">{eyebrow}</p>
       <h1 class="display-section">{h1}</h1>
       <p class="body generated-hero__lede">{lede}</p>
+      <PageMeta lastUpdated={lastUpdated} author={author} reviewedFor={reviewedFor} />
       {(primaryCta || secondaryCta) && (
         <div class="generated-actions">
           {primaryCta?.command ? (
@@ -128,6 +139,8 @@ const resolvedFinalCta = { ...defaultFinalCta, ...finalCta };
       )}
     </div>
   </section>
+
+  {directAnswer && <AnswerBlock text={directAnswer} />}
 
   {highlights.length > 0 && (
     <section class="generated-band">

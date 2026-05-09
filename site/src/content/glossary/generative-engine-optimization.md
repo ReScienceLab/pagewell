@@ -5,6 +5,7 @@ canonical: "/glossary/generative-engine-optimization"
 eyebrow: "Glossary"
 h1: "What is generative engine optimization?"
 lede: "GEO is the practice of making your web content easier for AI answer engines to understand, cite, and route qualified users from."
+directAnswer: "Generative engine optimization, or GEO, is the practice of structuring web content so AI answer engines can understand, extract, cite, and route users from it. Strong GEO pages use direct answers, clear headings, factual examples, schema, freshness signals, and claim-safe source material."
 primaryCta:
   label: "Generate GEO pages as code"
   href: "/use-cases/generate-seo-pages-as-code"
@@ -51,6 +52,13 @@ sections:
       - kicker: "Free tools"
         title: "Utility pages"
         text: "Free tools provide immediate value without signup and can earn useful search and citation visibility."
+  - eyebrow: "Public references"
+    heading: "Useful sources for AI SEO and structured content."
+    rows:
+      - ["Source", "Why it matters", "URL"]
+      - ["schema.org", "Defines structured data types such as FAQPage, HowTo, SoftwareApplication, WebApplication, ItemList, and DefinedTerm.", "https://schema.org"]
+      - ["Google Search Central", "Documents how Google understands structured data, crawlability, and search appearance.", "https://developers.google.com/search"]
+      - ["llms.txt", "Describes a convention for giving AI systems concise site context and source URLs.", "https://llmstxt.org"]
 related:
   - label: "Generate SEO pages as code"
     href: "/use-cases/generate-seo-pages-as-code"

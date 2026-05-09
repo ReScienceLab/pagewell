@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import GeneratedPage from "../../components/GeneratedPage.astro";
-import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+import { articleSchema, breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
 
 const entries = await getCollection("use-cases");
 const page = entries.find((e) => e.id === "generate-free-tools-as-code");
@@ -9,6 +9,12 @@ if (!page) throw new Error("generate-free-tools-as-code entry not found");
 const { data } = page;
 
 const jsonLd = [
+  articleSchema({
+    headline: data.title,
+    description: data.description,
+    url: data.canonical,
+    keywords: ["generate free tools as code", "free tool strategy", "WebApplication schema"],
+  }),
   breadcrumbListSchema([
     { name: "Home", item: "/" },
     { name: "Use cases", item: "/use-cases/generate-free-tools-as-code" },

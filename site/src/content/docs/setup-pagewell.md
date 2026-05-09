@@ -5,6 +5,7 @@ canonical: "/docs/setup-pagewell"
 eyebrow: "Docs"
 h1: "Set up Pagewell in three steps."
 lede: "Install the skill, let Pagewell inspect your repo, and create PAGEWELL.md — the single source of truth your agent needs before generating any page."
+directAnswer: "To set up Pagewell, install the skill, ask Pagewell to discover the target repo, and create PAGEWELL.md as the durable product, claims, route, component, and QA context file. Future page requests should read PAGEWELL.md and DESIGN.md before generation."
 primaryCta:
   label: "Install Pagewell"
   command: "bunx skills add ReScienceLab/pagewell --skill pagewell"

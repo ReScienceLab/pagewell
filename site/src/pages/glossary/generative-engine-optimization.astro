@@ -1,25 +1,27 @@
 ---
 import { getCollection } from "astro:content";
 import GeneratedPage from "../../components/GeneratedPage.astro";
-import { breadcrumbListSchema } from "../../lib/schema";
+import { articleSchema, breadcrumbListSchema, definedTermSchema } from "../../lib/schema";
 
 const entries = await getCollection("glossary");
 const page = entries.find((e) => e.id === "generative-engine-optimization");
 if (!page) throw new Error("generative-engine-optimization entry not found");
 const { data } = page;
 
-const definedTermSchema = {
-  "@context": "https://schema.org",
-  "@type": "DefinedTerm",
-  name: "Generative engine optimization",
-  alternateName: "GEO",
-  description:
-    "Generative engine optimization is the practice of making content easier for AI answer engines to understand, cite, and route users from.",
-  url: "https://pagewell.dev/glossary/generative-engine-optimization",
-};
-
 const jsonLd = [
-  definedTermSchema,
+  definedTermSchema({
+    name: "Generative engine optimization",
+    alternateName: "GEO",
+    description:
+      "Generative engine optimization is the practice of making content easier for AI answer engines to understand, cite, and route users from.",
+    url: data.canonical,
+  }),
+  articleSchema({
+    headline: data.title,
+    description: data.description,
+    url: data.canonical,
+    keywords: ["generative engine optimization", "GEO", "AI SEO"],
+  }),
   breadcrumbListSchema([
     { name: "Home", item: "/" },
     { name: "Glossary", item: "/glossary/generative-engine-optimization" },

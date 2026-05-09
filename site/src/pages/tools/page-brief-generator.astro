@@ -1,10 +1,11 @@
 ---
+import AnswerBlock from "../../components/AnswerBlock.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CodeWindow from "../../components/CodeWindow.astro";
 import CommandCopy from "../../components/CommandCopy.astro";
 import FAQ from "../../components/FAQ.astro";
-import { absoluteUrl } from "../../lib/seo";
-import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+import PageMeta from "../../components/PageMeta.astro";
+import { breadcrumbListSchema, faqPageSchema, webApplicationSchema } from "../../lib/schema";
 
 const faqs = [
   {
@@ -25,21 +26,13 @@ const faqs = [
 ];
 
 const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
+  webApplicationSchema({
     name: "Page Brief Generator",
     description:
       "Generate a Pagewell-ready page brief for SEO pages, free tools, docs, comparison pages, and landing pages as code.",
-    url: absoluteUrl("/tools/page-brief-generator"),
-    applicationCategory: "DeveloperApplication",
-    operatingSystem: "Any",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  },
+    url: "/tools/page-brief-generator",
+    featureList: ["Route and intent planning", "Claim constraints", "Schema guidance", "Copyable Pagewell prompt"],
+  }),
   breadcrumbListSchema([
     { name: "Home", item: "/" },
     { name: "Tools", item: "/tools" },
@@ -75,6 +68,7 @@ Include FAQ schema only when visible FAQ copy exists.`;
         <a class="pill" href="#tool">Generate a brief</a>
         <a class="pill pill--ghost" href="/tools">View all tools</a>
       </div>
+      <PageMeta />
       <ul class="tool-proof-list" aria-label="Tool privacy and access">
         <li>No signup</li>
         <li>Runs in browser</li>
@@ -82,6 +76,8 @@ Include FAQ schema only when visible FAQ copy exists.`;
       </ul>
     </div>
   </section>
+
+  <AnswerBlock text="The Page Brief Generator is a free browser-based tool that converts a target route, keyword, audience, product facts, CTA, and claim constraints into a Pagewell-ready markdown brief. Use it before asking a coding agent to create SEO pages, docs, comparisons, or tools as code." />
 
   <section class="generated-band" id="tool">
     <div class="container tool-panel tool-panel--wide" data-brief-tool>

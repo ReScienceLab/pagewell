@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import GeneratedPage from "../../components/GeneratedPage.astro";
-import { breadcrumbListSchema, faqPageSchema, softwareApplicationSchema } from "../../lib/schema";
+import { breadcrumbListSchema, faqPageSchema, productSchema, softwareApplicationSchema } from "../../lib/schema";
 
 const entries = await getCollection("products");
 const page = entries.find((e) => e.id === "pagewell");
@@ -10,6 +10,7 @@ const { data } = page;
 
 const jsonLd = [
   softwareApplicationSchema(),
+  productSchema(),
   breadcrumbListSchema([
     { name: "Home", item: "/" },
     { name: "Products", item: "/products/pagewell" },

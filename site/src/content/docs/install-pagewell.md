@@ -5,6 +5,7 @@ canonical: "/docs/install-pagewell"
 eyebrow: "Docs"
 h1: "Install Pagewell in one command."
 lede: "Add the skill, restart your agent session, and let Pagewell discover your repo before the first page request."
+directAnswer: "Install Pagewell with bunx skills add ReScienceLab/pagewell --skill pagewell. Pi users can add -a pi. After installation, restart the agent session and run Pagewell discovery so PAGEWELL.md captures repo context before the first generated page."
 primaryCta:
   label: "Install Pagewell"
   command: "bunx skills add ReScienceLab/pagewell --skill pagewell"

@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import GeneratedPage from "../../components/GeneratedPage.astro";
-import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+import { breadcrumbListSchema, faqPageSchema, howToSchema, techArticleSchema } from "../../lib/schema";
 
 const entries = await getCollection("docs");
 const page = entries.find((e) => e.id === "setup-pagewell");
@@ -9,6 +9,31 @@ if (!page) throw new Error("setup-pagewell entry not found");
 const { data } = page;
 
 const jsonLd = [
+  techArticleSchema({
+    headline: data.title,
+    description: data.description,
+    url: data.canonical,
+    keywords: ["set up Pagewell", "PAGEWELL.md", "repo-native SEO"],
+  }),
+  howToSchema({
+    name: "Set up Pagewell",
+    description: "Install Pagewell, discover the repo, and create PAGEWELL.md before generating pages as code.",
+    url: data.canonical,
+    steps: [
+      {
+        name: "Install the skill",
+        text: "Run bunx skills add ReScienceLab/pagewell --skill pagewell, or add -a pi for Pi users.",
+      },
+      {
+        name: "Discover the repo",
+        text: "Ask your coding agent to use Pagewell to discover the repo and create PAGEWELL.md.",
+      },
+      {
+        name: "Verify the setup",
+        text: "Run the relevant skill, design, site build, and site check commands before trusting generation.",
+      },
+    ],
+  }),
   breadcrumbListSchema([
     { name: "Home", item: "/" },
     { name: "Docs", item: "/docs/setup-pagewell" },

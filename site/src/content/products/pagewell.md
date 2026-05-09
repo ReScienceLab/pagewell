@@ -5,6 +5,7 @@ canonical: "/products/pagewell"
 eyebrow: "Product"
 h1: "Turn page requests into production-ready code — without losing control of your repo."
 lede: "Ship search-ready pages, free tools, docs, comparisons, and private ABM pages — all as normal code in your existing repo. No hosted builder. No platform migration."
+directAnswer: "Pagewell is a repo-native skill pack for coding agents that turns page briefs into normal website code. It helps generate SEO/GEO pages, docs, comparisons, free tools, metadata, schema, QA notes, and discovery-file updates without moving the site into a hosted builder."
 primaryCta:
   label: "Install Pagewell"
   command: "bunx skills add ReScienceLab/pagewell --skill pagewell"

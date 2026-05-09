@@ -1,10 +1,11 @@
 ---
+import AnswerBlock from "../../components/AnswerBlock.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CodeWindow from "../../components/CodeWindow.astro";
 import CommandCopy from "../../components/CommandCopy.astro";
 import FAQ from "../../components/FAQ.astro";
-import { absoluteUrl } from "../../lib/seo";
-import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+import PageMeta from "../../components/PageMeta.astro";
+import { breadcrumbListSchema, faqPageSchema, webApplicationSchema } from "../../lib/schema";
 
 const faqs = [
   {
@@ -25,21 +26,13 @@ const faqs = [
 ];
 
 const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
+  webApplicationSchema({
     name: "AI Landing Page QA Grader",
     description:
       "Grade AI-generated landing page copy for genericness, unsupported claims, CTA clarity, metadata hints, and Pagewell-style QA gaps.",
-    url: absoluteUrl("/tools/ai-landing-page-qa-grader"),
-    applicationCategory: "DeveloperApplication",
-    operatingSystem: "Any",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  },
+    url: "/tools/ai-landing-page-qa-grader",
+    featureList: ["Genericness checks", "Claim-risk warnings", "CTA clarity checks", "Pagewell-style QA output"],
+  }),
   breadcrumbListSchema([
     { name: "Home", item: "/" },
     { name: "Tools", item: "/tools" },
@@ -81,6 +74,7 @@ No. Pagewell creates normal code/content in the user's repo and does not auto-pu
         <a class="pill" href="#tool">Start grading</a>
         <a class="pill pill--ghost" href="/tools">View all tools</a>
       </div>
+      <PageMeta />
       <ul class="tool-proof-list" aria-label="Tool privacy and access">
         <li>No signup</li>
         <li>Runs in browser</li>
@@ -88,6 +82,8 @@ No. Pagewell creates normal code/content in the user's repo and does not auto-pu
       </ul>
     </div>
   </section>
+
+  <AnswerBlock text="The AI Landing Page QA Grader is a free browser-only checker for generated page drafts. It reviews pasted copy or HTML for generic phrases, unsupported claim risk, CTA clarity, FAQ coverage, metadata hints, and Pagewell-style QA gaps before deeper repo-level review." />
 
   <section class="generated-band" id="tool">
     <div class="container tool-panel" data-qa-tool>
