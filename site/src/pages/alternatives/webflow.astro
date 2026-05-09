@@ -1,6 +1,6 @@
 ---
 import GeneratedPage from "../../components/GeneratedPage.astro";
-import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+import { breadcrumbListSchema, faqPageSchema, itemListSchema } from "../../lib/schema";
 
 const faqs = [
   {
@@ -21,6 +21,12 @@ const faqs = [
 ];
 
 const jsonLd = [
+  itemListSchema({
+    name: "Pagewell vs Webflow comparison dimensions",
+    description: "Structured comparison of repo-native Pagewell and hosted Webflow operating models.",
+    url: "/alternatives/webflow",
+    items: ["System of record", "Primary user", "Design source", "Output", "Best-fit motion"],
+  }),
   breadcrumbListSchema([
     { name: "Home", item: "/" },
     { name: "Alternatives", item: "/alternatives/webflow" },
@@ -36,6 +42,7 @@ const jsonLd = [
   eyebrow="Comparison dry run"
   h1="Pagewell vs Webflow: repo-native skills or a hosted visual builder?"
   lede="Both approaches help teams ship more targeted pages. The difference is where the page system lives: Pagewell works inside your repo, while Webflow provides a hosted visual builder for marketing teams."
+  directAnswer="Choose Pagewell when your site already lives in code and generated pages should be reviewed as repo diffs. Choose Webflow when marketers and designers need a hosted visual builder, CMS, page management, and publishing workflow without working directly in the website codebase."
   primaryCta={{ label: "Install Pagewell", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
   secondaryCta={{ label: "Read setup doc", href: "/docs/setup-pagewell" }}
   highlights={[

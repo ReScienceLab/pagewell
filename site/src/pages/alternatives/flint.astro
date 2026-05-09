@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import GeneratedPage from "../../components/GeneratedPage.astro";
-import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+import { breadcrumbListSchema, faqPageSchema, itemListSchema } from "../../lib/schema";
 
 const entries = await getCollection("alternatives");
 const page = entries.find((e) => e.id === "flint");
@@ -9,6 +9,12 @@ if (!page) throw new Error("flint entry not found");
 const { data } = page;
 
 const jsonLd = [
+  itemListSchema({
+    name: "Pagewell vs Flint comparison dimensions",
+    description: "Structured comparison of repo-native Pagewell and hosted Flint operating models.",
+    url: data.canonical,
+    items: ["System of record", "Primary user", "Design source", "Output", "Best-fit motion"],
+  }),
   breadcrumbListSchema([
     { name: "Home", item: "/" },
     { name: "Alternatives", item: "/alternatives/flint" },

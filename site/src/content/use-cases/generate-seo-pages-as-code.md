@@ -5,6 +5,7 @@ canonical: "/use-cases/generate-seo-pages-as-code"
 eyebrow: "Use case"
 h1: "Stop turning SEO plans into tickets."
 lede: "You mapped the keywords. You know the pages you need. But implementation still crosses framework details, component reuse, metadata, schema, canonical URLs, internal links, and sitemap updates. Pagewell turns that handoff into an agent workflow with built-in QA."
+directAnswer: "Generating SEO pages as code means turning keyword intent, page briefs, and site context into reviewable route changes inside a repository. Pagewell gives coding agents the product facts, design rules, page playbooks, metadata guidance, schema coverage, and QA gates needed before those routes ship."
 primaryCta:
   label: "Install Pagewell"
   command: "bunx skills add ReScienceLab/pagewell --skill pagewell"

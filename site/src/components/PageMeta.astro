@@ -1,0 +1,30 @@
+---
+interface Props {
+  lastUpdated?: string;
+  author?: string;
+  reviewedFor?: string;
+}
+
+const {
+  lastUpdated = "May 2026",
+  author = "Pagewell team",
+  reviewedFor = "metadata, schema, discovery files, and claim safety",
+} = Astro.props;
+---
+
+<aside class="page-meta" aria-label="Page metadata">
+  <dl>
+    <div>
+      <dt>Last updated</dt>
+      <dd>{lastUpdated}</dd>
+    </div>
+    <div>
+      <dt>Author</dt>
+      <dd>{author}</dd>
+    </div>
+    <div>
+      <dt>Reviewed for</dt>
+      <dd>{reviewedFor}</dd>
+    </div>
+  </dl>
+</aside>

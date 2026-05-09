@@ -1,6 +1,6 @@
 ---
 import GeneratedPage from "../../components/GeneratedPage.astro";
-import { breadcrumbListSchema, faqPageSchema } from "../../lib/schema";
+import { breadcrumbListSchema, faqPageSchema, itemListSchema } from "../../lib/schema";
 
 const faqs = [
   {
@@ -21,6 +21,12 @@ const faqs = [
 ];
 
 const jsonLd = [
+  itemListSchema({
+    name: "Pagewell vs WordPress comparison dimensions",
+    description: "Structured comparison of repo-native Pagewell and hosted WordPress operating models.",
+    url: "/alternatives/wordpress",
+    items: ["System of record", "Primary user", "Design source", "Output", "Best-fit motion"],
+  }),
   breadcrumbListSchema([
     { name: "Home", item: "/" },
     { name: "Alternatives", item: "/alternatives/wordpress" },
@@ -36,6 +42,7 @@ const jsonLd = [
   eyebrow="Comparison dry run"
   h1="Pagewell vs WordPress: repo-native skills or a hosted CMS?"
   lede="Both approaches help teams ship more targeted pages. The difference is where the page system lives: Pagewell works inside your repo, while WordPress provides a hosted CMS and site builder for marketing teams."
+  directAnswer="Choose Pagewell when your website is code-owned and generated SEO pages, docs, tools, schema, and discovery updates should stay in repo review. Choose WordPress when content editors need a hosted CMS, familiar admin dashboard, themes, plugins, and managed publishing surface."
   primaryCta={{ label: "Install Pagewell", command: "bunx skills add ReScienceLab/pagewell --skill pagewell" }}
   secondaryCta={{ label: "Read setup doc", href: "/docs/setup-pagewell" }}
   highlights={[

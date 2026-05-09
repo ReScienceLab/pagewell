@@ -1,0 +1,13 @@
+---
+interface Props {
+  kicker?: string;
+  text?: string;
+}
+
+const { kicker = "Direct answer", text } = Astro.props;
+---
+
+<section class="answer-block blue-ring" aria-label={kicker}>
+  <p class="kicker">{kicker}</p>
+  {text ? <p>{text}</p> : <slot />}
+</section>

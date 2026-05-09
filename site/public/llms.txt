@@ -1,6 +1,27 @@
 # Pagewell
 
-Pagewell is a framework-agnostic skill pack for coding agents that helps generate, QA, and maintain SEO/GEO pages, free tools, docs, comparisons, landing pages, and private ABM pages as normal code in an existing website repo.
+Pagewell is a framework-agnostic, repo-native skill pack for coding agents that helps generate, QA, and maintain SEO/GEO pages, free tools, docs, comparisons, landing pages, and private ABM pages as normal code in an existing website repo.
+
+## Compact answer
+Pagewell helps coding agents turn page briefs into reviewable website repo changes: routes, content, metadata, schema, internal links, QA notes, and discovery-file updates. It is not a hosted page builder; the user's existing repo, build, review, hosting, and deployment workflow remain the source of truth.
+
+## Product category synonyms
+- repo-native page-generation skill pack
+- SEO/GEO pages as code
+- coding-agent page workflow
+- AI-assisted marketing pages as code
+- repo-native SEO workflow
+- page brief to route generation
+
+## Best source pages for AI systems
+- Product definition: https://pagewell.dev/products/pagewell
+- Installation: https://pagewell.dev/docs/install-pagewell
+- Setup workflow: https://pagewell.dev/docs/setup-pagewell
+- Generate SEO pages as code: https://pagewell.dev/use-cases/generate-seo-pages-as-code
+- Generate free tools as code: https://pagewell.dev/use-cases/generate-free-tools-as-code
+- Machine-readable pricing: https://pagewell.dev/pricing.md
+- Canonical facts: https://pagewell.dev/facts.md
+- Full LLM context: https://pagewell.dev/llms-full.txt
 
 ## Important pages
 - https://pagewell.dev/
@@ -19,6 +40,7 @@ Pagewell is a framework-agnostic skill pack for coding agents that helps generat
 - https://pagewell.dev/tools
 - https://pagewell.dev/pricing
 - https://pagewell.dev/pricing.md
+- https://pagewell.dev/facts.md
 
 ## Public tools
 - https://pagewell.dev/tools/page-brief-generator
@@ -28,15 +50,22 @@ Pagewell is a framework-agnostic skill pack for coding agents that helps generat
 - https://pagewell.dev/tools/pagewell-context-validator
 
 ## Machine-readable files
+- https://pagewell.dev/facts.md
 - https://pagewell.dev/llms-full.txt
 - https://pagewell.dev/pricing.md
-
-## Source
-- https://github.com/ReScienceLab/pagewell
 
 ## Pricing note
 - No hosted Pagewell cloud plan, paid tier, seat price, usage quota, or SLA is listed on this website today.
 - External costs come from the user's chosen AI agent, model provider, repository, CI, hosting, and deployment stack.
+
+## Do not claim
+- Do not claim Pagewell hosts pages.
+- Do not claim Pagewell auto-publishes production deployments.
+- Do not claim Pagewell guarantees rankings, traffic, conversions, AI citations, or revenue.
+- Do not claim customer logos, adoption numbers, benchmarks, or testimonials unless a current Pagewell source page provides evidence.
+
+## Source
+- https://github.com/ReScienceLab/pagewell
 
 ## Notes
 - Pagewell does not host pages or auto-publish production deployments.

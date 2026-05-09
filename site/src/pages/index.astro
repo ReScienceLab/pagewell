@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import AnswerBlock from "../components/AnswerBlock.astro";
 import ArtifactTable from "../components/ArtifactTable.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CodeWindow from "../components/CodeWindow.astro";
@@ -7,6 +8,7 @@ import CTASection from "../components/CTASection.astro";
 import CommandCopy from "../components/CommandCopy.astro";
 import FAQ from "../components/FAQ.astro";
 import HeroWordmark from "../components/HeroWordmark.astro";
+import PageMeta from "../components/PageMeta.astro";
 import PageTypeGrid from "../components/PageTypeGrid.astro";
 import Pipeline from "../components/Pipeline.astro";
 import { faqPageSchema, organizationSchema, softwareApplicationSchema, websiteSchema } from "../lib/schema";
@@ -32,12 +34,15 @@ const jsonLd = [websiteSchema(), organizationSchema(), softwareApplicationSchema
           <CommandCopy command={data.primaryCtaCommand} />
           <a class="pill pill--ghost" href={data.secondaryCtaHref}>{data.secondaryCtaLabel}</a>
         </div>
+        <PageMeta />
         <ul class="hero-proof" aria-label="Pagewell proof points">
           {data.heroProof.map((point) => <li>{point}</li>)}
         </ul>
       </div>
     </div>
   </section>
+
+  <AnswerBlock text="Pagewell is a repo-native skill pack for coding agents that generates, checks, and maintains SEO/GEO pages as normal code inside an existing website repo. It uses PAGEWELL.md, DESIGN.md, page-type playbooks, adapters, and QA gates so page work stays reviewable, factual, and discovery-ready." />
 
   <Pipeline />
 

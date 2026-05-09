@@ -5,6 +5,7 @@ canonical: "/use-cases/generate-free-tools-as-code"
 eyebrow: "Use case"
 h1: "Free tools that work before they ask for anything."
 lede: "Turn a utility idea into a working page in your repo — input, output, examples, CTA, FAQ, and schema included. No signup wall. No fake lead magnet."
+directAnswer: "Generating free tools as code means creating a useful no-signup utility page inside the existing website repo, not a fake lead magnet. Pagewell helps define the input, output, privacy behavior, SEO shell, WebApplication schema, FAQ, related links, and product CTA before implementation."
 primaryCta:
   label: "Install Pagewell"
   command: "bunx skills add ReScienceLab/pagewell --skill pagewell"

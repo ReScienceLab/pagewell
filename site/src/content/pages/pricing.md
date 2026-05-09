@@ -5,6 +5,7 @@ canonical: "/pricing"
 eyebrow: "Pricing"
 h1: "Pagewell is free. Your infrastructure, your rules."
 lede: "Free to install. MIT licensed. No hosted tier, no seat limits, no usage caps. You pay for what you already use — your AI agent, model, and hosting. Pagewell just makes them work better together."
+directAnswer: "Pagewell is currently free to install and use under the repository's MIT License. The website does not list a hosted Pagewell cloud plan, paid tier, seat price, usage quota, or SLA; users bring their own agent, model, repo, CI, hosting, and deployment workflow."
 primaryCta:
   label: "Install Pagewell"
   command: "bunx skills add ReScienceLab/pagewell --skill pagewell"
