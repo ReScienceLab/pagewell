@@ -128,7 +128,7 @@ export function softwareApplicationSchema(input: SoftwareApplicationInput = {}) 
     description: input.description ?? siteProfile.description,
     url: absoluteUrl(input.url ?? "/products/pagewell"),
     sameAs: ["https://github.com/ReScienceLab/pagewell"],
-    softwareVersion: input.softwareVersion ?? "0.3.3",
+    softwareVersion: input.softwareVersion ?? "0.3.4",
     isAccessibleForFree: true,
     featureList,
     offers: offer(),
